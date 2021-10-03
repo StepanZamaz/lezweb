@@ -9,6 +9,7 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "firebase": "^9.1.0",
     "formik": "^2.2.9",
     "next": "11.1.2",
     "next-circular-dependency": "^1.0.1",
