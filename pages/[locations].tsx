@@ -2,29 +2,30 @@ import { collection, onSnapshot,doc,where, DocumentData } from "@firebase/firest
 import { NextPage, NextPageContext } from "next";
 import { useRouter } from "next/dist/client/router";
 import { useEffect, useState } from "react";
+import {Nadpis, DetailImg} from "../components/styledComponents/styledComponents"
 import db from "../utils/firebase";
+import Image from 'next/image'
 
 const Locations: NextPage = () => {
     const router = useRouter();
-    const locId = router.query.locations;
+    const { locations } = router.query
     const[oblast, setBoulders] = useState<DocumentData>([]);
-    console.log(oblast);
+    
     useEffect(()=>{
         onSnapshot(collection(db,"boulders"), snapshot=>{
             const data = snapshot.docs.map((doc) => ({...doc.data(), id: doc.id}));
-            console.log(locId);
-            const listedData = data?.find(x => x.id === locId);
+            console.log(locations);
+            console.log(data);
+            const listedData = data?.find(x => x.id === locations);
             if(listedData){
                 setBoulders(listedData);
             }
         })
-    },[]);
+    },[locations]);
     return(
         <div>
             <h1>{oblast.nazevOblasti}</h1>
             {Object.keys(oblast).map(function(key, index){
-                            /*console.log(oblast[key]);
-                            console.log(typeof(oblast[key])); */                    
                             if(typeof(oblast[key]) === 'object'){
                                 const nazevBloku = oblast[key].nazevBloku;
                                 const cesty = oblast[key].cesty;
@@ -33,11 +34,11 @@ const Locations: NextPage = () => {
                                         <h1>název bloku: {nazevBloku}</h1>
                                         {Object.keys(cesty).map(function(key){
                                             const val = cesty[key];
-                                            //console.log(atr);
                                             return(
                                                 <div>
                                                     <h2>{val.nazevCesty}</h2>
                                                     <ul>
+                                                        <Image src={val.img} alt={val.id} width={616} height={416}/>
                                                         <li>{val.autor}</li>
                                                         <li>{val.hodnoceni}</li>
                                                     </ul>
@@ -50,7 +51,7 @@ const Locations: NextPage = () => {
                                 )
                             }      
                         })
-                        }
+            }
         </div>
     );
 }

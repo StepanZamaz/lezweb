@@ -12,3 +12,36 @@ export const Button = styled.button`
     margin: 4px 2px;
     cursor: pointer;
 `
+export const Nadpis = styled.div`
+    color: #61ed84;
+    margin-left: 40%;
+    margin-right: 40%;
+    width: 20%;
+    font-size: 100px;
+    
+`
+export const SeznamOblasti = styled.div`
+    position: relative;
+`
+export const Header = styled.div`
+    background-color: #323232;
+    width: 100%;
+    height: 25%;
+    position: relative;
+`
+export const DetailImg = styled.img`
+    width: 616px;
+    height: 416px;
+`
+export const DivWhole = styled.div`
+    height: 100%;
+`
+export const RowImage = styled.div`
+    height: 65%;
+    display: flex;
+`
+export const ColumnImage = styled.div`
+    flex: 50%;
+    padding: 10px;
+    height: 300px;
+`

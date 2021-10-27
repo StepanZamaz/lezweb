@@ -6,50 +6,24 @@ import db from "../utils/firebase";
 const Test: NextPage = () => {
     const[boulders, setBoulders] = useState<DocumentData>([]);
     console.log(boulders);
-    //console.log(typeof(boulders));
     useEffect(()=>{
-        /*onSnapshot(doc(db,"boulders","mladkov","sutr","akupressura"), (snapshot) =>{
-            console.log(snapshot.data());
-        });*/
-        /*const unsub = onSnapshot(doc(db,"boulders","hlavniSkala"), (snapshot) =>{
-            console.log(snapshot.data());
-            //setBoulders(snapshot.data)
-            //setBoulders(snapshot.data());
-        });*/
+        
         onSnapshot(collection(db,"boulders"), snapshot=>{
             const data = snapshot.docs.map((doc) => ({...doc.data(), id: doc.id}));;
-            //console.log(data);
             if(data){
                 setBoulders(data);
             }
-            
-            /*oblasti.map(oblast =>{
-                //console.log(oblast);
-
-            })*/
-            //console.log(oblasti);
-
         })
-        /*
-        onSnapshot(doc(db,"boulders","mladkov"), (snapshot) =>{
-            const data = snapshot.data();
-            //console.log(data);
-            if(data){
-                setBoulders(data);
-            }
-        });*/
+        
     },[]);
     return(
         <div key="index">
             {Object.keys(boulders).map(function(key, index){
                 const oblast = boulders[key];
-                //console.log(oblast);
                 return(
                     <div key={index.toString()}>
                         <h1>{oblast.nazevOblasti}</h1>
-                        {Object.keys(oblast).map(function(key, index){
-                            /*console.log(oblast[key]);
-                            console.log(typeof(oblast[key])); */                    
+                        {Object.keys(oblast).map(function(key, index){                
                             if(typeof(oblast[key]) === 'object'){
                                 const nazevBloku = oblast[key].nazevBloku;
                                 const cesty = oblast[key].cesty;
@@ -58,7 +32,6 @@ const Test: NextPage = () => {
                                         <h1>název bloku: {nazevBloku}</h1>
                                         {Object.keys(cesty).map(function(key){
                                             const val = cesty[key];
-                                            //console.log(atr);
                                             return(
                                                 <div>
                                                     <h2>{val.nazevCesty}</h2>
