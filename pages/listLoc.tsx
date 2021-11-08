@@ -28,12 +28,10 @@ const ListLoc: NextPage = () =>{
     },[]);
     return(
         <DivWhole>
-            <Header>
-                <Nadpis>Climberry</Nadpis>
-            </Header>
+            
             <RowImage>
                 <ColumnImage>
-
+                    
                 </ColumnImage>
                 <ColumnImage>
                 

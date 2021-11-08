@@ -1,5 +1,5 @@
 import React from "react";
-import {Map, Marker, MarkerCardConfiguration} from "react-mapycz";
+import { Marker, MarkerCardConfiguration} from "react-mapycz";
 
 type MarkerItems = {
     lat: number;

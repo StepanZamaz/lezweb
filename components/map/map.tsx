@@ -49,6 +49,7 @@ const Mapa: React.FC<MarkersListProps> = ({oblasti}) =>{
                                                                     height: 500
                                                                 }
                                                             }
+                                                            
                                                             return(
                                                                 <React.Fragment key={index}>
                                                                     <Markers lat={lat} lng={lng} data={data}></Markers>

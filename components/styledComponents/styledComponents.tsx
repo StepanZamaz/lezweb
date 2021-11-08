@@ -1,6 +1,20 @@
 import React from "react";
 import styled from 'styled-components';
 
+//
+export const Hero = styled.div`
+  height: 82vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: #fff;
+`;
+export const Heading = styled.h1`
+  color: #000;
+  font-size: 5rem;
+  font-weight: 900;
+`;
+
 export const Button = styled.button`
     border: none;
     color: blue;
@@ -44,4 +58,14 @@ export const ColumnImage = styled.div`
     flex: 50%;
     padding: 10px;
     height: 300px;
+`
+//
+export const navBar = styled.nav`
+    display: flex ;
+    justify-content: space-between;
+    padding: 3 2 3;
+`
+export const navUl = styled.ul`
+    display: flex;
+    justify-content: space-between;
 `
