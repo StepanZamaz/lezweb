@@ -39,7 +39,7 @@ const ListLoc: NextPage = () =>{
             </RowImage>
             <SeznamOblasti>
             <ul>
-            {Object.keys(boulders).map(function(key, index){
+            {Object.keys(boulders).map((key, index)=>{
                 const oblast = boulders[key];
                 return(
                     <Link href="/[locations]" as={`/${oblast.id}`} key={oblast.id}>

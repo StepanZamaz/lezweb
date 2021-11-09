@@ -3,7 +3,7 @@ import React from 'react'
 import styled from 'styled-components'
 
 const logo = require('../public/logo.png');
-console.log(logo);
+
 const Nav = styled.nav`
     height: 120px;
     background-color: #000;
@@ -18,13 +18,13 @@ const StyledLink = styled.a`
     color: #61ed84;
 `
 const StyledNadpis = styled.a`
-    font-size: 4em;
+    font-size: 5em;
     padding: 0rem 1rem;
     color: #61ed84;
 `
 const StyledImg = styled.img`
     height: 5em;
-    padding: 0rem 2rem;
+    padding: 0rem 1rem;
 `
 
 const Navbar = () => {

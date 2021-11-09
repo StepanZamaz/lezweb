@@ -25,14 +25,14 @@ const Locations: NextPage = () => {
     return(
         <div>
             <h1>{oblast.nazevOblasti}</h1>
-            {Object.keys(oblast).map(function(key, index){
+            {Object.keys(oblast).map((key, index)=>{
                             if(typeof(oblast[key]) === 'object'){
                                 const nazevBloku = oblast[key].nazevBloku;
                                 const cesty = oblast[key].cesty;
                                 return(
                                     <div key={index.toString()}>
                                         <h1>název bloku: {nazevBloku}</h1>
-                                        {Object.keys(cesty).map(function(key){
+                                        {Object.keys(cesty).map((key)=>{
                                             const val = cesty[key];
                                             return(
                                                 <div>
