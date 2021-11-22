@@ -6,6 +6,7 @@ const logo = require('../public/logo.png');
 
 const Nav = styled.nav`
     height: 120px;
+    width: 100%;
     background-color: #000;
     color: #fff;
     display: flex;

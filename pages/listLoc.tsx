@@ -4,9 +4,11 @@ import { collection, onSnapshot, DocumentData, doc, } from "@firebase/firestore"
 import { useEffect, useState } from "react";
 import db from "../utils/firebase";
 import {Nadpis, Header, DivWhole, SeznamOblasti, ColumnImage, RowImage} from "../components/styledComponents/styledComponents"
+import ImageSlider from "../components/ImageSlider"
+import Gallery from '../components/Gallery';
 const ListLoc: NextPage = () =>{
     const[boulders, setBoulders] = useState<DocumentData>([]);
-    const[images, setImages] = useState([2]);
+    const[images, setImages] = useState<Object>({});
     const getRandomInt = (min: number, max: number) =>{
         min = Math.ceil(min);
         max = Math.floor(max);
@@ -15,17 +17,17 @@ const ListLoc: NextPage = () =>{
     useEffect(()=>{
         onSnapshot(collection(db,"boulders"), snapshot=>{
             const data = snapshot.docs.map((doc) => ({...doc.data(), id: doc.id}));
-            Object.keys(data).map(function(key : any){
-                const oblast = data[key];
-                Object.keys(oblast).map(function(key){
-                    //const cesty = oblast[key].cesty;
-                })
-            })
             if(data){
                 setBoulders(data);
             }
         })
     },[]);
+    return(
+        <>
+            <ImageSlider data={boulders}/>
+        </>
+    )
+    /*
     return(
         <DivWhole>
             
@@ -51,6 +53,6 @@ const ListLoc: NextPage = () =>{
             </ul>
             </SeznamOblasti>
         </DivWhole>
-    )
+    )*/
 }
 export default ListLoc;

@@ -5,17 +5,18 @@ import { useEffect, useState } from "react";
 import {Nadpis, DetailImg} from "../components/styledComponents/styledComponents"
 import db from "../utils/firebase";
 import Image from 'next/image'
+import Gallery from "../components/Gallery";
 
 const Locations: NextPage = () => {
     const router = useRouter();
     const { locations } = router.query
     const[oblast, setBoulders] = useState<DocumentData>([]);
-    
+    //console.log(oblast)
     useEffect(()=>{
         onSnapshot(collection(db,"boulders"), snapshot=>{
             const data = snapshot.docs.map((doc) => ({...doc.data(), id: doc.id}));
-            console.log(locations);
-            console.log(data);
+            //console.log(locations);
+            //console.log(data);
             const listedData = data?.find(x => x.id === locations);
             if(listedData){
                 setBoulders(listedData);
@@ -24,6 +25,13 @@ const Locations: NextPage = () => {
     },[locations]);
     return(
         <div>
+            <Gallery data={oblast}></Gallery>
+        </div>
+    );
+}
+export default Locations;
+/*
+<div>
             <h1>{oblast.nazevOblasti}</h1>
             {Object.keys(oblast).map((key, index)=>{
                             if(typeof(oblast[key]) === 'object'){
@@ -52,7 +60,4 @@ const Locations: NextPage = () => {
                             }      
                         })
             }
-        </div>
-    );
-}
-export default Locations;
+        </div>*/
