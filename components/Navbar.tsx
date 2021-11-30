@@ -5,7 +5,7 @@ import styled from 'styled-components'
 const logo = require('../public/logo.png');
 
 const Nav = styled.nav`
-    height: 120px;
+    height: 15vh;
     width: 100%;
     background-color: #000;
     color: #fff;

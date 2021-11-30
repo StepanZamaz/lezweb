@@ -91,7 +91,7 @@ const ImageSlider = ({data}:DocumentData) => {
                                 ? <SlideActive>
                                     {index === current && (
                                         <div>
-                                            <Link href="/[locations]" as={`/${slide.id}`} key={slide.id}>
+                                            <Link href="/listLoc/[locations]" as={`/listLoc/${slide.id}`} key={slide.id}>
                                                 <h1>{slide.nazev}</h1>
                                             </Link>
                                             <Image src={slide.image} alt={slide.nazev}></Image>
@@ -102,7 +102,7 @@ const ImageSlider = ({data}:DocumentData) => {
                                 : <Slide>
                                     {index === current && (
                                         <div>
-                                            <Link href="/[locations]" as={`/${slide.id}`} key={slide.id}>
+                                            <Link href="/listLoc/[locations]" as={`/listLoc/${slide.id}`} key={slide.id}>
                                                 <h1>{slide.nazev}</h1>
                                             </Link>
                                             <Image src={slide.image} alt={slide.nazev}>neco</Image>
