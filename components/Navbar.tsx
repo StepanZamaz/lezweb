@@ -1,6 +1,8 @@
+import { onAuthStateChanged, signOut } from 'firebase/auth';
 import Link from 'next/link'
-import React from 'react'
+import React, { useState } from 'react'
 import styled from 'styled-components'
+import { auth } from '../utils/firebase';
 
 const logo = require('../public/logo.png');
 
@@ -29,6 +31,14 @@ const StyledImg = styled.img`
 `
 
 const Navbar = () => {
+    const[user, setUser] = useState<object|null>({});
+
+    onAuthStateChanged(auth,(currentUser) =>{
+        setUser(currentUser);
+    })
+    const logOut = async () =>{
+        await signOut(auth);
+    }
     return (
         <Nav>
             <div>
@@ -45,9 +55,16 @@ const Navbar = () => {
                 <Link href="/map">
                     <StyledLink>Mapa</StyledLink>   
                 </Link>
-                <Link href="/login">
-                    <StyledLink>Login</StyledLink>   
-                </Link>
+                {
+                    //@ts-ignore: Object is possibly 'null'
+                    user?.email === undefined
+                    ? <Link href="/login">
+                        <StyledLink>Login</StyledLink>   
+                    </Link>
+                    //@ts-ignore: Object is possibly 'null'
+                    : <button onClick={logOut}>Sign out</button>
+                }
+                
             </div>
         </Nav>
     )

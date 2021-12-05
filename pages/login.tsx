@@ -4,6 +4,17 @@ import styled from 'styled-components';
 import {Hero, Heading} from '../components/styledComponents/styledComponents'
 import { onAuthStateChanged, signInWithEmailAndPassword, signOut} from "firebase/auth"
 import { auth } from '../utils/firebase';
+import { LoginForm } from '../components/auth/LoginForm';
+
+const Login = () => {
+    return(
+        <div>
+            <LoginForm/>
+        </div>
+    )
+}
+
+/*
 const Login = () => {
 
     const[loginEmail, SetLoginEmail] = useState("");
@@ -25,7 +36,6 @@ const Login = () => {
     }
 
     const logOut = async () =>{
-
         await signOut(auth);
     }
 
@@ -67,5 +77,5 @@ const Login = () => {
         </>
     )
 }
-
+*/
 export default Login;
