@@ -3,6 +3,8 @@ import  {useRouter} from 'next/router'
 import db from "../../../utils/firebase";
 import { collection, DocumentData, onSnapshot } from 'firebase/firestore';
 import styled from 'styled-components';
+import Footer from '../../../components/Footer';
+import Navbar from '../../../components/Navbar';
 const RouteCard = styled.div`
     margin-top: 5%;
     margin-bottom: 5%;
@@ -58,6 +60,7 @@ const Route = () => {
     },[locations]);
     return (
         <div>
+            <Navbar/>
             {
                 Object.keys(boulders).map((key,index) =>{
                     const nazevOblasti = boulders.nazevOblasti;
@@ -97,6 +100,7 @@ const Route = () => {
                     }
                 })
             }
+            <Footer/>
         </div>
     )
 }

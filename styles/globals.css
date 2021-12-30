@@ -1,21 +1,12 @@
-html{
-  height: 100%;
-}
-body {
-  height: 100%;
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700;900&display=swap');
+
+*{
   padding: 0;
   margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen,
-    Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
+  outline: none;
+  box-sizing: border-box;
 }
 
-a {
-  color: inherit;
-  text-decoration: none;
-}
-#__next {
-  height: 100%;
-}
-* {
-  box-sizing: border-box;
+body {
+  font-family: 'Roboto', sans-serif;
 }

@@ -6,6 +6,8 @@ import db from "../../utils/firebase";
 import {Nadpis, Header, DivWhole, SeznamOblasti, ColumnImage, RowImage} from "../../components/styledComponents/styledComponents"
 import ImageSlider from "../../components/ImageSlider"
 import Gallery from '../../components/Gallery';
+import Navbar from '../../components/Navbar';
+import Footer from '../../components/Footer';
 const ListLoc: NextPage = () =>{
     const[boulders, setBoulders] = useState<DocumentData>([]);
     const[images, setImages] = useState<Object>({});
@@ -24,7 +26,9 @@ const ListLoc: NextPage = () =>{
     },[]);
     return(
         <>
-            <ImageSlider data={boulders}/>
+            <Navbar/>
+                <ImageSlider data={boulders}/>
+            <Footer/>
         </>
     )
     /*

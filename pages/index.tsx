@@ -4,6 +4,8 @@ import React from 'react'
 import BasicLayout from "../layout/Basic";
 import styled from 'styled-components';
 import {Hero, Heading} from '../components/styledComponents/styledComponents'
+import Navbar from '../components/Navbar';
+import Footer from '../components/Footer';
  //https://coolors.co/4a4c3f-88736d-588e2b-030301
 /*const Hero = styled.div`
   height: 80vh;
@@ -25,15 +27,13 @@ const Home: NextPage = () => {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <BasicLayout>
+      <Navbar/>
         <Hero>
           <Heading>Boulderova aplikace pro lezce</Heading>
         </Hero>
+      <Footer/>
       </BasicLayout>
     </>
-    
-    /*<Nadpis>Boulderový průvodce</Nadpis>
-    <p><Link href="/listLoc">Oblasti</Link> </p>
-    <p><Link href="/map">Mapa</Link> </p>*/
   )
 }
 

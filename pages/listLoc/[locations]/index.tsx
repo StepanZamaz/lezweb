@@ -6,6 +6,8 @@ import {Nadpis, DetailImg} from "../../../components/styledComponents/styledComp
 import db from "../../../utils/firebase";
 import Image from 'next/image'
 import Gallery from "../../../components/Gallery";
+import Navbar from "../../../components/Navbar";
+import Footer from "../../../components/Footer";
 
 const Locations: NextPage = () => {
     const router = useRouter();
@@ -25,7 +27,9 @@ const Locations: NextPage = () => {
     },[locations]);
     return(
         <div>
-            <Gallery data={oblast}></Gallery>
+            <Navbar/>
+                <Gallery data={oblast}></Gallery>
+            <Footer/>
         </div>
     );
 }

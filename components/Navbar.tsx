@@ -7,7 +7,7 @@ import { auth } from '../utils/firebase';
 const logo = require('../public/logo.png');
 
 const Nav = styled.nav`
-    height: 15vh;
+    height: 12vh;
     width: 100%;
     background-color: #000;
     color: #fff;
@@ -26,7 +26,7 @@ const StyledNadpis = styled.a`
     color: #61ed84;
 `
 const StyledImg = styled.img`
-    height: 5em;
+    height: 4em;
     padding: 0rem 1rem;
 `
 
