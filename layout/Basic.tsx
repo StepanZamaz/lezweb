@@ -1,15 +1,19 @@
 import { createGlobalStyle } from "styled-components";
 
 export const GlobalStyle = createGlobalStyle`
-  html {
-    box-sizing: border-box;
+  html,
+  body,
+  body > div:first-child,
+  div#__next,
+  div#__next > div {
+    height: 100%;
   }
-  
   *,
   *::before,
   *::after {
     box-sizing: inherit;
   }
+    
 `;
 
 const BasicLayout = ({ children }: { children: any }) => {

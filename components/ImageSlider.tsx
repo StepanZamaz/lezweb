@@ -5,7 +5,7 @@ import {FaArrowAltCircleRight,FaArrowAltCircleLeft} from "react-icons/fa"
 import styled from 'styled-components'
 const Section = styled.section`
     position: relative;
-    height: 100vh;
+    height: 85vh;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -44,7 +44,9 @@ const SlideActive = styled.div`
     transition-duration: 1s;
     transform: scale(1.08);
 `
-
+const SlideNazev = styled.h1`
+    cursor: pointer;
+`
 
 const ImageSlider = ({data}:DocumentData) => {
     const SliderData = new Array(data.length);
@@ -54,13 +56,20 @@ const ImageSlider = ({data}:DocumentData) => {
         const oblast = data[key];
         const asArray = Object.entries(oblast);
         const filtered = asArray.filter(([key,value]) => typeof value === 'object')
-        const filteredObjects = Object.fromEntries(filtered);
-        const values = Object.values(filteredObjects)
-        const prop: any = values[Math.floor(Math.random() * values.length)];
-        const cesty = prop.cesty;
-        const values2 = Object.values(cesty);
-        const cesta : any = values2[Math.floor(Math.random() * values2.length)];
-        SliderData[index] = {nazev: data[key].nazevOblasti, image: cesta.img , id: oblast.id};
+        if(Array.isArray(filtered) && filtered.length){
+            const filteredObjects = Object.fromEntries(filtered);
+            const values = Object.values(filteredObjects)
+            const prop: any = values[Math.floor(Math.random() * values.length)];
+            const cesty = prop.cesty;
+            const values2 = Object.values(cesty);
+            const cesta : any = values2[Math.floor(Math.random() * values2.length)];
+            if(cesta.img !== undefined){
+                console.log("x", typeof cesta.img)
+            }
+            else console.log("ahooooj")
+            SliderData[index] = {nazev: data[key].nazevOblasti, image: cesta.img , id: oblast.id};
+        }
+        else SliderData[index] = {nazev: data[key].nazevOblasti, image: "https://firebasestorage.googleapis.com/v0/b/lezweb.appspot.com/o/unknown%2FUnkownRock.png?alt=media&token=e51ad124-69b1-4de5-b345-1063e02cadff", id: oblast.id}
     })
     
     const[current, setCurrent] = useState(0);
@@ -92,7 +101,7 @@ const ImageSlider = ({data}:DocumentData) => {
                                     {index === current && (
                                         <div>
                                             <Link href="/listLoc/[locations]" as={`/listLoc/${slide.id}`} key={slide.id}>
-                                                <h1>{slide.nazev}</h1>
+                                                <SlideNazev>{slide.nazev}</SlideNazev>
                                             </Link>
                                             <Image src={slide.image} alt={slide.nazev}></Image>
                                         </div>
@@ -103,7 +112,7 @@ const ImageSlider = ({data}:DocumentData) => {
                                     {index === current && (
                                         <div>
                                             <Link href="/listLoc/[locations]" as={`/listLoc/${slide.id}`} key={slide.id}>
-                                                <h1>{slide.nazev}</h1>
+                                                <SlideNazev>{slide.nazev}</SlideNazev>
                                             </Link>
                                             <Image src={slide.image} alt={slide.nazev}>neco</Image>
                                         </div>

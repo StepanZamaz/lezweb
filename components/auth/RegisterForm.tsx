@@ -1,5 +1,5 @@
 import React , { useState, useEffect } from 'react'
-import {createUserWithEmailAndPassword} from "firebase/auth"
+import {createUserWithEmailAndPassword, onAuthStateChanged} from "firebase/auth"
 import{auth} from "../../utils/firebase"
 import db from "../../utils/firebase"; 
 import Router from 'next/router'
@@ -26,7 +26,7 @@ const Container = styled.div`
 `
 const SignUpText = styled.h2`
     font-size: 2.5vw;
-    margin: 3rem 0 2rem 0;
+    margin: 2rem 0 1rem 0;
 `
 const FormFormik = styled(Form)`
     display:flex;
@@ -37,9 +37,9 @@ const FormFormik = styled(Form)`
     width: 100%;
 `
 const ButtonContainer = styled.div`
-    margin: 1rem 0 2rem 0;
+    margin: 1rem 0 1rem 0;
     width: 100%;
-    height: 20%;
+    height: 50vh;
     display: flex;
     align-items: center;
     justify-content: space-between;
@@ -50,7 +50,7 @@ const LoginButton = styled.button`
     text-transform: uppercase;
     letter-spacing: 0.2rem;
     width: 40%;
-    height: 2.3vw;
+    height: 40%;
     border: none;
     color: #000;
     border-radius: 2rem;
@@ -58,26 +58,37 @@ const LoginButton = styled.button`
     font-weight: bold;
 `
 const BackLogContainer = styled.div`
-    height: 15%;
+    height: 10%;
     position: relative;
     width: 100%;
     text-align: center;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    flex-direction: column;
 `
 const LoginLink = styled.a`
     cursor: pointer;
     color: #61ed84;
-    margin: 0;
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
 `
 const StyledIconLogin = styled(HiOutlineLogin)`
-    margin-top: 5%;
     cursor: pointer;
     font-size: 2rem;
 `
 export const RegisterForm = () => {
+    const[user, setUser] = useState<object|null>({});
+
+    onAuthStateChanged(auth,(currentUser) =>{
+        setUser(currentUser);
+        // @ts-ignore
+        if(user?.email){
+            redirectToHome();
+        }
+    })
+    const redirectToHome = () => Router.push({
+        pathname: '/'
+    });
+
     const redirectToLogin = () => Router.push({
         pathname: '/login'
     });
@@ -96,7 +107,7 @@ export const RegisterForm = () => {
     const AddData = async (values:any, userUID : string) =>{
         try {
             const docRef = await addDoc(collection(db, "users"), {
-                id: userUID,
+                uid: userUID,
                 email: values.email,
                 firstName: values.firstName,
                 lastName: values.lastName,
@@ -109,12 +120,12 @@ export const RegisterForm = () => {
           }
     }
     const validate = Yup.object({
-        firstName: Yup.string().max(15,"Must be 15 character or less").required('Required'),
-        lastName: Yup.string().max(20,"Must be 20 character or less").required('Required'),
-        nickname: Yup.string().max(15,"Must be 15 character or less").required('Required'),
-        email: Yup.string().email("Email is invalid").required('Required'),
-        password: Yup.string().min(6,"Password must be at least 6 characters").required('Required'),
-        confirmPassword: Yup.string().oneOf([Yup.ref('password'), null],'Password must match').required('Required'),
+        firstName: Yup.string().max(15,"Maximálně 15 znaků").required('Vyžadováno'),
+        lastName: Yup.string().max(20,"Maximálně 20 znaků").required('Vyžadováno'),
+        nickname: Yup.string().max(15,"Maximálně 15 znaků").required('Vyžadováno'),
+        email: Yup.string().email("Email je neplatný").required('Vyžadováno'),
+        password: Yup.string().min(6,"Nejméně 6 znaků").required('Vyžadováno'),
+        confirmPassword: Yup.string().oneOf([Yup.ref('password'), null],'Hesla se neshodují').required('Vyžadováno'),
     })
     return (
         <Container>
@@ -134,7 +145,7 @@ export const RegisterForm = () => {
             >
                 {formik =>(
                     <>
-                        <SignUpText>Register</SignUpText>
+                        <SignUpText>Registrace</SignUpText>
                         <FormFormik>
                             <TextField label="First Name" name="firstName" type="text" />
                             <TextField label="Last Name" name="lastName" type="text" />
@@ -143,8 +154,8 @@ export const RegisterForm = () => {
                             <TextField label="Password" name="password" type="password" />
                             <TextField label="Confirm Password" name="confirmPassword" type="password" />
                             <ButtonContainer>
-                                <LoginButton type="submit">Register</LoginButton>
-                                <LoginButton type="reset">Reset</LoginButton>
+                                <LoginButton type="submit">Registrovat</LoginButton>
+                                <LoginButton type="reset">Resetovat</LoginButton>
                             </ButtonContainer>
                         </FormFormik>
                         <BackLogContainer>
@@ -152,7 +163,7 @@ export const RegisterForm = () => {
                                 <StyledIconLogin/>
                             </Link>
                             <Link href="/login">
-                                <LoginLink>Back to login</LoginLink>
+                                <LoginLink>Zpět na přihlášení</LoginLink>
                             </Link>
                         </BackLogContainer>
                     </>

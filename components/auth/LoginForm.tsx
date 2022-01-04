@@ -1,11 +1,10 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import {Formik, Form, FormikProps} from "formik"
 import {TextField} from '../TextField'
-import { onAuthStateChanged, signInWithEmailAndPassword, signOut} from "firebase/auth"
+import { getAuth, onAuthStateChanged, signInWithEmailAndPassword} from "firebase/auth"
 import { auth } from '../../utils/firebase';
 import Router from 'next/router'
 import styled from 'styled-components';
-import {FaInstagram}from 'react-icons/fa'
 import Link from 'next/link';
 
 const logo = require('../../public/logo.png');
@@ -34,13 +33,13 @@ const FormFormik = styled(Form)`
     flex-direction: column;
     justify-content: space-around;
     align-items: center;
-    height: 50%;
+    height: 40%;
     width: 100%;
 `
 const ButtonContainer = styled.div`
     margin: 1rem 0 2rem 0;
     width: 100%;
-    height: 30%;
+    height: 60%;
     display: flex;
     align-items: center;
     justify-content: space-between;
@@ -50,8 +49,8 @@ const LoginButton = styled.button`
     background-color: #61ed84;
     text-transform: uppercase;
     letter-spacing: 0.2rem;
-    width: 40%;
-    height: 2.3vw;
+    width: 35%;
+    height: 40%;
     border: none;
     color: #000;
     border-radius: 2rem;
@@ -60,7 +59,7 @@ const LoginButton = styled.button`
 `
 const Register = styled.div`
     width: 90%;
-    height: 15%;
+    height: 10%;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -84,6 +83,7 @@ const ClimberryContainer = styled.div`
     font-size: 2vw;
 `
 const StyledImg = styled.img`
+    cursor: pointer;
     width: 30%;
     padding: 0rem 1rem;
 `
@@ -96,9 +96,8 @@ export const LoginForm = () => {
 
     onAuthStateChanged(auth,(currentUser) =>{
         setUser(currentUser);
-        //@ts-ignore: Object is possibly 'null'
+        // @ts-ignore
         if(user?.email){
-            console.log("redirectToHome")
             redirectToHome();
         }
     })
@@ -127,23 +126,25 @@ export const LoginForm = () => {
         >
             {formik =>(
                 <>
-                    <SignUpText>Login</SignUpText>
+                    <SignUpText>Přihlášení</SignUpText>
                     <FormFormik>
                         <TextField label="Email" name="email" type="email" />
                         <TextField label="Password" name="password" type="password" />
                         <ButtonContainer>
-                            <LoginButton type="submit">Login</LoginButton>
-                            <LoginButton type="reset">Reset</LoginButton>
+                            <LoginButton type="submit">Přihlásit</LoginButton>
+                            <LoginButton type="reset">Resetovat</LoginButton>
                         </ButtonContainer>
                         <Register>
-                                <RegisterText>Do you want to register?</RegisterText>
+                                <RegisterText>Chceš se zaregistrovat?</RegisterText>
                                 <Link href="/register">
-                                    <RegisterLink>SignUp now</RegisterLink>
+                                    <RegisterLink>Registrace</RegisterLink>
                                 </Link>
                         </Register>
                     </FormFormik>
                     <ClimberryContainer>
-                        <StyledImg src={logo.default.src} alt="Logo"></StyledImg>
+                        <Link href="/">
+                            <StyledImg src={logo.default.src} alt="Logo"></StyledImg>
+                        </Link>
                         <ClimberryText>Climberry</ClimberryText>
                     </ClimberryContainer>
                 </>

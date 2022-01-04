@@ -3,6 +3,8 @@ import Link from 'next/link'
 import React, { useState } from 'react'
 import styled from 'styled-components'
 import { auth } from '../utils/firebase';
+import {CgProfile} from "react-icons/cg"
+import DropdownMenu from "./DropdownMenu"
 
 const logo = require('../public/logo.png');
 
@@ -16,9 +18,10 @@ const Nav = styled.nav`
     align-items: center;
 `
 const StyledLink = styled.a`
-    font-size: 1.5em;
+    font-size: 2em;
     padding: 0rem 2rem;
     color: #61ed84;
+    cursor: pointer;
 `
 const StyledNadpis = styled.a`
     font-size: 5em;
@@ -26,19 +29,27 @@ const StyledNadpis = styled.a`
     color: #61ed84;
 `
 const StyledImg = styled.img`
-    height: 4em;
+    height: 5em;
     padding: 0rem 1rem;
 `
-
+const StyledProfileIcon = styled(CgProfile)`
+    font-size: 3em;
+    color: #61ed84;
+    cursor: pointer;
+`
+const NavContent = styled.div`
+    display: flex;
+    width: 30%;
+    justify-content: space-around;
+    align-items: center;
+`
 const Navbar = () => {
     const[user, setUser] = useState<object|null>({});
-
+    const [open, setOpen] = useState(false);
     onAuthStateChanged(auth,(currentUser) =>{
         setUser(currentUser);
     })
-    const logOut = async () =>{
-        await signOut(auth);
-    }
+    
     return (
         <Nav>
             <div>
@@ -48,7 +59,7 @@ const Navbar = () => {
                 <StyledNadpis>Climberry</StyledNadpis>
             </div>
             
-            <div>
+            <NavContent>
                 <Link href="/listLoc">
                     <StyledLink>Oblasti</StyledLink> 
                 </Link>
@@ -59,15 +70,21 @@ const Navbar = () => {
                     //@ts-ignore: Object is possibly 'null'
                     user?.email === undefined
                     ? <Link href="/login">
-                        <StyledLink>Login</StyledLink>   
+                        <StyledLink>Přihlášení</StyledLink>   
                     </Link>
                     //@ts-ignore: Object is possibly 'null'
-                    : <button onClick={logOut}>Sign out</button>
+                    : 
+                    <>
+                        <StyledProfileIcon onClick={() => setOpen(!open)}/>
+                        {open && 
+                            <DropdownMenu/>
+                        }
+                    </>
                 }
                 
-            </div>
+            </NavContent>
         </Nav>
     )
 }
 
-export default Navbar
+export default Navbar;

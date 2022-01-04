@@ -1,6 +1,8 @@
-import Footer from "./Footer";
-import Navbar from "./Navbar";
+import styled from "styled-components";
 
+const LayoutWholeScreen = styled.div`
+    height: 100%;
+`
 const Layout:React.FC = ({children})=> {
     return(
         <div>

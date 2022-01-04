@@ -3,7 +3,7 @@ import styled from 'styled-components';
 
 //
 export const Hero = styled.div`
-  height: 82vh;
+  height: 85%;
   display: flex;
   justify-content: center;
   align-items: center;

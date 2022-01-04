@@ -6,7 +6,7 @@ const InputMsgContainer = styled.div`
     flex-direction: row;
     justify-content: space-around;
     width: 100%;
-    height: 4rem;
+    height: 40%;
     padding: 1rem;
 `
 
@@ -15,7 +15,7 @@ const StyledInput = styled.input`
     box-shadow: 0 2px 2px 0 #61ed84;
     border-radius: 2rem;
     width: 60%;
-    height: 3rem;
+    height: 100%;
     padding: 1rem;
     border: none;
     outline: none;
@@ -45,7 +45,7 @@ const StyledErrorMsg = styled.p`
     line-height: normal;
 `
 const AlignDiv = styled.div`
-    height: 3rem;
+    height: 2rem;
     width: 20%;
     position: relative;
 `
