@@ -61,13 +61,19 @@ const ImageSlider = ({data}:DocumentData) => {
             const values = Object.values(filteredObjects)
             const prop: any = values[Math.floor(Math.random() * values.length)];
             const cesty = prop.cesty;
-            const values2 = Object.values(cesty);
-            const cesta : any = values2[Math.floor(Math.random() * values2.length)];
-            if(cesta.img !== undefined){
-                console.log("x", typeof cesta.img)
+            if(Object.keys(cesty).length == 0){
+                SliderData[index] = {nazev: data[key].nazevOblasti, image: "https://firebasestorage.googleapis.com/v0/b/lezweb.appspot.com/o/unknown%2FUnkownRock.png?alt=media&token=e51ad124-69b1-4de5-b345-1063e02cadff", id: oblast.id}
             }
-            else console.log("ahooooj")
-            SliderData[index] = {nazev: data[key].nazevOblasti, image: cesta.img , id: oblast.id};
+            else{
+                const values2 = Object.values(cesty);
+                const cesta : any = values2[Math.floor(Math.random() * values2.length)];
+                if(cesta.img == ""){
+                    SliderData[index] = {nazev: data[key].nazevOblasti, image: "https://firebasestorage.googleapis.com/v0/b/lezweb.appspot.com/o/unknown%2FUnkownRock.png?alt=media&token=e51ad124-69b1-4de5-b345-1063e02cadff", id: oblast.id}
+                }
+                else{
+                    SliderData[index] = {nazev: data[key].nazevOblasti, image: cesta.img , id: oblast.id};
+                }
+            }
         }
         else SliderData[index] = {nazev: data[key].nazevOblasti, image: "https://firebasestorage.googleapis.com/v0/b/lezweb.appspot.com/o/unknown%2FUnkownRock.png?alt=media&token=e51ad124-69b1-4de5-b345-1063e02cadff", id: oblast.id}
     })

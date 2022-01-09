@@ -4,7 +4,7 @@ import * as Yup from 'yup'
 import { Formik, Form } from "formik"
 import styled from 'styled-components'
 import Popup from 'reactjs-popup'
-import { TextField } from '../TextField'
+import { TextFieldAuth } from '../formikFields/TextFieldAuth'
 import { getAuth, updatePassword, User } from 'firebase/auth'
 
 const FormikContainer = styled.div`
@@ -75,8 +75,8 @@ const ChangePasswordModal = () => {
                                 <>
                                     <h1>Změna udaju</h1>
                                     <Form>
-                                        <TextField label="Password" name="password" type="password" />
-                                        <TextField label="Confirm Password" name="confirmPassword" type="password" />
+                                        <TextFieldAuth label="Password" name="password" type="password" />
+                                        <TextFieldAuth label="Confirm Password" name="confirmPassword" type="password" />
                                         <ButtonContainer>
                                             <LoginButton type="submit">Změnit</LoginButton>
                                             <LoginButton type="reset">Resetovat</LoginButton>

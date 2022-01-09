@@ -6,6 +6,7 @@ import styled from "styled-components";
 
 const OblastDiv = styled.div`
     margin: 3em;
+    min-height: 80vh;
 `
 
 const Container = styled.div`
@@ -85,11 +86,15 @@ const Gallery = ({data}:DocumentData) =>{
                                         <React.Fragment key={index}>
                                                 <Link href="/listLoc/[locations]/[route]" as={`/listLoc/${data.id}/${cesta.id}/`} key={cesta.id}>
                                                     <ImageCard>
-                                                        <Image src={cesta.img} alt={cesta.id} />
+                                                        {cesta.img === "" ? (
+                                                                <Image src="https://firebasestorage.googleapis.com/v0/b/lezweb.appspot.com/o/unknown%2FUnkownRock.png?alt=media&token=e51ad124-69b1-4de5-b345-1063e02cadff" alt={cesta.id} />
+                                                            ):(
+                                                                <Image src={cesta.img} alt={cesta.id} />
+                                                            )
+                                                        }
                                                         <Middle>
                                                             <Cesta>{cesta.nazevCesty}</Cesta>
                                                         </Middle>
-                                                    
                                                     </ImageCard>
                                                 </Link>  
                                         </React.Fragment>

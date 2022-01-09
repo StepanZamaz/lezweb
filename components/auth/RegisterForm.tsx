@@ -4,12 +4,13 @@ import{auth} from "../../utils/firebase"
 import db from "../../utils/firebase"; 
 import Router from 'next/router'
 import {Formik, Form} from "formik"
-import {TextField} from '../TextField'
+import {TextFieldAuth} from '../formikFields/TextFieldAuth'
 import * as Yup from 'yup'
 import { addDoc, collection, doc, setDoc } from 'firebase/firestore'
 import styled from 'styled-components';
 import Link from 'next/link';
 import {HiOutlineLogin} from "react-icons/hi"
+import TextFieldAdding from '../formikFields/TextFieldAdding';
 const Container = styled.div`
     display: flex;
     align-items: center;
@@ -147,12 +148,12 @@ export const RegisterForm = () => {
                     <>
                         <SignUpText>Registrace</SignUpText>
                         <FormFormik>
-                            <TextField label="First Name" name="firstName" type="text" />
-                            <TextField label="Last Name" name="lastName" type="text" />
-                            <TextField label="Nickname" name="nickname" type="text" />
-                            <TextField label="Email" name="email" type="emailt" />
-                            <TextField label="Password" name="password" type="password" />
-                            <TextField label="Confirm Password" name="confirmPassword" type="password" />
+                            <TextFieldAuth label="First Name" name="firstName" type="text" />
+                            <TextFieldAuth label="Last Name" name="lastName" type="text" />
+                            <TextFieldAuth label="Nickname" name="nickname" type="text" />
+                            <TextFieldAuth label="Email" name="email" type="emailt" />
+                            <TextFieldAuth label="Password" name="password" type="password" />
+                            <TextFieldAuth label="Confirm Password" name="confirmPassword" type="password" />
                             <ButtonContainer>
                                 <LoginButton type="submit">Registrovat</LoginButton>
                                 <LoginButton type="reset">Resetovat</LoginButton>

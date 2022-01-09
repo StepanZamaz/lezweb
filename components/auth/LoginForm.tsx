@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import {Formik, Form, FormikProps} from "formik"
-import {TextField} from '../TextField'
+import {TextFieldAuth} from '../formikFields/TextFieldAuth'
 import { getAuth, onAuthStateChanged, signInWithEmailAndPassword} from "firebase/auth"
 import { auth } from '../../utils/firebase';
 import Router from 'next/router'
@@ -128,8 +128,8 @@ export const LoginForm = () => {
                 <>
                     <SignUpText>Přihlášení</SignUpText>
                     <FormFormik>
-                        <TextField label="Email" name="email" type="email" />
-                        <TextField label="Password" name="password" type="password" />
+                        <TextFieldAuth label="Email" name="email" type="email" />
+                        <TextFieldAuth label="Password" name="password" type="password" />
                         <ButtonContainer>
                             <LoginButton type="submit">Přihlásit</LoginButton>
                             <LoginButton type="reset">Resetovat</LoginButton>

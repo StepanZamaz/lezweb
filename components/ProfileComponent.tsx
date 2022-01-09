@@ -6,7 +6,7 @@ import { collection, DocumentData, onSnapshot, doc, updateDoc } from 'firebase/f
 import Router from 'next/router';
 import * as Yup from 'yup'
 import { Formik, Form } from "formik"
-import TextFieldProfile from './TextFieldProfile';
+import TextFieldProfile from './formikFields/TextFieldProfile';
 import Link from 'next/link';
 import ProfileFormModal from './modals/ProfileFormModal'
 import ChangePasswordModal from './modals/ChangePasswordModal'
@@ -63,6 +63,7 @@ const ProfileComponent = () => {
     const auth = getAuth();
     const [user, setUser] = useState<object | null>({});
     const [userInfo, setUserInfo] = useState<DocumentData>([]);
+    const [docBoulders, setDocBoulders] = useState<DocumentData>([]);
     onAuthStateChanged(auth, (currentUser) => {
         setUser(currentUser);
         // @ts-ignore
@@ -95,6 +96,12 @@ const ProfileComponent = () => {
                 setUserInfo(filteredData.userSignedIn);
             }
         })
+        onSnapshot(collection(db, "adminReq"), snapshot => {
+            const data = snapshot.docs.map((doc) => ({ ...doc.data(), id: doc.id }));
+            if(data){
+                setDocBoulders(data);
+            }
+        })
     }, []);
     const validate = Yup.object({
         firstName: Yup.string().max(15, "Maximálně 15 znaků"),
@@ -118,7 +125,7 @@ const ProfileComponent = () => {
                 <ul>
                     <li onClick={() => (setComponentNumber(true))}>Informace o uživateli</li>
                     <li onClick={() => (setComponentNumber(false))}>Změna údajů</li>
-                    <li><ProfileFormModal /></li>
+                    <li><ProfileFormModal values={docBoulders}/></li>
                     <Link href="/admin">
                         <li>Admin</li>
                     </Link>

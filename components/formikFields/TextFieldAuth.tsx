@@ -49,7 +49,7 @@ const AlignDiv = styled.div`
     width: 20%;
     position: relative;
 `
-export const TextField = ({label,...props}:any) => {
+export const TextFieldAuth = ({label,...props}:any) => {
     const [field,meta] = useField(props);
     console.log(field,meta)
     return (
