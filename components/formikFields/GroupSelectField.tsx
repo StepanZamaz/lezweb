@@ -2,7 +2,6 @@ import React from 'react'
 import {Field, ErrorMessage} from 'formik'
 const GroupSelectField = (props : any)=> {
     const {label, name, options, ...rest} = props;
-    console.log("xxxxx",options)
     return (
         <div>
             <label htmlFor={name}>{label}</label>
@@ -15,19 +14,15 @@ const GroupSelectField = (props : any)=> {
                         return(
                             <>
                                 <optgroup label={name}>
-                                {
-                                    /*oblast.cesty.length !== 0 ? (
-                                        Object.keys(oblast.cesty).map((key)=>{
-                                            console.log(oblast.cesty[key]);
-                                            
+                                    {
+                                        Object.keys(oblast).map((key)=>{
+                                            if(typeof(oblast[key]) == 'object'){
+                                                return(
+                                                    <option value={oblast[key].idBlok}>{oblast[key].nazevBloku}</option>
+                                                )
+                                            }
                                         })
-                                    ) : (
-                                        <>
-                                        {console.log("bbec")}
-                                        </>
-                                    )*/
-                                }
-                                    
+                                    }
                                 </optgroup>
                             </>
                         )
@@ -42,4 +37,5 @@ const GroupSelectField = (props : any)=> {
 export default GroupSelectField
 /*
 <option key={name} value={idOblast}>{name}</option>
+oblast[key].idBlok,idOblast
 */

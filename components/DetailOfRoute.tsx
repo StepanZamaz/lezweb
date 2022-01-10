@@ -5,12 +5,13 @@ import styled from 'styled-components'
 const RouteCard = styled.div`
     margin-top: 5%;
     margin-bottom: 5%;
-    margin-right: 10%;
-    margin-left: 10%;
+    margin-right: 15%;
+    margin-left: 15%;
     border: 5px solid #101010;
     border-radius: 15px;
     display: grid;
-    grid-template-columns: 50% 45%;
+    grid-template-columns: 40% 55%;
+    grid-template-rows: 20% 75%;
     grid-gap: 5%;
     grid-template-areas: 
         "header  image"
@@ -19,10 +20,14 @@ const RouteCard = styled.div`
     background-color: #101010;
     color:#61ed84;;
 `
-const NazevCesty = styled.h1`
+const NazevCesty = styled.div`
+    height: 100%;
+    padding: 5% 0;
+    padding-left: 10%;
     grid-area: header;
     font-size: 3em;
     text-align: center;
+    vertical-align: middle;
 `
 const Img = styled.img`
     grid-area: image;
@@ -40,31 +45,53 @@ const DivNazevBlok = styled.h1`
     text-align: center;
 `
 const InformationDiv = styled.div`
+    padding: 5%;
     grid-area: content;
     display: grid;
     grid-template-columns: 50% 45%;
-    grid-template-rows: 15% 60% 15%;
+    grid-template-rows: 10% 10% 50%;
     grid-gap: 5%;
+    margin-left: 5%;
     grid-template-areas: 
         "autor  rating"
-        "describe describe"
         "material ."
+        "describe describe"
     ;
 `
 const DetailRouteDiv = styled.div`
-    min-height: 90vh;
+    min-height: 85vh;
 `
 const AutorDiv = styled.div`
     grid-area: autor;
+    display: flex;
+    justify-content: flex-start;
 `
 const RatingDiv = styled.div`
     grid-area: rating;
+    display: flex;
+    justify-content: flex-start;
 `
 const DescribeDiv = styled.div`
     grid-area: describe;
+    display: flex;
+    justify-content: space-between;
 `
 const MaterialDiv = styled.div`
     grid-area: material;
+    display: flex;
+    justify-content: flex-start;
+`
+const DisplayDescribeDiv = styled.div`
+    width: 75%;
+`
+const DescribeDivText = styled.div`
+    width: 15%;
+`
+const DescriptionDiv = styled.div`
+    
+`
+const DataDiv = styled.div`
+    margin-left: 5%;
 `
 const DetailOfRoute = ({data}: DocumentData) => {
     const router = useRouter();
@@ -97,21 +124,20 @@ const DetailOfRoute = ({data}: DocumentData) => {
                                                     <NazevCesty>{cesta.nazevCesty}</NazevCesty>
                                                     <InformationDiv>
                                                         <AutorDiv>
-                                                            <div>autor: </div> 
-                                                            <div>{cesta.autor}</div>
+                                                            <DescriptionDiv>autor: </DescriptionDiv> 
+                                                            <DataDiv>{cesta.autor}</DataDiv>
                                                         </AutorDiv>
                                                         <RatingDiv>
-                                                            <div>hodnocení cesty: </div>  
-                                                            <div>{cesta.hodnoceni}</div> 
+                                                            <DescriptionDiv>hodnocení cesty: </DescriptionDiv>  
+                                                            <DataDiv>{cesta.hodnoceni}</DataDiv> 
                                                         </RatingDiv>
                                                         <DescribeDiv>
-                                                            
-                                                        <div>popis cesty: </div> 
-                                                        <div>Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nullam eget nisl. Aliquam erat volutpat. Etiam neque. Maecenas ipsum velit, consectetuer eu lobortis ut, dictum at dui. Maecenas libero. Itaque earum rerum hic tenetur a sapiente delectus, ut aut reiciendis voluptatibus maiores alias consequatur aut perferendis doloribus asperiores repellat. Nulla non arcu lacinia neque faucibus fringilla. Mauris metus. Duis viverra diam non justo.</div> 
+                                                            <DescribeDivText>popis cesty: </DescribeDivText> 
+                                                            <DisplayDescribeDiv>Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nullam eget nisl. Aliquam erat volutpat. Etiam neque. Maecenas ipsum velit, consectetuer eu lobortis ut, dictum at dui. Maecenas libero.</DisplayDescribeDiv> 
                                                         </DescribeDiv>
                                                         <MaterialDiv>
-                                                            <div>materiál:</div> 
-                                                            <div>žula</div> 
+                                                            <DescriptionDiv>materiál:</DescriptionDiv> 
+                                                            <DataDiv>žula</DataDiv> 
                                                         </MaterialDiv>
                                                     </InformationDiv>
                                                     {

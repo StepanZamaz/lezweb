@@ -96,7 +96,7 @@ const ProfileComponent = () => {
                 setUserInfo(filteredData.userSignedIn);
             }
         })
-        onSnapshot(collection(db, "adminReq"), snapshot => {
+        onSnapshot(collection(db, "boulders"), snapshot => {
             const data = snapshot.docs.map((doc) => ({ ...doc.data(), id: doc.id }));
             if(data){
                 setDocBoulders(data);
