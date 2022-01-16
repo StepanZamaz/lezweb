@@ -11,32 +11,153 @@ import { number, string } from 'yup/lib/locale';
 import SelectField from '../formikFields/SelectField';
 import GroupSelectField from '../formikFields/GroupSelectField';
 import { getDownloadURL, ref, uploadBytesResumable } from 'firebase/storage';
-import { async } from '@firebase/util';
+
+const logo = require('../../public/logo.png');
+
 const ModalDiv = styled.div`
-    width: 80vw;
-    height: 80vh;
-    background-color: white;
-    color: black;
+    width: 50vw;
+    height: 85vh;
+    background-color: #323232;
+    border: 2px solid #61ed84;
+    color: #61ed84;
+    border-radius: 15px;
     position: relative;
 `
 const CloseButton = styled.button`
     position: absolute; 
     top: 10px; 
     right: 10px;
+    width: 2vw;
+    height: 3vh;
+    background-color: #61ed84;
+    border: 2px solid #323232;
+    border-radius: 10px;
+    cursor: pointer;
+`
+const Icon = styled.img`
+    position: absolute;
+    right: 20px;
+    bottom: 20px;
+    height: 10vh;
 `
 const ButtonDiv = styled.div`
-    width: 100%;
+    margin-left: 5%;
+    margin-right: 5%;
+    width: 90%;
     height: 15%;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    flex-direction: row;
+    border-bottom: 5px solid #61ed84;
+
 `
 const FormDiv = styled.div`
     width: 100%;
-    height: 85%;
+    height: 82%;
 `
-const FormikLoc = styled.div`
-    
+const ButtonChoose = styled.button`
+    background-color: #61ed84;
+    text-transform: uppercase;
+    letter-spacing: 0.2rem;
+    width: 20%;
+    height: 40%;
+    border: none;
+    color: #000;
+    border-radius: 2rem;
+    cursor: pointer;
+    font-weight: bold;
+    :hover {
+        background-color: rgb(41, 153, 72);
+    }
+`
+const Button = styled.button`
+    background-color: #61ed84;
+    text-transform: uppercase;
+    letter-spacing: 0.2rem;
+    width: 20%;
+    height: 100%;
+    border: none;
+    color: #000;
+    border-radius: 2rem;
+    cursor: pointer;
+    font-weight: bold;
+`
+const FormikDiv = styled.div`
+    height: 100%;
 `
 const ButtonContainer = styled.div`
-    
+    margin-top: 1%;
+    width: 100%;
+    height: 5%;
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+    flex-direction: row;
+`
+const ButtonMenu = styled.button`
+    height: 60%;
+    width: 7vw;
+    border-radius: 10px;
+    background-color: #61ed84;
+    text-transform: uppercase;
+    letter-spacing: 0.1rem;
+    border: none;
+    color: #000;
+    border-radius: 2rem;
+    cursor: pointer;
+    font-weight: bold;
+    :hover {
+        background-color: rgb(41, 153, 72);
+    }
+    font-size: 80%;
+`
+const ChooseInfoDiv = styled.div`
+    margin-top: 2%;
+    margin-bottom: 1%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 3em;
+`
+const FormLoc = styled(Form)`
+    height: 90%;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+`
+const FormBlok = styled(Form)`
+    height: 100%;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+`
+const FormRoute = styled(Form)`
+    height: 100%;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+`
+const AlignDiv = styled.div`
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    width: 80%;
+    height: 10%;
+    padding: 1rem;
+`
+const AlignDiv2 = styled.div`
+    height: 2rem;
+    width: 20%;
+    position: relative;
+`
+const LabelDiv = styled.div`
+    font-size: 1.2em;
+    font-weight: bold;
+    width: 20%;
 `
 const ProfileFormModal = (values: DocumentData) => {
     const boulders = values.values;
@@ -56,10 +177,12 @@ const ProfileFormModal = (values: DocumentData) => {
         "image/png"
     ];
     const validateRoute = Yup.object({
-
         autor: Yup.string().max(20, "Maximálně 20 znaků").required("Vyžadováno"),
         hodnoceni: Yup.string().max(3, "Maximálně 3 znaky").required("Vyžadováno"),
         nazevCesty: Yup.string().max(20, "Maximálně 20 znaků").required("Vyžadováno"),
+        material: Yup.string().max(10, "Maximálně 10 znaků").required("Vyžadováno"),
+        delka: Yup.string().max(3, "Maximálně 3 znaky").required("Vyžadováno"),
+        popisCesty: Yup.string().max(100, "Maximálně 100 znaků"),
         img: Yup.mixed().test(
             "FILE_FORMAT",
             "Nepodporovaný formát.",
@@ -145,6 +268,9 @@ const ProfileFormModal = (values: DocumentData) => {
                         autor: values.autor,
                         hodnoceni: values.hodnoceni,
                         nazevCesty: values.nazevCesty,
+                        material: values.material,
+                        delka: values.delka,
+                        popisCesty: values.popisCesty,
                         id: routeId,
                         img: ""
                     }
@@ -162,6 +288,9 @@ const ProfileFormModal = (values: DocumentData) => {
                         autor: values.autor,
                         hodnoceni: values.hodnoceni,
                         nazevCesty: values.nazevCesty,
+                        material: values.material,
+                        delka: values.delka,
+                        popisCesty: values.popisCesty,
                         id: routeId,
                         img: url
                     }
@@ -172,21 +301,22 @@ const ProfileFormModal = (values: DocumentData) => {
     return (
         <div>
             <Popup
-                trigger={<button className="button"> Přidat informace </button>}
+                trigger={<ButtonMenu>Přidat informace</ButtonMenu>}
                 modal
+                closeOnDocumentClick
             >
                 {(close: MouseEventHandler<HTMLButtonElement>) => (
                     <ModalDiv>
                         <ButtonDiv>
-                            <button onClick={() => { setFormNumber(0) }}>Přidat oblast</button>
-                            <button onClick={() => { setFormNumber(1) }}>Přidat blok</button>
-                            <button onClick={() => { setFormNumber(2) }}>Přidat cestu</button>
+                            <ButtonChoose onClick={() => { setFormNumber(0) }}>Přidat oblast</ButtonChoose>
+                            <ButtonChoose onClick={() => { setFormNumber(1) }}>Přidat blok</ButtonChoose>
+                            <ButtonChoose onClick={() => { setFormNumber(2) }}>Přidat cestu</ButtonChoose>
                         </ButtonDiv>
                         <FormDiv>
                             {
                                 formNumber === 1 ? (
                                     <>
-                                        <FormikLoc>
+                                        <FormikDiv>
                                             <Formik
                                                 initialValues={{
                                                     idDoc: '',
@@ -196,43 +326,48 @@ const ProfileFormModal = (values: DocumentData) => {
                                                 }}
                                                 validationSchema={validateBlok}
                                                 onSubmit={values => {
+                                                    console.log("xxxjl", values)
                                                     AddBlok(values);
                                                 }}
                                             >
                                                 {formik => (
                                                     <>
-                                                        <h1>Přidat Blok</h1>
-                                                        <Form>
+                                                        <ChooseInfoDiv>Přidat Blok</ChooseInfoDiv>
+                                                        <FormBlok>
                                                             <SelectField label="Vyber oblast:" name="idDoc" options={boulders} />
                                                             <TextFieldAdding label="Název bloku" name="nazevBloku" type="text" />
                                                             <TextFieldAdding label="Zeměpisná šířka" name="lat" type="number" />
                                                             <TextFieldAdding label="Zeměpisná délka" name="lng" type="number" />
                                                             <ButtonContainer>
-                                                                <button type="submit">Přidat</button>
-                                                                <button type="reset">Resetovat</button>
+                                                                <Button type="submit">Přidat</Button>
+                                                                <Button type="reset">Resetovat</Button>
                                                             </ButtonContainer>
-                                                        </Form>
+                                                        </FormBlok>
                                                     </>
                                                 )
                                                 }
                                             </Formik>
-                                        </FormikLoc>
+                                        </FormikDiv>
                                     </>
                                 ) : formNumber === 2 ? (
-                                    <div>
-                                        <FormikLoc>
+                                    <>
+                                        <FormikDiv>
                                             <Formik
                                                 initialValues={{
                                                     idBlok: '',
                                                     autor: '',
                                                     hodnoceni: '',
                                                     nazevCesty: '',
+                                                    material: '',
+                                                    delka: '',
+                                                    popisCesty: '',
                                                     img: ''
                                                 }}
                                                 validationSchema={validateRoute}
                                                 onSubmit={values => {
-                                                    console.log("img", values.img)
-                                                    if (typeof(values.img)== "undefined") {
+                                                    console.log("xxx", values)
+                                                    console.log("xxx", values.img)
+                                                    if (values.img==="" || typeof(values.img) === "undefined") {
                                                         AddRouteWithoutImg(values);
                                                     }
                                                     else uploadFile(values);
@@ -240,31 +375,37 @@ const ProfileFormModal = (values: DocumentData) => {
                                             >
                                                 {formik => (
                                                     <>
-                                                        <h1>Přidat Cestu</h1>
-                                                        <Form>
+                                                        <ChooseInfoDiv>Přidat Cestu</ChooseInfoDiv>
+                                                        <FormRoute>
                                                             <GroupSelectField label="Vyber oblast a blok:" name="idBlok" options={boulders} />
                                                             <TextFieldAdding label="Autor" name="autor" type="text" />
                                                             <TextFieldAdding label="Hodnocení" name="hodnoceni" type="text" />
                                                             <TextFieldAdding label="Název cesty" name="nazevCesty" type="text" />
-                                                            <input type='file' name='img' accept="image/png, image/jpeg, image/jpg," onChange={(event) =>
-                                                                //@ts-ignore
-                                                                formik.setFieldValue("img", event.target.files[0])
+                                                            <TextFieldAdding label="Materiál" name="material" type="text" />
+                                                            <TextFieldAdding label="Délka" name="delka" type="text" />
+                                                            <TextFieldAdding label="Popis cesty" name="popisCesty" type="text" />
+                                                            <AlignDiv>
+                                                                <LabelDiv>Přidat fotku</LabelDiv>
+                                                                <input type='file' name='img' accept="image/png, image/jpeg, image/jpg," onChange={(event) =>
+                                                                    //@ts-ignore
+                                                                    formik.setFieldValue("img", event.target.files[0])
 
-                                                            } /> <ErrorMessage name="img" />
+                                                                } /> <AlignDiv2><ErrorMessage name="img" /></AlignDiv2>
+                                                            </AlignDiv>
                                                             <ButtonContainer>
-                                                                <button type="submit">Přidat</button>
-                                                                <button type="reset">Resetovat</button>
+                                                                <Button type="submit">Přidat</Button>
+                                                                <Button type="reset">Resetovat</Button>
                                                             </ButtonContainer>
-                                                        </Form>
+                                                        </FormRoute>
                                                     </>
                                                 )
                                                 }
                                             </Formik>
-                                        </FormikLoc>
-                                    </div>
+                                        </FormikDiv>
+                                    </>
                                 ) : (
                                     <>
-                                        <FormikLoc>
+                                        <FormikDiv>
                                             <Formik
                                                 initialValues={{
                                                     nazevOblasti: ''
@@ -276,24 +417,25 @@ const ProfileFormModal = (values: DocumentData) => {
                                             >
                                                 {formik => (
                                                     <>
-                                                        <h1>Přidat Oblast</h1>
-                                                        <Form>
+                                                        <ChooseInfoDiv>Přidat Oblast</ChooseInfoDiv>
+                                                        <FormLoc>
                                                             <TextFieldAdding label="Název oblasti" name="nazevOblasti" type="text" />
                                                             <ButtonContainer>
-                                                                <button type="submit">Přidat</button>
-                                                                <button type="reset">Resetovat</button>
+                                                                <Button type="submit">Přidat</Button>
+                                                                <Button type="reset">Resetovat</Button>
                                                             </ButtonContainer>
-                                                        </Form>
+                                                        </FormLoc>
                                                     </>
                                                 )
                                                 }
                                             </Formik>
-                                        </FormikLoc>
+                                        </FormikDiv>
                                     </>
                                 )
                             }
                         </FormDiv>
                         <CloseButton onClick={close}>X</CloseButton>
+                        <Icon src={logo.default.src} alt="Logo"></Icon>
                     </ModalDiv>
                 )}
             </Popup>

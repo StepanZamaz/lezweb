@@ -20,7 +20,7 @@ const DropdownLine = styled.div`
     height: 25%;
     width: 100%;
     display: flex;
-    align-items: center;
+    justify-content: center;
     padding: 1rem;
     border-bottom: 2px solid #101010;
 `
@@ -36,16 +36,25 @@ const Signout = styled.button`
     cursor: pointer;
     font-weight: bold;
     text-align: center;
+    :hover {
+    background-color: rgb(41, 153, 72);
+    }
 `
-const Profile = styled.a`
+const Profile = styled.button`
+    background-color: #61ed84;
+    text-transform: uppercase;
+    letter-spacing: 0.2rem;
     width: 100%;
     height: 1vw;
-    cursor: pointer;
+    border: none;
     color: #000;
-    background-color: #61ed84;
     border-radius: 2rem;
+    cursor: pointer;
     font-weight: bold;
-    text-transform: uppercase;
+    text-align: center;
+    :hover {
+    background-color: rgb(41, 153, 72);
+    }
 `
 const DropdownMenu = () => {
     

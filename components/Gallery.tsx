@@ -3,12 +3,34 @@ import Link from "next/link";
 import React from "react";
 import Imgix from "react-imgix";
 import styled from "styled-components";
+import {CgBackspace} from "react-icons/cg"
+import { useRouter } from "next/router";
 
 const OblastDiv = styled.div`
-    margin: 3em;
-    min-height: 80vh;
+    padding: 3em;
+    min-height: 90vh;
+    background-color: #C3C3C1;
+    position: relative;
 `
-
+const BackDiv = styled.div`
+    position: absolute; 
+    top: 20px; 
+    left: 20px;
+    width: 8vw;
+    height: 3vh;
+    background-color: #000;
+    border: 2px solid #61ed84;
+    border-radius: 10px;
+    cursor: pointer;
+    color: #61ed84;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 1vw;
+`
+const BackIcon = styled(CgBackspace)`
+    font-size: 2rem;
+`
 const Container = styled.div`
     width: 90%;
     margin: auto;
@@ -51,13 +73,16 @@ const ImageCard = styled.div`
 `
 const DivNazevLoc = styled.h1`
     font-size: 4em;
+    padding: 1rem;
     text-align: center;
+    color: #323232;
 `
 const DivNazevObl = styled.h1`
     text-align: center;
     padding: 1em;
-    border-bottom: 3px solid #101010;
-    border-top: 3px solid #101010;
+    border-bottom: 3px solid #323232;
+    border-top: 3px solid #323232;
+    color: #323232;
 `
 const Cesta = styled.div`
     background-color: #101010;
@@ -67,6 +92,7 @@ const Cesta = styled.div`
 `
 const Gallery = ({data}:DocumentData) =>{
     console.log(data)
+    const router = useRouter();
     return(
         <OblastDiv>
             <DivNazevLoc>{data.nazevOblasti}</DivNazevLoc>
@@ -106,6 +132,9 @@ const Gallery = ({data}:DocumentData) =>{
                     }
                 })
             }
+            <BackDiv onClick={() => router.back()}>
+                <BackIcon/> Zpět na oblasti
+            </BackDiv>
         </OblastDiv>
     )
     

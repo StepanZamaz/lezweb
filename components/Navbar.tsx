@@ -5,7 +5,7 @@ import styled from 'styled-components'
 import { auth } from '../utils/firebase';
 import {CgProfile} from "react-icons/cg"
 import DropdownMenu from "./DropdownMenu"
-
+import TooltipDropdownMenu from "./TooltipDropdownMenu"
 const logo = require('../public/logo.png');
 
 const Nav = styled.nav`
@@ -29,8 +29,13 @@ const StyledNadpis = styled.a`
     color: #61ed84;
 `
 const StyledImg = styled.img`
+    cursor: pointer;
     height: 5em;
     padding: 0rem 1rem;
+    :hover {
+        transition-duration: 1s;
+        transform: scale(1.2);
+    }
 `
 const StyledProfileIcon = styled(CgProfile)`
     font-size: 3em;
@@ -56,7 +61,7 @@ const Navbar = () => {
                 <Link href="/">
                     <StyledImg src={logo.default.src} alt="Logo"/>
                 </Link>
-                <StyledNadpis>Climberry</StyledNadpis>
+                <StyledNadpis>Climberries</StyledNadpis>
             </div>
             
             <NavContent>
@@ -88,3 +93,9 @@ const Navbar = () => {
 }
 
 export default Navbar;
+/*
+<StyledProfileIcon onClick={() => setOpen(!open)}/>
+                        {open && 
+                            <DropdownMenu/>
+                        }
+*/

@@ -20,6 +20,7 @@
     "react-imgix": "^9.3.0",
     "react-mapycz": "^1.1.18",
     "react-tooltip": "^4.2.21",
+    "react-transition-group": "^4.4.2",
     "reactjs-popup": "^2.0.5",
     "styled-components": "^5.3.3",
     "yup": "^0.32.11"

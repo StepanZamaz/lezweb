@@ -1,13 +1,14 @@
 import { DocumentData } from 'firebase/firestore'
 import { useRouter } from 'next/router'
 import React from 'react'
+import { CgBackspace } from 'react-icons/cg'
 import styled from 'styled-components'
 const RouteCard = styled.div`
     margin-top: 5%;
     margin-bottom: 5%;
     margin-right: 15%;
     margin-left: 15%;
-    border: 5px solid #101010;
+    border: 5px solid #323232;
     border-radius: 15px;
     display: grid;
     grid-template-columns: 40% 55%;
@@ -17,7 +18,7 @@ const RouteCard = styled.div`
         "header  image"
         "content image"
     ;
-    background-color: #101010;
+    background-color: #323232;
     color:#61ed84;;
 `
 const NazevCesty = styled.div`
@@ -36,13 +37,16 @@ const Img = styled.img`
 `
 const DivNazevLoc = styled.h1`
     font-size: 4em;
+    padding: 1rem;
     text-align: center;
-    border-bottom: 3px solid #101010;
-    padding-bottom: 3rem;
+    color: #323232;
 `
 const DivNazevBlok = styled.h1`
-    font-size: 3em;
     text-align: center;
+    padding: 1em;
+    border-bottom: 3px solid #323232;
+    border-top: 3px solid #323232;
+    color: #323232;
 `
 const InformationDiv = styled.div`
     padding: 5%;
@@ -54,12 +58,33 @@ const InformationDiv = styled.div`
     margin-left: 5%;
     grid-template-areas: 
         "autor  rating"
-        "material ."
+        "material range"
         "describe describe"
     ;
 `
 const DetailRouteDiv = styled.div`
-    min-height: 85vh;
+    min-height: 95vh;
+    background-color: #C3C3C1;
+    position: relative;
+`
+const BackDiv = styled.div`
+    position: absolute; 
+    top: 20px; 
+    left: 20px;
+    width: 8vw;
+    height: 3vh;
+    background-color: #000;
+    border: 2px solid #61ed84;
+    border-radius: 10px;
+    cursor: pointer;
+    color: #61ed84;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 1vw;
+`
+const BackIcon = styled(CgBackspace)`
+    font-size: 2rem;
 `
 const AutorDiv = styled.div`
     grid-area: autor;
@@ -68,6 +93,11 @@ const AutorDiv = styled.div`
 `
 const RatingDiv = styled.div`
     grid-area: rating;
+    display: flex;
+    justify-content: flex-start;
+`
+const RangeDiv = styled.div`
+    grid-area: range;
     display: flex;
     justify-content: flex-start;
 `
@@ -83,15 +113,20 @@ const MaterialDiv = styled.div`
 `
 const DisplayDescribeDiv = styled.div`
     width: 75%;
+    font-size: 1.2em;
 `
 const DescribeDivText = styled.div`
     width: 15%;
+    font-size: 1.2em;
+    font-weight: bold;
 `
 const DescriptionDiv = styled.div`
-    
+    font-size: 1.2em;
+    font-weight: bold;
 `
 const DataDiv = styled.div`
     margin-left: 5%;
+    font-size: 1.2em;
 `
 const DetailOfRoute = ({data}: DocumentData) => {
     const router = useRouter();
@@ -131,14 +166,18 @@ const DetailOfRoute = ({data}: DocumentData) => {
                                                             <DescriptionDiv>hodnocení cesty: </DescriptionDiv>  
                                                             <DataDiv>{cesta.hodnoceni}</DataDiv> 
                                                         </RatingDiv>
-                                                        <DescribeDiv>
-                                                            <DescribeDivText>popis cesty: </DescribeDivText> 
-                                                            <DisplayDescribeDiv>Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nullam eget nisl. Aliquam erat volutpat. Etiam neque. Maecenas ipsum velit, consectetuer eu lobortis ut, dictum at dui. Maecenas libero.</DisplayDescribeDiv> 
-                                                        </DescribeDiv>
                                                         <MaterialDiv>
                                                             <DescriptionDiv>materiál:</DescriptionDiv> 
-                                                            <DataDiv>žula</DataDiv> 
+                                                            <DataDiv>{cesta.material}</DataDiv> 
                                                         </MaterialDiv>
+                                                        <RangeDiv>
+                                                            <DescriptionDiv>délka:</DescriptionDiv>
+                                                            <DataDiv>{cesta.delka}</DataDiv> 
+                                                        </RangeDiv>
+                                                        <DescribeDiv>
+                                                            <DescribeDivText>popis cesty: </DescribeDivText> 
+                                                            <DisplayDescribeDiv>{cesta.popisCesty}</DisplayDescribeDiv> 
+                                                        </DescribeDiv>
                                                     </InformationDiv>
                                                     {
                                                         cesta.img === "" ?(
@@ -160,6 +199,9 @@ const DetailOfRoute = ({data}: DocumentData) => {
                     }
                 })
             }
+            <BackDiv onClick={() => router.back()}>
+                <BackIcon/> Zpět na bloky
+            </BackDiv>
         </DetailRouteDiv>
     )
 }

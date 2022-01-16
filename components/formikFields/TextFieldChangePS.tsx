@@ -1,20 +1,22 @@
 import React from 'react'
 import {ErrorMessage, useField } from 'formik'
-import styled from 'styled-components';
+import styled from 'styled-components'
+
 const InputMsgContainer = styled.div`
     display: flex;
     flex-direction: row;
-    justify-content: space-between;
-    width: 80%;
-    height: 10%;
+    justify-content: space-around;
+    width: 100%;
+    height: 20%;
     padding: 1rem;
 `
+
 const StyledInput = styled.input`
     background: rgba(255,255,255,0.15);
     box-shadow: 0 2px 2px 0 #61ed84;
     border-radius: 2rem;
-    width: 30%;
-    height: 50%;
+    width: 60%;
+    height: 100%;
     padding: 1rem;
     border: none;
     outline: none;
@@ -33,13 +35,7 @@ const StyledInput = styled.input`
         font-size: 1rem;
     }
 `
-const Label = styled.label`
-    font-size: 1.2em;
-    font-weight: bold;
-    width: 20%;
-`
 const StyledErrorMsg = styled.p`
-    width: 30%;
     color: white;
     margin: 0;
     position: absolute;
@@ -54,26 +50,27 @@ const AlignDiv = styled.div`
     width: 20%;
     position: relative;
 `
-
-const TextFieldAdding = ({label,...props}:any) => {
+const TextFieldChangePS = ({label,...props}:any) => {
     const [field,meta] = useField(props);
     console.log(field,meta)
     return (
-        <InputMsgContainer>
-            <Label htmlFor={field.name}>{label}</Label>
-            <StyledInput placeholder={label}
-            {...field} {...props}
-            />
-            <AlignDiv>
-                <ErrorMessage  component="div" name={field.name} >
+        <>
+            <InputMsgContainer>
+                <AlignDiv/>
+                <StyledInput placeholder={label}
+                {...field} {...props}
+                />
+                <AlignDiv>
+                    <ErrorMessage  component="div" name={field.name} >
                         {msg => (
                             <StyledErrorMsg>{msg}</StyledErrorMsg>
                         )}
-                </ErrorMessage>
-            </AlignDiv>
+                    </ErrorMessage>
+                </AlignDiv>
+            </InputMsgContainer>
             
-        </InputMsgContainer>
+        </>  
     )
 }
 
-export default TextFieldAdding
+export default TextFieldChangePS

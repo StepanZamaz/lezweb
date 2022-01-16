@@ -6,7 +6,8 @@ import { NextPage } from 'next';
 import ProfileComponent from '../components/ProfileComponent'
 const ProfileDiv = styled.div`
     display: flex;
-    height: 84vh;
+    min-height: 84vh;
+    height: 88vh;
     background-image: url(https://firebasestorage.googleapis.com/v0/b/lezweb.appspot.com/o/mladkov%2F4.JPG?alt=media&token=e5828824-aaa3-4178-b3d1-648fc382de4d);
     background-size: cover;
     padding-top: 100px;
@@ -14,14 +15,16 @@ const ProfileDiv = styled.div`
     align-items: center;
 `
 const ProfileContainter = styled.div`
-    width: 50%;
-    height: 85%;
+    width: 40%;
+    height: 100%;
     margin-left: auto;
     margin-right: auto;
     padding: 50px;
-    background-color: white;
     border: 2px solid black;
-    border-radius: 25px;
+    background: rgba(255,255,255,0.15);
+    box-shadow: 0 8px 32px 0 rgba(31,38,135,0.37);
+    backdrop-filter: blur(8.5px);
+    border-radius: 10px;
 `
 const profile: NextPage = () => {
     return (

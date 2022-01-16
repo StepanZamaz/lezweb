@@ -44,6 +44,7 @@ const Mapa: React.FC<MarkersListProps> = ({ oblasti }) => {
                                                                 const data: MarkerCardConfiguration = {
                                                                     header: "<strong>" + nazevBloku + "</strong>",
                                                                     body: bodyProps,
+                                                                    footer: "<strong>" + oblast.nazevOblasti + "</strong>",
                                                                     options: {
                                                                         width: 500,
                                                                         height: 500
