@@ -297,6 +297,7 @@ const ProfileFormModal = (values: DocumentData) => {
                 }
           }
         }, {merge: true});
+        console.log("finished");
     }
     return (
         <div>

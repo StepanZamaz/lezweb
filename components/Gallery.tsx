@@ -16,7 +16,7 @@ const BackDiv = styled.div`
     position: absolute; 
     top: 20px; 
     left: 20px;
-    width: 8vw;
+    width: 11vw;
     height: 3vh;
     background-color: #000;
     border: 2px solid #61ed84;
@@ -27,6 +27,7 @@ const BackDiv = styled.div`
     align-items: center;
     justify-content: space-between;
     padding: 1vw;
+    text-transform: uppercase;
 `
 const BackIcon = styled(CgBackspace)`
     font-size: 2rem;
