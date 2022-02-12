@@ -94,6 +94,7 @@ const ClimberryText = styled.h3`
 export const LoginForm = () => {
     const[user, setUser] = useState<object|null>({});
 
+    
     onAuthStateChanged(auth,(currentUser) =>{
         setUser(currentUser);
         // @ts-ignore

@@ -1,11 +1,9 @@
-import React from 'react'
-
-const admin = () => {
+import React, { useEffect, useState } from 'react'
+import AdminComponent from '../components/AdminComponent'
+const Admin = () => {
     return (
-        <div>
-            admin page
-        </div>
+        <AdminComponent/>
     )
 }
 
-export default admin
+export default Admin

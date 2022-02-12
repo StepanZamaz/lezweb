@@ -108,6 +108,7 @@ export const RegisterForm = () => {
     const AddData = async (values:any, userUID : string) =>{
         try {
             const docRef = await addDoc(collection(db, "users"), {
+                admin: false,
                 uid: userUID,
                 email: values.email,
                 firstName: values.firstName,
