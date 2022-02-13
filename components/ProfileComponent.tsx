@@ -254,9 +254,12 @@ const ProfileComponent = () => {
                         <ButtonMenu onClick={() => (setComponentNumber(true))}>Informace o uživateli</ButtonMenu>
                         <ButtonMenu onClick={() => (setComponentNumber(false))}>Změna údajů</ButtonMenu>
                         <ProfileFormModal values={docBoulders} />
-                        <Link href="/admin">
-                            <ButtonMenu>Admin</ButtonMenu>
-                        </Link>
+                        {
+                            userInfo.admin && 
+                                <Link href="/admin">
+                                    <ButtonMenu>Admin</ButtonMenu>
+                                </Link> 
+                        }
                     </MenuDiv>
                     <FormikContainer>
                         <Formik

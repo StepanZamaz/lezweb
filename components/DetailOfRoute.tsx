@@ -2,7 +2,9 @@ import { DocumentData } from 'firebase/firestore'
 import { useRouter } from 'next/router'
 import React from 'react'
 import { CgBackspace } from 'react-icons/cg'
+import { GoReport } from 'react-icons/go'
 import styled from 'styled-components'
+import ReportModal from './modals/ReportModal'
 const RouteCard = styled.div`
     margin-top: 5%;
     margin-bottom: 5%;
@@ -49,6 +51,7 @@ const DivNazevBlok = styled.h1`
     color: #323232;
 `
 const InformationDiv = styled.div`
+    position: relative;
     padding: 5%;
     grid-area: content;
     display: grid;
@@ -179,6 +182,7 @@ const DetailOfRoute = ({data}: DocumentData) => {
                                                             <DescribeDivText>popis cesty: </DescribeDivText> 
                                                             <DisplayDescribeDiv>{cesta.popisCesty}</DisplayDescribeDiv> 
                                                         </DescribeDiv>
+                                                        <ReportModal/>
                                                     </InformationDiv>
                                                     {
                                                         cesta.img === "" ?(

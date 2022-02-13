@@ -22,7 +22,7 @@ const AdminComponent = () => {
         onSnapshot(collection(db, "users"), snapshot => {
             const user = auth.currentUser;
             console.log("xxx", user)
-            const data = snapshot.docs.map((doc) => ({ ...doc.data(), id: doc.id }));        
+            const data = snapshot.docs.map((doc) => ({ ...doc.data(), id: doc.id }));
             if (data) {
                 const filteredData: DocumentData = FilterData(data, user);
                 console.log("x", filteredData)
@@ -43,7 +43,6 @@ const AdminComponent = () => {
     const redirectToHome = () => Router.push({
         pathname: '/'
     });
-
     if(userInfo.admin){
         return (
             <div>AdminComponent</div>
