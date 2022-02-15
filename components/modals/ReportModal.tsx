@@ -80,7 +80,8 @@ const ReportModal = () => {
             reportText: values.reportText,
             locationId: locations,
             routeId: route,
-            reportedBy: auth.currentUser?.uid
+            reportedBy: auth.currentUser?.uid,
+            status: "waiting"
         });
     }
     

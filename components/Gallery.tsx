@@ -123,7 +123,7 @@ const Gallery = ({data}:DocumentData) =>{
                                                             <Cesta>{cesta.nazevCesty}</Cesta>
                                                         </Middle>
                                                     </ImageCard>
-                                                </Link>  
+                                                </Link>
                                         </React.Fragment>
                                     )
                                 })}
