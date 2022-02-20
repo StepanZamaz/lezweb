@@ -5,6 +5,7 @@ import { CgBackspace } from 'react-icons/cg'
 import { GoReport } from 'react-icons/go'
 import styled from 'styled-components'
 import ReportModal from './modals/ReportModal'
+import CommentComponent from './CommentComponent'
 const RouteCard = styled.div`
     margin-top: 5%;
     margin-bottom: 5%;
@@ -194,6 +195,7 @@ const DetailOfRoute = ({data}: DocumentData) => {
                                                     }                                         
                                                     
                                                 </RouteCard>
+                                                <CommentComponent/>
                                             </React.Fragment>
                                         )
                                     }
