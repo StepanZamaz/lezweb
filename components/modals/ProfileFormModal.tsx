@@ -167,9 +167,10 @@ const ProfileFormModal = (values: DocumentData) => {
         nazevOblasti: Yup.string().max(20, "Maximálně 20 znaků").required("Vyžadováno")
     })
     const validateBlok = Yup.object({
+        idDoc: Yup.string().required("Vyžadováno"),
         nazevBloku: Yup.string().max(20, "Maximálně 20 znaků").required("Vyžadováno"),
         lat: Yup.number().min(-90, "Minimum do -90").max(90, "Maximálně do 90").required("Vyžadováno"),
-        lng: Yup.number().min(-180, "Minimum do -180").max(180, "Maximálně do 180").required("Vyžadováno"),
+        lng: Yup.number().min(-180, "Minimum do -180").max(180, "Maximálně do 180").required("Vyžadováno")
     })
     const SUPPORTED_FORMATS = [
         "image/jpg",
@@ -177,6 +178,7 @@ const ProfileFormModal = (values: DocumentData) => {
         "image/png"
     ];
     const validateRoute = Yup.object({
+        idBlok: Yup.string().required("Vyžadováno"),
         autor: Yup.string().max(20, "Maximálně 20 znaků").required("Vyžadováno"),
         hodnoceni: Yup.string().max(3, "Maximálně 3 znaky").required("Vyžadováno"),
         nazevCesty: Yup.string().max(20, "Maximálně 20 znaků").required("Vyžadováno"),

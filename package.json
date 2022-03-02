@@ -9,7 +9,8 @@
     "lint": "next lint"
   },
   "dependencies": {
-    "firebase": "^9.6.1",
+    "dateformat": "^5.0.3",
+    "firebase": "^9.6.7",
     "formik": "^2.2.9",
     "next": "11.1.2",
     "next-circular-dependency": "^1.0.1",
@@ -17,8 +18,9 @@
     "react-dom": "17.0.2",
     "react-firebase-hooks": "^3.0.5",
     "react-icons": "^4.3.1",
-    "react-imgix": "^9.3.0",
-    "react-mapycz": "^1.1.18",
+    "react-imgix": "^9.4.0",
+    "react-loading": "^2.0.3",
+    "react-mapycz": "^1.1.20",
     "react-tooltip": "^4.2.21",
     "react-transition-group": "^4.4.2",
     "reactjs-popup": "^2.0.5",
@@ -26,9 +28,10 @@
     "yup": "^0.32.11"
   },
   "devDependencies": {
+    "@types/dateformat": "^5.0.0",
     "@types/react": "17.0.21",
     "@types/react-imgix": "^9.3.1",
-    "@types/styled-components": "^5.1.19",
+    "@types/styled-components": "^5.1.23",
     "babel-plugin-styled-components": "^1.13.3",
     "eslint": "7.32.0",
     "eslint-config-next": "11.1.2",

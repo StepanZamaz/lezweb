@@ -88,12 +88,12 @@ const CommentComponent = () => {
                             {
                                 Object.keys(comments.comment).map((key) => {
                                     const singleComment = comments.comment[key];
-                                    //const date = singleComment.addDate;
-                                    console.log("x", comments.comment[key]);
+                                    const date = comments.comment[key].addDate.toDate().toString();
+                                    console.log("x", date);
                                     return (
                                         <CommentDiv>
                                             <ul>
-                                                <li>datum: { }</li>
+                                                <li>datum: {date}</li>
                                                 <li>idUser: {singleComment.addedBy}</li>
                                                 <li>idComment: {singleComment.commentId}</li>
                                                 <li>commentText: {singleComment.commentText}</li>

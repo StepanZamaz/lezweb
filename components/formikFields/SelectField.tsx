@@ -35,11 +35,21 @@ const SelectField = (props : any) => {
                     Object.keys(options).map((key)=>{
                         const name = options[key].nazevOblasti;
                         const id = options[key].id;
-                            return(
-                                <>
-                                    <option key={name} value={id}>{name}</option>
-                                </>
-                            )
+                            if(selected){
+                                setSelected(false);
+                                return(
+                                    <>
+                                        <option selected={true} key={name} value={id}>{name}</option>
+                                    </>
+                                )
+                            }
+                            else {
+                                return(
+                                    <>
+                                        <option key={name} value={id}>{name}</option>
+                                    </>
+                                )
+                            }
                         
                     })
                 }

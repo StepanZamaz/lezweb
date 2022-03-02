@@ -5,7 +5,7 @@ import * as Yup from 'yup'
 import { Formik, Form } from "formik"
 import { GoReport } from 'react-icons/go'
 import ReportTextField from '../formikFields/ReportTextField'
-import { addDoc, collection, doc, DocumentData, setDoc } from 'firebase/firestore'
+import { addDoc, collection, doc, DocumentData, setDoc, Timestamp } from 'firebase/firestore'
 import db from "../../utils/firebase";
 import { useRouter } from 'next/router'
 import { getAuth, onAuthStateChanged, User } from "firebase/auth";
@@ -77,6 +77,7 @@ const ReportModal = () => {
     const { locations,route} = router.query;
     const sendReport = async (values: DocumentData) =>{
         const docRef = await addDoc(collection(db, "reports"), {
+            addDate: Timestamp.fromDate(new Date()),
             reportText: values.reportText,
             locationId: locations,
             routeId: route,
