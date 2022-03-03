@@ -6,7 +6,7 @@ export const GlobalStyle = createGlobalStyle`
   body > div:first-child,
   div#__next,
   div#__next > div {
-    height: 100%;
+    
   }
   *,
   *::before,

@@ -38,6 +38,13 @@ const StyledLink = styled.a`
         font-size: 1.5em;
         padding: 0rem 1rem;
     }
+    @media ${device.laptopL} { 
+        font-size: 1.5em;
+        padding: 0rem 1.5rem;
+    }
+    @media ${device.mobileL} {
+        font-size: 1em;
+    }
 `
 const StyledNadpis = styled.a`
     font-size: 5em;
@@ -79,7 +86,7 @@ const StyledProfileIcon = styled(CgProfile)`
 `
 const NavContent = styled.div`
     display: flex;
-    width: 40%;
+    width: 45%;
     justify-content: space-around;
     align-items: center;
     @media ${device.laptop} { 

@@ -5,9 +5,10 @@ const logo = require('../public/logo.png');
 const FooterSection = styled.div`
     background: #000;
     color: #fff;
-    position: absolute;
+    position: relative;
     right: 0;
     left: 0;
+    bottom: 0;
     padding: 0.6rem;
     text-align: center;
     height: 60px;
