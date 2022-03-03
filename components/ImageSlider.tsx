@@ -3,18 +3,43 @@ import Link from 'next/link'
 import React, { useState } from 'react'
 import { FaArrowAltCircleRight, FaArrowAltCircleLeft } from "react-icons/fa"
 import styled from 'styled-components'
+import { device } from './styledComponents/device'
 const Section = styled.section`
     position: relative;
-    height: 85vh;
+    height: 88vh;
     display: flex;
     justify-content: center;
     align-items: center;
+    @media ${device.laptopL} { 
+        height: 83vh;
+    }
+    @media ${device.tablet} {
+        height: 75vh;
+    }
+    @media ${device.mobileM} {
+        height: 70vh;
+    }
 `
 const Image = styled.img`
     cursor: pointer;
     width: 900px;
-    height: 600px;
+    height: auto;
     border-radius: 10px;
+    @media ${device.laptopL} { 
+        width: 700px;
+    }
+    @media (max-width: 950px)  { 
+        width: 550px;
+    }
+    @media ${device.tablet} { 
+        width: 400px;
+    }
+    @media (max-width: 470px) { 
+        width: 300px;
+    }
+    @media ${device.mobileM} { 
+        width: 250px;
+    }
 `
 const ArrowRight = styled(FaArrowAltCircleRight)`
     position: absolute;
@@ -56,6 +81,18 @@ const SlideNazev = styled.h1`
     text-transform: uppercase;
     margin-bottom: 0.5%;
     color: #323232;
+    @media ${device.laptopL} {
+        font-size: 2.2rem;
+    }
+    @media (max-width: 950px)  {
+        font-size: 1.8rem;
+    }
+    @media ${device.tablet} {
+        font-size: 1.6rem;
+    }
+    @media ${device.mobileM} { 
+        font-size: 1.2rem;
+    }
 `
 
 const ImageSlider = ({ data }: DocumentData) => {
@@ -119,7 +156,7 @@ const ImageSlider = ({ data }: DocumentData) => {
                                                <SlideNazev>{slide.nazev}</SlideNazev>
                                            </Link>
                                            <Link href="/listLoc/[locations]" as={`/listLoc/${slide.id}`} key={slide.id}>
-                                               <Image src={slide.image} alt={slide.nazev}></Image>
+                                                <Image src={slide.image} alt={slide.nazev}></Image>
                                            </Link>
                                        </>
                                    )}

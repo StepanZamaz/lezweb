@@ -5,7 +5,7 @@ import Imgix from "react-imgix";
 import styled from "styled-components";
 import {CgBackspace} from "react-icons/cg"
 import { useRouter } from "next/router";
-
+import { device } from "./styledComponents/device";
 const OblastDiv = styled.div`
     padding: 3em;
     min-height: 90vh;
@@ -16,8 +16,8 @@ const BackDiv = styled.div`
     position: absolute; 
     top: 20px; 
     left: 20px;
-    width: 11vw;
-    height: 3vh;
+    width: 13vw;
+    height: 40px;
     background-color: #000;
     border: 2px solid #61ed84;
     border-radius: 10px;
@@ -25,12 +25,43 @@ const BackDiv = styled.div`
     color: #61ed84;
     display: flex;
     align-items: center;
-    justify-content: space-between;
+    justify-content: space-around;
     padding: 1vw;
     text-transform: uppercase;
+    @media (max-width: 1919px)  {
+        font-size: 0.8em;
+    }
+    @media (max-width: 1550px)  {
+        font-size: 0.7em;
+    }
+    @media (max-width: 1130px)  {
+        font-size: 0.6em;
+    }
+    @media ${device.laptop} { 
+        width: 14vw;
+        height: 60px;
+    }
+    @media (max-width: 920px)  {
+        width: 18vw;
+    }
+    @media ${device.tablet} { 
+        font-size: 0.5em;
+        width: 20vw;
+    }
+    @media (max-width: 560px)  {
+        flex-direction: column;
+        height: 50px;
+        width: 24vw;
+    }
 `
 const BackIcon = styled(CgBackspace)`
     font-size: 2rem;
+    @media (max-width: 1919px)  {
+        font-size: 1.6rem;
+    }
+    @media ${device.tablet} { 
+        font-size: 1.4rem;
+    }
 `
 const Container = styled.div`
     width: 90%;
@@ -40,6 +71,12 @@ const Container = styled.div`
     grid-gap: 15px;
     margin-bottom: 5vh;
     margin-top: 5vh;
+    @media ${device.laptop} { 
+        grid-template-columns: repeat(2, 1fr);
+    }
+    @media (max-width: 620px)  {
+        grid-template-columns: repeat(1, 1fr);
+    }
 `
 const Image = styled.img`
     opacity: 1;
@@ -74,9 +111,16 @@ const ImageCard = styled.div`
 `
 const DivNazevLoc = styled.h1`
     font-size: 4em;
-    padding: 1rem;
+    padding: 1.5rem;
     text-align: center;
     color: #323232;
+    @media (max-width: 400px)  {
+        padding-top: 2.5rem;
+        font-size: 3em;
+    }
+    @media ${device.mobileM} {
+        font-size: 2em;
+    }
 `
 const DivNazevObl = styled.h1`
     text-align: center;
@@ -84,6 +128,12 @@ const DivNazevObl = styled.h1`
     border-bottom: 3px solid #323232;
     border-top: 3px solid #323232;
     color: #323232;
+    @media (max-width: 400px)  {
+        font-size: 1.5em;
+    }
+    @media ${device.mobileM} {
+        font-size: 1em;
+    }
 `
 const Cesta = styled.div`
     background-color: #101010;
