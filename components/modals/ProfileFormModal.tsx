@@ -11,7 +11,7 @@ import { number, string } from 'yup/lib/locale';
 import SelectField from '../formikFields/SelectField';
 import GroupSelectField from '../formikFields/GroupSelectField';
 import { getDownloadURL, ref, uploadBytesResumable } from 'firebase/storage';
-
+import { device } from '../styledComponents/device';
 const logo = require('../../public/logo.png');
 
 const ModalDiv = styled.div`
@@ -97,7 +97,7 @@ const ButtonContainer = styled.div`
 `
 const ButtonMenu = styled.button`
     height: 60%;
-    width: 7vw;
+    width: 130px;
     border-radius: 10px;
     background-color: #61ed84;
     text-transform: uppercase;
@@ -111,6 +111,15 @@ const ButtonMenu = styled.button`
         background-color: rgb(41, 153, 72);
     }
     font-size: 80%;
+    @media ${device.tablet}{
+        font-size: 0.6em;
+        width: 100px;
+        height: 45px;
+    }
+    @media (max-width: 578px){
+        width: 90px;
+        font-size: 0.5em;
+    }
 `
 const ChooseInfoDiv = styled.div`
     margin-top: 2%;

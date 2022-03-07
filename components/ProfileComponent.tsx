@@ -10,32 +10,58 @@ import TextFieldProfile from './formikFields/TextFieldProfile';
 import Link from 'next/link';
 import ProfileFormModal from './modals/ProfileFormModal'
 import ChangePasswordModal from './modals/ChangePasswordModal'
-
+import { device } from './styledComponents/device';
 const logo = require('../public/logo.png');
 
 const ComponentDiv = styled.div`
     display: grid;
     grid-template-columns: 30% 30% 20% 20%;
-    grid-template-rows: 4vh 8vh 30vh;
+    grid-template-rows: 40px 80px 300px;
     grid-template-areas: 
     "header header header header"
     "button button button button"
     "main main other other";
     row-gap: 10%;
+    @media ${device.tablet}{
+        grid-template-columns: 20% 80%;
+        grid-template-rows: 40px 80px 150px 150px;
+        grid-template-areas: 
+        "button header "
+        "button main "
+        "button main "
+        "button main ";
+    }
 `
 const ComponentDiv2 = styled.div`
     display: grid;
     grid-template-columns: 30% 30% 20% 20%;
-    grid-template-rows: 4vh 8vh 45vh;
+    grid-template-rows: 40px 80px 500px;
     grid-template-areas: 
     "header header header header"
     "button button button button"
     "main main main main";
     row-gap: 7%;
+    @media ${device.tablet}{
+        grid-template-columns: 20% 80%;
+        grid-template-rows: 40px 80px 150px 150px;
+        grid-template-areas: 
+        "button header "
+        "button main "
+        "button main "
+        "button main ";
+    }
 `
 const ContentDiv = styled.div`
     grid-area: main;
     width: 100%;
+    @media ${device.tablet}{
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+    @media ${device.mobileL}{
+        align-items: flex-end;
+    }
 `
 const IconDiv = styled.div`
     margin-top: 20%;
@@ -47,12 +73,27 @@ const IconDiv = styled.div`
 `
 const StyledImg = styled.img`
     height: 100%;
+    @media ${device.tablet}{
+        display: none;
+    }
 `
 const MenuDiv = styled.div`
     grid-area: button;
     display:flex;
     justify-content: space-around;
     border-bottom: 5px solid black;
+    @media ${device.tablet}{
+        flex-direction: column;
+        border-bottom: none;
+        border-right: 5px solid black;
+    }
+    @media (max-width: 578px){
+        align-items: center;
+        width: 120px;
+    }
+    @media ${device.mobileL}{
+        width: 100px;
+    }
 `
 const HeaderDiv = styled.div`
     grid-area: header;
@@ -60,6 +101,9 @@ const HeaderDiv = styled.div`
     text-align: center;
     text-transform: uppercase;
     font-weight: bold;
+    @media (max-width: 578px){
+        font-size: 2.3rem;
+    }
 `
 const ButtonContainer = styled.div`
     margin: 1rem 0 1rem 0;
@@ -69,6 +113,15 @@ const ButtonContainer = styled.div`
     align-items: center;
     justify-content: space-around;
     flex-direction: row;
+    @media ${device.tablet}{
+        width: 400px;
+        justify-content: space-evenly;
+    }
+    @media (max-width: 530px){
+        width: 100px;
+        flex-direction: column;
+        height: 30%;
+    }
 `
 const LoginButton = styled.button`
     background-color: #61ed84;
@@ -81,19 +134,43 @@ const LoginButton = styled.button`
     border-radius: 2rem;
     cursor: pointer;
     font-weight: bold;
+    @media ${device.tablet}{
+        width: 30%;
+        letter-spacing: 0.1rem;
+        font-size: 0.7em;
+    }
+    @media (max-width: 530px){
+        width: 100%;
+        height: 25%;
+    }
 `
 const FormikContainer = styled.div`
     height: 100%;
     width: 100%;
     grid-area: main;
+    @media ${device.mobileM}{
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
 `
 const FormFormik = styled(Form)`
     height: 100%;
     width: 100%;
+    @media ${device.tablet}{
+        display: flex;
+        flex-direction: column;
+        justify-content: space-evenly;
+        align-items: center;
+    }
+    @media ${device.mobileM}{
+        width: 80%;
+    }
+    
 `
 const ButtonMenu = styled.button`
     height: 60%;
-    width: 7vw;
+    width: 130px;
     border-radius: 10px;
     background-color: #61ed84;
     text-transform: uppercase;
@@ -107,6 +184,15 @@ const ButtonMenu = styled.button`
     background-color: rgb(41, 153, 72);
     }
     font-size: 80%;
+    @media ${device.tablet}{
+        font-size: 0.6em;
+        width: 100px;
+        height: 45px;
+    }
+    @media (max-width: 578px){
+        width: 90px;
+        font-size: 0.5em;
+    }
 `
 const InfoDiv = styled.div`
     border: 2px solid #61ed84;
@@ -119,6 +205,22 @@ const InfoDiv = styled.div`
     grid-template-columns: 40% 55%;
     grid-template-rows: 25% 25% 25% 25%;
     column-gap: 5%;
+    @media ${device.tablet}{
+        width: 70%;
+    }
+    @media (max-width: 578px){
+        width: 250px;
+        grid-template-columns: 100%;
+        grid-template-rows: 12% 12% 12% 12% 12% 12% 12% 12%;
+    }
+    @media ${device.mobileL}{
+        width: 200px;
+        margin-right: 10px;
+    }
+    @media ${device.mobileS}{
+        margin-right: 5px;
+        margin-left: 2px;
+    }
 `
 const PropDiv = styled.div`
     display: flex;
@@ -127,6 +229,12 @@ const PropDiv = styled.div`
     overflow-wrap: break-word;
     word-wrap: break-word;
     hyphens: auto;
+    @media ${device.tablet}{
+        font-size: 0.8rem;
+    }
+    @media (max-width: 578px){
+        justify-content: center;
+    }
 `
 const DesDiv = styled.div`
     display: flex;
@@ -134,6 +242,12 @@ const DesDiv = styled.div`
     justify-content: flex-end;
     font-weight: bold;
     font-size: 1.2rem;
+    @media ${device.tablet}{
+        font-size: 1rem;
+    }
+    @media (max-width: 578px){
+        justify-content: center;
+    }
 `
 const Header2 = styled.div`
     width: 90%;
@@ -144,6 +258,13 @@ const Header2 = styled.div`
     font-size: 2.5rem;
     text-transform: uppercase;
     margin-bottom: 5%;
+    @media ${device.tablet}{
+        width: 90%;
+        font-size: 2rem;
+    }
+    @media (max-width: 578px){
+        font-size: 1.5rem;
+    }
 `
 const Header3 = styled.div`
     width: 100%;
@@ -154,6 +275,9 @@ const Header3 = styled.div`
     font-size: 2.5rem;
     text-transform: uppercase;
     margin-bottom: 2%;
+    @media (max-width: 450px){
+        font-size: 1.5rem;
+    }
 `
 const ProfileComponent = () => {
     const [componentNum, setComponentNumber] = useState<boolean>(true);

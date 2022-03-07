@@ -16,6 +16,7 @@ const DisplayWhole = styled.div`
     display: flex;
     flex-direction: column;
     background: #C3C3C1;
+    min-height: 90vh;
 `
 const Heading = styled.div`
     padding-top: 60px;

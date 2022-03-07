@@ -1,7 +1,7 @@
 import React from 'react'
 import {ErrorMessage, useField } from 'formik'
 import styled from 'styled-components';
-
+import { device } from '../styledComponents/device';
 const InputMsgContainer = styled.div`
     display: flex;
     flex-direction: row;
@@ -9,6 +9,9 @@ const InputMsgContainer = styled.div`
     width: 100%;
     height: 15%;
     padding: 1rem;
+    @media ${device.mobileM}{
+        flex-direction: column;
+    }
 `
 const StyledInput = styled.input`
     background: rgba(255,255,255,0.15);
@@ -32,6 +35,9 @@ const StyledInput = styled.input`
         color: #4b4a4a;
         font-weight: 100;
         font-size: 1rem;
+    }
+    @media ${device.mobileM}{
+        width: 100%;
     }
 `
 const Label = styled.label`

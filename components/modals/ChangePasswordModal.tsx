@@ -6,7 +6,7 @@ import styled from 'styled-components'
 import Popup from 'reactjs-popup'
 import { getAuth, updatePassword, User } from 'firebase/auth'
 import TextFieldChangePS from '../formikFields/TextFieldChangePS'
-
+import { device } from '../styledComponents/device'
 const FormikContainer = styled.div`
     width: 25vw;
     height: 60vh;
@@ -48,6 +48,15 @@ const LoginButtonMain = styled.button`
     border-radius: 2rem;
     cursor: pointer;
     font-weight: bold;
+    @media ${device.tablet}{
+        width: 30%;
+        letter-spacing: 0.1rem;
+        font-size: 0.7em;
+    }
+    @media (max-width: 530px){
+        width: 100%;
+        height: 25%;
+    }
 `
 const CloseButton = styled.button`
     position: absolute; 

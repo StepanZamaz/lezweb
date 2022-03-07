@@ -6,6 +6,7 @@ import { auth } from '../../utils/firebase';
 import Router from 'next/router'
 import styled from 'styled-components';
 import Link from 'next/link';
+import { device } from '../styledComponents/device'
 
 const logo = require('../../public/logo.png');
 
@@ -13,8 +14,8 @@ const Container = styled.div`
     display: flex;
     align-items: center;
     flex-direction: column;
-    height: 80vh;
-    width: 30vw;
+    height: 900px;
+    width: 650px;
     background: rgba(255,255,255,0.15);
     box-shadow: 0 8px 32px 0 rgba(31,38,135,0.37);
     backdrop-filter: blur(8.5px);
@@ -22,11 +23,21 @@ const Container = styled.div`
     color: #000;
     text-transform: uppercase;
     letter-spacing: 0.4rem;
-
+    @media (max-width: 1920px) { 
+        height: 700px;
+        width: 500px;
+    }
+    @media ${device.laptop}  {
+        height: auto;
+    }
 `
 const SignUpText = styled.h2`
-    font-size: 2.5vw;
+    font-size: 2.5em;
     margin: 3rem 0 2rem 0;
+    @media ${device.laptop}  {
+        font-size: 2em;
+        margin: 2rem 0 1rem 0;
+    }
 `
 const FormFormik = styled(Form)`
     display:flex;
@@ -35,6 +46,9 @@ const FormFormik = styled(Form)`
     align-items: center;
     height: 40%;
     width: 100%;
+    @media (max-width: 1920px) { 
+        height: 60%;
+    }
 `
 const ButtonContainer = styled.div`
     margin: 1rem 0 2rem 0;
@@ -44,6 +58,12 @@ const ButtonContainer = styled.div`
     align-items: center;
     justify-content: space-between;
     flex-direction: column;
+    @media (max-width: 1920px) { 
+        height: 80%;
+    }
+    @media ${device.laptop}  {
+        height: 90px;
+    }
 `
 const LoginButton = styled.button`
     background-color: #61ed84;
@@ -56,6 +76,10 @@ const LoginButton = styled.button`
     border-radius: 2rem;
     cursor: pointer;
     font-weight: bold;
+    @media ${device.mobileM}  {
+        font-size: 0.7em;
+        width: 45%;
+    }
 `
 const Register = styled.div`
     width: 90%;
@@ -66,11 +90,25 @@ const Register = styled.div`
     justify-content: space-around;
 `
 const RegisterText = styled.p`
-    font-size: 1vw;
+    font-size: 1.5em;
+    margin-bottom: 2%;
+    @media (max-width: 1920px) { 
+        font-size: 1em;
+    }
+    @media ${device.laptop}  {
+        font-size: 0.8em;
+    }
+    @media ${device.mobileM}  {
+        font-size: 0.5em;
+        font-weight: bold;
+    }
 `
 const RegisterLink = styled.a`
     cursor: pointer;
     color: #61ed84;
+    @media ${device.laptop}  {
+        font-size: 1em;
+    }
 `
 const ClimberryContainer = styled.div`
     height: 30%;
@@ -86,10 +124,17 @@ const StyledImg = styled.img`
     cursor: pointer;
     width: 30%;
     padding: 0rem 1rem;
+    @media ${device.laptop}  {
+        width: 25%;
+        margin-bottom: 30px;
+    }
 `
 const ClimberryText = styled.h3`
-    width: 100%
-    height: 20%;
+    font-size: 2.5rem;
+    @media ${device.laptop}  {
+        font-size: 2rem;
+        margin-bottom: 30px;
+    }
 `
 export const LoginForm = () => {
     const[user, setUser] = useState<object|null>({});

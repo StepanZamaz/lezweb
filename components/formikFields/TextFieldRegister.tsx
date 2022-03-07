@@ -1,25 +1,26 @@
 import React from 'react'
 import {ErrorMessage, useField } from 'formik'
 import styled from 'styled-components';
-import { device } from '../styledComponents/device';
+import { device } from '../styledComponents/device'
 const InputMsgContainer = styled.div`
     display: flex;
     flex-direction: row;
-    justify-content: space-between;
-    width: 80%;
-    height: 10%;
+    justify-content: space-around;
+    width: 100%;
+    height: 40%;
     padding: 1rem;
 `
+
 const StyledInput = styled.input`
     background: rgba(255,255,255,0.15);
     box-shadow: 0 2px 2px 0 #61ed84;
     border-radius: 2rem;
-    width: 30%;
-    height: 50%;
+    width: 60%;
+    height: 100%;
     padding: 1rem;
     border: none;
     outline: none;
-    color: #61ed84;
+    color: #3c354e;
     font-size: 1rem;
     font-weight: bold;
     &:focus{
@@ -29,52 +30,52 @@ const StyledInput = styled.input`
         border-radius: 2rem;
     }
     &::placeholder{
-        color: #61ed84;
+        color: #4b4a4a;
         font-weight: 100;
         font-size: 1rem;
     }
-`
-const Label = styled.label`
-    font-size: 1.2em;
-    font-weight: bold;
-    width: 20%;
+    @media (max-width: 480px) { 
+        width: 80%;
+    }
 `
 const StyledErrorMsg = styled.p`
-    width: 30%;
-    color: white;
-    margin: 0;
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    font-size: 0.8vw;
-    line-height: normal;
+    font-size: 0.7em;
+    font-weight: bold;
+`
+const AlignDivFirst = styled.div`
+    height: 2rem;
+    width: 20%;
+    position: relative;
+    @media (max-width: 480px) { 
+        width: 10%;
+    }
 `
 const AlignDiv = styled.div`
     height: 2rem;
     width: 20%;
     position: relative;
+    display: flex;
+    @media (max-width: 480px) { 
+        width: 10%;
+    }
 `
-
-const TextFieldAdding = ({label,...props}:any) => {
+export const TextFieldRegister = ({label,...props}:any) => {
     const [field,meta] = useField(props);
     console.log(field,meta)
     return (
-        <InputMsgContainer>
-            <Label htmlFor={field.name}>{label}</Label>
-            <StyledInput placeholder={label}
-            {...field} {...props}
-            />
-            <AlignDiv>
-                <ErrorMessage  component="div" name={field.name} >
+        <>
+            <InputMsgContainer>
+                <AlignDivFirst/>
+                <StyledInput placeholder={field.name}
+                {...field} {...props}
+                />
+                <AlignDiv/>
+            </InputMsgContainer>
+            <ErrorMessage  component="div" name={field.name} >
                         {msg => (
                             <StyledErrorMsg>{msg}</StyledErrorMsg>
                         )}
-                </ErrorMessage>
-            </AlignDiv>
-            
-        </InputMsgContainer>
+            </ErrorMessage>
+        </>  
     )
 }
-
-export default TextFieldAdding

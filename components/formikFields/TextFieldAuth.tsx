@@ -1,6 +1,7 @@
 import React from 'react'
 import {ErrorMessage, useField } from 'formik'
 import styled from 'styled-components';
+import { device } from '../styledComponents/device'
 const InputMsgContainer = styled.div`
     display: flex;
     flex-direction: row;
@@ -33,9 +34,11 @@ const StyledInput = styled.input`
         font-weight: 100;
         font-size: 1rem;
     }
+    @media ${device.mobileM}  {
+        width: 80%;
+    }
 `
 const StyledErrorMsg = styled.p`
-    color: red;
     margin: 0;
     position: absolute;
     top: 50%;

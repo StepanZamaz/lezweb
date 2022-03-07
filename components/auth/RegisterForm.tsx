@@ -4,13 +4,14 @@ import{auth} from "../../utils/firebase"
 import db from "../../utils/firebase"; 
 import Router from 'next/router'
 import {Formik, Form} from "formik"
-import {TextFieldAuth} from '../formikFields/TextFieldAuth'
+import {TextFieldRegister} from '../formikFields/TextFieldRegister'
 import * as Yup from 'yup'
 import { addDoc, collection, doc, setDoc } from 'firebase/firestore'
 import styled from 'styled-components';
 import Link from 'next/link';
 import {HiOutlineLogin} from "react-icons/hi"
 import TextFieldAdding from '../formikFields/TextFieldAdding';
+import { device } from '../styledComponents/device'
 const Container = styled.div`
     display: flex;
     align-items: center;
@@ -24,10 +25,23 @@ const Container = styled.div`
     color: #000;
     text-transform: uppercase;
     letter-spacing: 0.4rem;
+    @media (max-width: 1920px)  {
+        margin-top: 5%;
+        margin-bottom: 5%;
+        height: 1000px;
+        width: 600px;
+    }
+    
 `
 const SignUpText = styled.h2`
     font-size: 2.5vw;
     margin: 2rem 0 1rem 0;
+    @media (max-width: 1920px)   {
+        font-size: 2em;
+    }
+    @media (max-width: 600px) { 
+        font-size: 1.5em;
+    }
 `
 const FormFormik = styled(Form)`
     display:flex;
@@ -36,11 +50,14 @@ const FormFormik = styled(Form)`
     align-items: center;
     height: 70%;
     width: 100%;
+    @media (max-width: 1920px)  {
+        height: 750px;
+    }
 `
 const ButtonContainer = styled.div`
     margin: 1rem 0 1rem 0;
     width: 100%;
-    height: 50vh;
+    height: 400px;
     display: flex;
     align-items: center;
     justify-content: space-between;
@@ -57,6 +74,9 @@ const LoginButton = styled.button`
     border-radius: 2rem;
     cursor: pointer;
     font-weight: bold;
+    @media (max-width: 480px) { 
+        width: 60%;
+    }
 `
 const BackLogContainer = styled.div`
     height: 10%;
@@ -149,12 +169,12 @@ export const RegisterForm = () => {
                     <>
                         <SignUpText>Registrace</SignUpText>
                         <FormFormik>
-                            <TextFieldAuth label="First Name" name="firstName" type="text" />
-                            <TextFieldAuth label="Last Name" name="lastName" type="text" />
-                            <TextFieldAuth label="Nickname" name="nickname" type="text" />
-                            <TextFieldAuth label="Email" name="email" type="emailt" />
-                            <TextFieldAuth label="Password" name="password" type="password" />
-                            <TextFieldAuth label="Confirm Password" name="confirmPassword" type="password" />
+                            <TextFieldRegister label="First Name" name="firstName" type="text" />
+                            <TextFieldRegister label="Last Name" name="lastName" type="text" />
+                            <TextFieldRegister label="Nickname" name="nickname" type="text" />
+                            <TextFieldRegister label="Email" name="email" type="emailt" />
+                            <TextFieldRegister label="Password" name="password" type="password" />
+                            <TextFieldRegister label="Confirm Password" name="confirmPassword" type="password" />
                             <ButtonContainer>
                                 <LoginButton type="submit">Registrovat</LoginButton>
                                 <LoginButton type="reset">Resetovat</LoginButton>
