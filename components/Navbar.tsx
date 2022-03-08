@@ -93,6 +93,9 @@ const NavContent = styled.div`
         width: 90%;
     }
 `
+const IcoDropDownDiv = styled.div`
+    position: relative;
+`
 const Navbar = () => {
     const[user, setUser] = useState<object|null>({});
     const [open, setOpen] = useState(false);
@@ -124,12 +127,12 @@ const Navbar = () => {
                     </Link>
                     //@ts-ignore: Object is possibly 'null'
                     : 
-                    <>
+                    <IcoDropDownDiv>
                         <StyledProfileIcon onClick={() => setOpen(!open)}/>
                         {open && 
                             <DropdownMenu/>
                         }
-                    </>
+                    </IcoDropDownDiv>
                 }
                 
             </NavContent>
@@ -138,9 +141,3 @@ const Navbar = () => {
 }
 
 export default Navbar;
-/*
-<StyledProfileIcon onClick={() => setOpen(!open)}/>
-                        {open && 
-                            <DropdownMenu/>
-                        }
-*/

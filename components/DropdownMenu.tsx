@@ -5,15 +5,14 @@ import { auth } from '../utils/firebase';
 import Link from 'next/link';
 const Dropdown = styled.div`
     position: absolute;
-    top: 100px;
-    right: 100px;
+    right: 0;
     width: 200px;
     background-color: #575756;
     border-top: 2px solid #101010;
     border-left: 2px solid #101010;
     border-right: 2px solid #101010;
     border-radius: 2%;
-    overflow: hidden;
+    //overflow: hidden;
     z-index: +1;
 `
 const DropdownLine = styled.div`
@@ -29,7 +28,7 @@ const Signout = styled.button`
     text-transform: uppercase;
     letter-spacing: 0.2rem;
     width: 100%;
-    height: 1vw;
+    height: 20px;
     border: none;
     color: #000;
     border-radius: 2rem;
@@ -45,7 +44,7 @@ const Profile = styled.button`
     text-transform: uppercase;
     letter-spacing: 0.2rem;
     width: 100%;
-    height: 1vw;
+    height: 20px;
     border: none;
     color: #000;
     border-radius: 2rem;
