@@ -5,9 +5,9 @@ import { auth } from '../utils/firebase';
 import Link from 'next/link';
 const Dropdown = styled.div`
     position: absolute;
-    top: 10vh;
-    width: 10vw;
-    transform: translateX(+70%);
+    top: 100px;
+    right: 100px;
+    width: 200px;
     background-color: #575756;
     border-top: 2px solid #101010;
     border-left: 2px solid #101010;

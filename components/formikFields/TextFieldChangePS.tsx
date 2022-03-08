@@ -1,7 +1,7 @@
 import React from 'react'
 import {ErrorMessage, useField } from 'formik'
 import styled from 'styled-components'
-
+import { device } from '../styledComponents/device'
 const InputMsgContainer = styled.div`
     display: flex;
     flex-direction: row;
@@ -37,13 +37,13 @@ const StyledInput = styled.input`
 `
 const StyledErrorMsg = styled.p`
     color: white;
-    margin: 0;
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    font-size: 0.8vw;
-    line-height: normal;
+    font-size: 1.5em;
+    font-weight: bold;
+    display: flex;
+    justify-content: center;
+    @media ${device.laptop}{
+        font-size: 1em;
+    }
 `
 const AlignDiv = styled.div`
     height: 2rem;
@@ -60,15 +60,13 @@ const TextFieldChangePS = ({label,...props}:any) => {
                 <StyledInput placeholder={label}
                 {...field} {...props}
                 />
-                <AlignDiv>
-                    <ErrorMessage  component="div" name={field.name} >
+                <AlignDiv/>
+            </InputMsgContainer>
+            <ErrorMessage  component="div" name={field.name} >
                         {msg => (
                             <StyledErrorMsg>{msg}</StyledErrorMsg>
                         )}
-                    </ErrorMessage>
-                </AlignDiv>
-            </InputMsgContainer>
-            
+            </ErrorMessage>
         </>  
     )
 }

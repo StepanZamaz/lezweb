@@ -8,13 +8,18 @@ import { getAuth, updatePassword, User } from 'firebase/auth'
 import TextFieldChangePS from '../formikFields/TextFieldChangePS'
 import { device } from '../styledComponents/device'
 const FormikContainer = styled.div`
-    width: 25vw;
-    height: 60vh;
+    width: 600px;
+    height: 800px;
     background-color: #323232;
     border: 2px solid #61ed84;
     color: #61ed84;
     border-radius: 15px;
     position: relative;
+    @media ${device.laptop}{
+        width: 320px;
+        height: 500px;
+    }
+
 `
 const ButtonContainer = styled.div`
     margin: 1rem 0 1rem 0;
@@ -36,6 +41,11 @@ const LoginButton = styled.button`
     border-radius: 2rem;
     cursor: pointer;
     font-weight: bold;
+    @media ${device.laptop}{
+        height: 25%;
+        letter-spacing: 0.1rem;
+        font-size: 0.7em;
+    }
 `
 const LoginButtonMain = styled.button`
     background-color: #61ed84;
@@ -62,8 +72,8 @@ const CloseButton = styled.button`
     position: absolute; 
     top: 10px; 
     right: 10px;
-    width: 2vw;
-    height: 3vh;
+    width: 35px;
+    height: 35px;
     background-color: #61ed84;
     border: 2px solid #323232;
     border-radius: 10px;

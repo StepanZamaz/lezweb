@@ -11,6 +11,7 @@ import Footer from '../../components/Footer';
 import styled from 'styled-components';
 
 const DivWhole = styled.div`
+    min-height: 90vh;
     width: 100%;
     height: 100%;
     background-color: #C3C3C1;

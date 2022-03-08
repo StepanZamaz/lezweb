@@ -11,6 +11,7 @@ const Container = styled.div`
     height: 100vh;
     width: 100vw;
     border: solid 10px black;
+    min-height: 100vh;
     @media (max-width: 1920px)  {
         height: auto;
         border: solid 5px black;

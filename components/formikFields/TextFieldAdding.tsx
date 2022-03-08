@@ -9,6 +9,13 @@ const InputMsgContainer = styled.div`
     width: 80%;
     height: 10%;
     padding: 1rem;
+    @media ${device.laptop}{
+        padding: 0.4rem;
+        height: 12%;
+    }
+    @media (max-width: 600px){
+        width: 90%;
+    }
 `
 const StyledInput = styled.input`
     background: rgba(255,255,255,0.15);
@@ -32,28 +39,53 @@ const StyledInput = styled.input`
         color: #61ed84;
         font-weight: 100;
         font-size: 1rem;
+        @media ${device.laptop}{
+            font-size: 0.7rem;
+        }
+    }
+    @media ${device.laptopL}{
+        padding: 0.7rem;
+        font-size: 0.7rem;
+        height: 20%;
+    }
+    @media (max-width: 600px){
+        width: 40%;
     }
 `
 const Label = styled.label`
     font-size: 1.2em;
     font-weight: bold;
     width: 20%;
+    @media ${device.laptop}{
+        font-size: 0.8em;
+    }
+    @media (max-width: 600px){
+        font-size: 0.6em;
+    }
 `
 const StyledErrorMsg = styled.p`
     width: 30%;
-    color: white;
+    color: #61ed84;
     margin: 0;
     position: absolute;
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-    font-size: 0.8vw;
     line-height: normal;
+    @media ${device.laptop}{
+        font-size: 0.8em;
+    }
 `
 const AlignDiv = styled.div`
     height: 2rem;
     width: 20%;
     position: relative;
+    @media ${device.laptop}{
+        display: flex;
+        font-size: 0.8em;
+        width: 30%;
+        height: 100%;
+    }
 `
 
 const TextFieldAdding = ({label,...props}:any) => {

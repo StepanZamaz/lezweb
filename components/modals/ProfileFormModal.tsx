@@ -12,33 +12,58 @@ import SelectField from '../formikFields/SelectField';
 import GroupSelectField from '../formikFields/GroupSelectField';
 import { getDownloadURL, ref, uploadBytesResumable } from 'firebase/storage';
 import { device } from '../styledComponents/device';
+
 const logo = require('../../public/logo.png');
 
 const ModalDiv = styled.div`
-    width: 50vw;
-    height: 85vh;
+    width: 1000px;
+    height: 900px;
     background-color: #323232;
     border: 2px solid #61ed84;
     color: #61ed84;
     border-radius: 15px;
     position: relative;
+    @media ${device.laptopL}{
+        width: 800px;
+        height: 700px;
+    }
+    @media ${device.laptop}{
+        width: 600px;
+        height: 500px;
+    }
+    @media (max-width: 600px){
+        width: 320px;
+    }
 `
 const CloseButton = styled.button`
     position: absolute; 
     top: 10px; 
     right: 10px;
-    width: 2vw;
-    height: 3vh;
+    width: 35px;
+    height: 35px;
     background-color: #61ed84;
     border: 2px solid #323232;
     border-radius: 10px;
     cursor: pointer;
+    @media ${device.laptop}{
+        top: 5px;
+        right: 5px;
+    }
+    @media (max-width: 600px){
+        top: 5px;
+        right: 5px;
+        width: 20px;
+        height: 20px;
+    }
 `
 const Icon = styled.img`
     position: absolute;
     right: 20px;
     bottom: 20px;
     height: 10vh;
+    @media (max-width: 600px){
+        display: none;
+    }
 `
 const ButtonDiv = styled.div`
     margin-left: 5%;
@@ -50,7 +75,14 @@ const ButtonDiv = styled.div`
     justify-content: space-around;
     flex-direction: row;
     border-bottom: 5px solid #61ed84;
-
+    @media ${device.laptop}{
+        height: 10%;
+    }
+    @media (max-width: 600px){
+        margin-left: 2.5%;
+        margin-right: 2.5%;
+        width: 95%;
+    }
 `
 const FormDiv = styled.div`
     width: 100%;
@@ -70,6 +102,14 @@ const ButtonChoose = styled.button`
     :hover {
         background-color: rgb(41, 153, 72);
     }
+    @media ${device.laptop}{
+        font-size: 0.7em;
+        letter-spacing: 0.1rem;
+        height: 60%;
+    }
+    @media (max-width: 600px){
+        font-size: 0.5em;
+    }
 `
 const Button = styled.button`
     background-color: #61ed84;
@@ -82,18 +122,28 @@ const Button = styled.button`
     border-radius: 2rem;
     cursor: pointer;
     font-weight: bold;
+    @media (max-width: 600px){
+        letter-spacing: 0.1rem;
+        width: 35%;
+    }
 `
 const FormikDiv = styled.div`
     height: 100%;
 `
 const ButtonContainer = styled.div`
-    margin-top: 1%;
+    margin-top: 2%;
     width: 100%;
     height: 5%;
     display: flex;
     align-items: center;
     justify-content: space-evenly;
     flex-direction: row;
+    @media ${device.laptop}{
+        height: 4%;
+    }
+    @media (max-width: 600px){
+        margin-top: 5%;
+    }
 `
 const ButtonMenu = styled.button`
     height: 60%;
@@ -128,6 +178,9 @@ const ChooseInfoDiv = styled.div`
     align-items: center;
     justify-content: center;
     font-size: 3em;
+    @media ${device.laptop}{
+        font-size: 1.5em;
+    }
 `
 const FormLoc = styled(Form)`
     height: 90%;
@@ -157,16 +210,36 @@ const AlignDiv = styled.div`
     width: 80%;
     height: 10%;
     padding: 1rem;
+    @media ${device.laptop}{
+        padding: 0.2rem;
+        height: 6%;
+    }
+    @media (max-width: 600px){
+        width: 90%;
+    }
 `
 const AlignDiv2 = styled.div`
     height: 2rem;
     width: 20%;
     position: relative;
+    @media (max-width: 600px){
+        display: none;
+    }
 `
 const LabelDiv = styled.div`
     font-size: 1.2em;
     font-weight: bold;
     width: 20%;
+    @media ${device.laptop}{
+        font-size: 0.8em;
+    }
+    @media (max-width: 600px){
+        width: 30%;
+        font-size: 0.6em;
+    }
+`
+const FotoInput = styled.input`
+    
 `
 const ProfileFormModal = (values: DocumentData) => {
     const boulders = values.values;
@@ -398,7 +471,7 @@ const ProfileFormModal = (values: DocumentData) => {
                                                             <TextFieldAdding label="Popis cesty" name="popisCesty" type="text" />
                                                             <AlignDiv>
                                                                 <LabelDiv>Přidat fotku</LabelDiv>
-                                                                <input type='file' name='img' accept="image/png, image/jpeg, image/jpg," onChange={(event) =>
+                                                                <FotoInput type='file' name='img' accept="image/png, image/jpeg, image/jpg," onChange={(event) =>
                                                                     //@ts-ignore
                                                                     formik.setFieldValue("img", event.target.files[0])
 

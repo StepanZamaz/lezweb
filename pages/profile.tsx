@@ -7,7 +7,8 @@ import ProfileComponent from '../components/ProfileComponent'
 import { device } from '../components/styledComponents/device';
 const ProfileDiv = styled.div`
     display: flex;
-    height: 88vh;
+    min-height: 90vh;
+    height: 90vh;
     background-image: url(https://firebasestorage.googleapis.com/v0/b/lezweb.appspot.com/o/mladkov%2F4.JPG?alt=media&token=e5828824-aaa3-4178-b3d1-648fc382de4d);
     background-size: cover;
     padding-top: 100px;
