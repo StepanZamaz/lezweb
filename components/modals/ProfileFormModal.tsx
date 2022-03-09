@@ -45,6 +45,9 @@ const CloseButton = styled.button`
     border: 2px solid #323232;
     border-radius: 10px;
     cursor: pointer;
+    :hover {
+        background-color: rgb(41, 153, 72);
+    }
     @media ${device.laptop}{
         top: 5px;
         right: 5px;
@@ -122,6 +125,9 @@ const Button = styled.button`
     border-radius: 2rem;
     cursor: pointer;
     font-weight: bold;
+    :hover {
+        background-color: rgb(41, 153, 72);
+    }
     @media (max-width: 600px){
         letter-spacing: 0.1rem;
         width: 35%;

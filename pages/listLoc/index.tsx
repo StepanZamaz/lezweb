@@ -35,32 +35,5 @@ const ListLoc: NextPage = () =>{
             <Footer/>
         </>
     )
-    /*
-    return(
-        <DivWhole>
-            
-            <RowImage>
-                <ColumnImage>
-                    
-                </ColumnImage>
-                <ColumnImage>
-                
-                </ColumnImage>
-            </RowImage>
-            <SeznamOblasti>
-            <ul>
-            {Object.keys(boulders).map((key, index)=>{
-                const oblast = boulders[key];
-                return(
-                    <Link href="/[locations]" as={`/${oblast.id}`} key={oblast.id}>
-                        <li>{oblast.nazevOblasti}</li>
-                    </Link>
-                )
-            })
-            }
-            </ul>
-            </SeznamOblasti>
-        </DivWhole>
-    )*/
 }
 export default ListLoc;

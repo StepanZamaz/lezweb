@@ -41,6 +41,9 @@ const LoginButton = styled.button`
     border-radius: 2rem;
     cursor: pointer;
     font-weight: bold;
+    :hover {
+        background-color: rgb(41, 153, 72);
+    }
     @media ${device.laptop}{
         height: 25%;
         letter-spacing: 0.1rem;
@@ -58,6 +61,9 @@ const LoginButtonMain = styled.button`
     border-radius: 2rem;
     cursor: pointer;
     font-weight: bold;
+    :hover {
+        background-color: rgb(41, 153, 72);
+    }
     @media ${device.tablet}{
         width: 30%;
         letter-spacing: 0.1rem;
@@ -78,6 +84,9 @@ const CloseButton = styled.button`
     border: 2px solid #323232;
     border-radius: 10px;
     cursor: pointer;
+    :hover {
+        background-color: rgb(41, 153, 72);
+    }
 `
 const Heading = styled.div`
     margin-top: 10%;

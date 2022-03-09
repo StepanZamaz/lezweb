@@ -9,14 +9,15 @@ import db from "../utils/firebase";
 import styled from "styled-components"
 
 const Mapdiv = styled.div`
-    height: 100vh;
+    min-height: 100vh;
     background-image: url(https://firebasestorage.googleapis.com/v0/b/lezweb.appspot.com/o/mladkov%2F2.JPG?alt=media&token=4ca5143f-0a40-46ad-a531-80cf23b057e3);
     background-size: cover;
     padding-top: 5%;
 `
 const DisplayMapDiv = styled.div`
-    width: 80%;
-    height: 90%;
+    position: absolute;
+    height: 1000px;
+    width: 1000px;
     margin-left: auto;
     margin-right: auto;
     padding: 50px;

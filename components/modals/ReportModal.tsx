@@ -9,14 +9,25 @@ import { addDoc, collection, doc, DocumentData, setDoc, Timestamp } from 'fireba
 import db from "../../utils/firebase";
 import { useRouter } from 'next/router'
 import { getAuth, onAuthStateChanged, User } from "firebase/auth";
+import { device } from '../styledComponents/device'
 const ReportButton = styled(GoReport)`
     position: absolute;
     font-size: 3.5em;
-    bottom: 8%;
-    right: -5%;
+    top: 3%;
+    right: 57%;
     transform: scaleX(-1) rotate(-360deg);
     :hover {
         transform: scale(1.2) scaleX(-1) rotate(-360deg);
+    }
+    @media ${device.laptop}{
+        font-size: 2.5em;
+    }
+    @media ${device.tablet}{
+        top: 3%;
+        right: 5%;
+    }
+    @media ${device.mobileM}{
+        font-size: 1.5em;
     }
 `
 const ReportDiv = styled.div`
@@ -70,6 +81,9 @@ const LoginButton = styled.button`
     border-radius: 2rem;
     cursor: pointer;
     font-weight: bold;
+    :hover {
+        background-color: rgb(41, 153, 72);
+    }
 `
 const ReportModal = () => {
     const auth = getAuth();

@@ -25,20 +25,29 @@ const Image = styled.img`
     width: 900px;
     height: auto;
     border-radius: 10px;
+    max-height: 800px;
+    @media (max-width: 1920px)  { 
+        max-height: 600px;
+    }
     @media ${device.laptopL} { 
         width: 700px;
+        max-height: 500px;
     }
     @media (max-width: 950px)  { 
         width: 550px;
+        max-height: 400px;
     }
     @media ${device.tablet} { 
         width: 400px;
+        max-height: 250px;
     }
     @media (max-width: 470px) { 
         width: 300px;
+        max-height: 200px;
     }
     @media ${device.mobileM} { 
         width: 250px;
+        max-height: 150px;
     }
 `
 const ArrowRight = styled(FaArrowAltCircleRight)`

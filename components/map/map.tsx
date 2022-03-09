@@ -7,7 +7,7 @@ type MarkersListProps = {
 }
 const Mapa: React.FC<MarkersListProps> = ({ oblasti }) => {
     return (
-        <Map center={{ lat: 50.0968800, lng: 16.6379681 }}>
+        <Map height='900px' center={{ lat: 50.0968800, lng: 16.6379681 }}>
             <KeyboardControl />
             <ZoomControl />
             <MouseControl zoom={true} pan={true} wheel={true} />

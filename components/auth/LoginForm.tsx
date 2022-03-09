@@ -76,6 +76,9 @@ const LoginButton = styled.button`
     border-radius: 2rem;
     cursor: pointer;
     font-weight: bold;
+    :hover{
+        background-color: rgb(41, 153, 72);
+    }
     @media ${device.mobileM}  {
         font-size: 0.7em;
         width: 45%;
@@ -106,6 +109,9 @@ const RegisterText = styled.p`
 const RegisterLink = styled.a`
     cursor: pointer;
     color: #61ed84;
+    :hover{
+        color: rgb(41, 153, 72);
+    }
     @media ${device.laptop}  {
         font-size: 1em;
     }
@@ -124,6 +130,10 @@ const StyledImg = styled.img`
     cursor: pointer;
     width: 30%;
     padding: 0rem 1rem;
+    :hover {
+        transition-duration: 1s;
+        transform: scale(1.2);
+    }
     @media ${device.laptop}  {
         width: 25%;
         margin-bottom: 30px;

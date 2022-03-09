@@ -22,7 +22,7 @@ const StyledInput = styled.input`
     padding: 1rem;
     border: none;
     outline: none;
-    color: #3c354e;
+    color: rgb(41, 153, 72);;
     font-size: 1rem;
     font-weight: bold;
     &:focus{

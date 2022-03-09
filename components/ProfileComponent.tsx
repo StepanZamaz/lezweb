@@ -134,6 +134,9 @@ const LoginButton = styled.button`
     border-radius: 2rem;
     cursor: pointer;
     font-weight: bold;
+    :hover {
+        background-color: rgb(41, 153, 72);
+    }
     @media ${device.tablet}{
         width: 30%;
         letter-spacing: 0.1rem;

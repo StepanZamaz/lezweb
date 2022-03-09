@@ -74,6 +74,9 @@ const LoginButton = styled.button`
     border-radius: 2rem;
     cursor: pointer;
     font-weight: bold;
+    :hover {
+        background-color: rgb(41, 153, 72);
+    }
     @media (max-width: 480px) { 
         width: 60%;
     }
@@ -91,6 +94,9 @@ const BackLogContainer = styled.div`
 const LoginLink = styled.a`
     cursor: pointer;
     color: #61ed84;
+    :hover {
+        color: rgb(41, 153, 72);
+    }
 `
 const StyledIconLogin = styled(HiOutlineLogin)`
     cursor: pointer;
