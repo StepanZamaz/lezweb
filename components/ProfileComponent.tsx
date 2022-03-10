@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import styled from 'styled-components'
-import { getAuth, onAuthStateChanged, updateProfile, User } from "firebase/auth";
+import { getAuth, onAuthStateChanged, sendEmailVerification, updateProfile, User } from "firebase/auth";
 import db, { auth } from '../utils/firebase';
 import { collection, DocumentData, onSnapshot, doc, updateDoc } from 'firebase/firestore';
 import Router from 'next/router';
@@ -11,6 +11,7 @@ import Link from 'next/link';
 import ProfileFormModal from './modals/ProfileFormModal'
 import ChangePasswordModal from './modals/ChangePasswordModal'
 import { device } from './styledComponents/device';
+import ReactLoading from 'react-loading';
 const logo = require('../public/logo.png');
 
 const ComponentDiv = styled.div`
@@ -285,15 +286,11 @@ const Header3 = styled.div`
 const ProfileComponent = () => {
     const [componentNum, setComponentNumber] = useState<boolean>(true);
     const auth = getAuth();
-    const [user, setUser] = useState<object | null>({});
+    const [user, setUser] = useState<User | null>();
     const [userInfo, setUserInfo] = useState<DocumentData>([]);
     const [docBoulders, setDocBoulders] = useState<DocumentData>([]);
     onAuthStateChanged(auth, (currentUser) => {
         setUser(currentUser);
-        // @ts-ignore
-        if (!user) {
-            redirectToHome();
-        }
     })
     const redirectToHome = () => Router.push({
         pathname: '/'
@@ -313,7 +310,9 @@ const ProfileComponent = () => {
     useEffect(() => {
         onSnapshot(collection(db, "users"), snapshot => {
             const user = auth.currentUser;
-            console.log("xxx", user)
+            if (!user) {
+                redirectToHome();
+            }
             const data = snapshot.docs.map((doc) => ({ ...doc.data(), id: doc.id }));
             const filteredData: DocumentData = FilterData(data, user);
             if (data) {
@@ -342,6 +341,11 @@ const ProfileComponent = () => {
             }
         })
     }
+    const sendVerificationEmail = () => {
+        //@ts-ignore
+        sendEmailVerification(auth.currentUser);
+    }
+
     return (
         <>
             {componentNum ? (
@@ -350,14 +354,19 @@ const ProfileComponent = () => {
                     <MenuDiv>
                         <ButtonMenu onClick={() => (setComponentNumber(true))}>Informace o uživateli</ButtonMenu>
                         <ButtonMenu onClick={() => (setComponentNumber(false))}>Změna údajů</ButtonMenu>
-                        <ProfileFormModal values={docBoulders} />
-                        {
-                            userInfo.admin && 
-                                <Link href="/admin">
-                                    <ButtonMenu>Admin</ButtonMenu>
-                                </Link> 
+                        {auth.currentUser?.emailVerified ? (
+                            <ProfileFormModal values={docBoulders} />
+                        ) : (
+                            <ButtonMenu onClick={() => (sendVerificationEmail())}>Ověřit email</ButtonMenu>
+                        )
                         }
-                        
+                        {
+                            userInfo.admin &&
+                            <Link href="/admin">
+                                <ButtonMenu>Admin</ButtonMenu>
+                            </Link>
+                        }
+
                     </MenuDiv>
                     <>
                         <ContentDiv>
@@ -382,10 +391,10 @@ const ProfileComponent = () => {
                         <ButtonMenu onClick={() => (setComponentNumber(false))}>Změna údajů</ButtonMenu>
                         <ProfileFormModal values={docBoulders} />
                         {
-                            userInfo.admin && 
-                                <Link href="/admin">
-                                    <ButtonMenu>Admin</ButtonMenu>
-                                </Link> 
+                            userInfo.admin &&
+                            <Link href="/admin">
+                                <ButtonMenu>Admin</ButtonMenu>
+                            </Link>
                         }
                     </MenuDiv>
                     <FormikContainer>
@@ -422,141 +431,7 @@ const ProfileComponent = () => {
             )}
         </>
     )
+
 }
 
 export default ProfileComponent
-/*
-{
-                componentNum === 0 ?(
-                    <ContentDiv>
-                        <p>{userInfo.email}</p>
-                        <p>{userInfo.firstName}</p>
-                        <p>{userInfo.lastName}</p>
-                    </ContentDiv>
-                ): componentNum === 1 ?(
-                    <div>
-                        zmenaUdaju
-                    </div>
-                ): componentNum === 2 ?(
-                    <div>
-                        pridatoblasti
-                    </div>
-                ): componentNum ===3 ?(
-                    <div>
-                        admin
-                    </div>
-                )}
-                updateProfile(auth.currentUser, {
-            dataToAdd
-        
-        }).then(() => {
-            // Profile updated!
-            // ...
-            console.log("update");
-          }).catch((error) => {
-            // An error occurred
-            // ...
-            console.log(error)
-          });
-const ContentDiv = styled.div`
-    grid-area: main;
-    display: grid;
-    grid-template-columns: 20% 20% 30% 30%;
-    grid-template-rows: 20% 20% 20% 20%;
-    grid-template-areas: 
-    "info1 prop1 . ."
-    "info2 prop2 . ."
-    "info3 prop3 . ."
-    "info4 prop4 . .";
-`
-const Info1 = styled.div`
-    grid-area: info1;
-`
-const Prop1 = styled.div`
-    grid-area: prop1;
-`
-const Info2 = styled.div`
-    grid-area: info2;
-`
-const Prop2 = styled.div`
-    grid-area: prop2;
-`
-const Info3 = styled.div`
-    grid-area: info3;
-`
-const Prop3 = styled.div`
-    grid-area: prop3;
-`
-const Info4 = styled.div`
-    grid-area: info4;
-`
-const Prop4 = styled.div`
-    grid-area: prop4;
-`
-          
-<ComponentDiv>
-            <HeaderDiv>Uživatel</HeaderDiv>
-            <MenuDiv>
-                <ButtonMenu onClick={() => (setComponentNumber(true))}>Informace o uživateli</ButtonMenu>
-                <ButtonMenu onClick={() => (setComponentNumber(false))}>Změna údajů</ButtonMenu>
-                <ProfileFormModal values={docBoulders} />
-                <Link href="/admin">
-                    <ButtonMenu>Admin</ButtonMenu>
-                </Link>
-            </MenuDiv>
-            <>
-                {componentNum ? (
-                    <>
-                        <ContentDiv>
-                            <Header2>Informace</Header2>
-                            <InfoDiv>
-                                <DesDiv>Email: </DesDiv><PropDiv>{userInfo.email}</PropDiv>
-                                <DesDiv>Jméno: </DesDiv><PropDiv>{userInfo.firstName}</PropDiv>
-                                <DesDiv>Příjmení: </DesDiv><PropDiv>{userInfo.lastName}</PropDiv>
-                                <DesDiv>Přezdívka: </DesDiv><PropDiv>{userInfo.nickname}</PropDiv>
-                            </InfoDiv>
-                        </ContentDiv>
-                        <IconDiv>
-                            <StyledImg src={logo.default.src} alt="Logo"></StyledImg>
-                        </IconDiv>
-                    </>
-                ) : (
-                    <>
-                        <FormikContainer>
-                            <Formik
-                                initialValues={{
-                                    firstName: '',
-                                    lastName: '',
-                                    nickname: '',
-                                }}
-                                validationSchema={validate}
-                                onSubmit={values => {
-                                    updateUserDocument(values);
-                                }}
-                            >
-                                {formik => (
-                                    <>
-                                        <h1>Změna udaju</h1>
-                                        <FormFormik>
-                                            <TextFieldProfile label="First Name" name="firstName" type="text" />
-                                            <TextFieldProfile label="Last Name" name="lastName" type="text" />
-                                            <TextFieldProfile label="Nickname" name="nickname" type="text" />
-                                            <ButtonContainer>
-                                                <LoginButton type="submit">Změnit</LoginButton>
-                                                <LoginButton type="reset">Resetovat</LoginButton>
-                                            </ButtonContainer>
-                                        </FormFormik>
-                                    </>
-                                )
-                                }
-                            </Formik>
-                        </FormikContainer>
-                        <ChangePasswordModal />
-                    </>
-                )}
-            </>
-        </ComponentDiv>
-
-
-
-*/

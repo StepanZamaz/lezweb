@@ -7,11 +7,11 @@ type MarkersListProps = {
 }
 const Mapa: React.FC<MarkersListProps> = ({ oblasti }) => {
     return (
-        <Map height='900px' center={{ lat: 50.0968800, lng: 16.6379681 }}>
+        <Map height='100%' center={{ lat: 50.0968800, lng: 16.6379681 }}>
             <KeyboardControl />
-            <ZoomControl />
+            <ZoomControl left={10} top={5}/>
             <MouseControl zoom={true} pan={true} wheel={true} />
-            <CompassControl right={10} top={50} />
+            <CompassControl left={10} top={50} />
             <SyncControl />
             <MarkerLayer>
                 {Object.keys(oblasti).map((key, index) => {
@@ -30,24 +30,22 @@ const Mapa: React.FC<MarkersListProps> = ({ oblasti }) => {
                                             {Object.keys(blok).map((key, index) => {
                                                 if (typeof (blok[key]) === 'object') {
                                                     const cesty = blok[key];
-                                                    //console.log(cesty);
                                                     return (
                                                         <React.Fragment key={index}>
                                                             {Object.keys(cesty).map((key, index) => {
                                                                 const cesta = cesty[key].nazevCesty;
                                                                 poleCest.push(cesta);
-                                                                console.log(poleCest);
                                                                 let bodyProps: string = "";
                                                                 for (let index in poleCest) {
                                                                     bodyProps += poleCest[index] + "<br>";
                                                                 } 
                                                                 const data: MarkerCardConfiguration = {
-                                                                    header: "<strong>" + nazevBloku + "</strong>",
-                                                                    body: bodyProps,
-                                                                    footer: "<strong>" + oblast.nazevOblasti + "</strong>",
+                                                                    header: () => <>Název bloku: <strong>{nazevBloku}</strong></>,
+                                                                    body:  "Cesty: " + "<br>" + "<strong>" + bodyProps + "</strong>" ,
+                                                                    footer: () => <>Oblast: <strong>{oblast.nazevOblasti}</strong></>,
                                                                     options: {
-                                                                        width: 500,
-                                                                        height: 500
+                                                                        width: 280,
+                                                                        height: 500,
                                                                     }
                                                                 }
 
@@ -70,46 +68,6 @@ const Mapa: React.FC<MarkersListProps> = ({ oblasti }) => {
                 })}
             </MarkerLayer>
         </Map>
-
-
     )
 }
 export default Mapa;
-/*{Object.keys(oblasti).map(function(key, index){
-    const oblast = oblasti[key];
-    {Object.keys(oblast).map(function(key, index){
-        const nazevBloku = oblast[key].nazevBloku;
-        console.log(nazevBloku);
-        const lat = oblast[key].lat;
-        const lng = oblast[key].lng;
-        const cesty = oblast[key].cesty;
-
-    }
-
-    
-    //console.log(cesty);
-    return(
-        <React.Fragment key={key}>
-            {Object.keys(cesty).map(function(key){
-                const val = cesty[key];
-                const data:MarkerCardConfiguration = {
-                    header: nazevBloku,
-                    body: "Ahoj",
-                    options:{
-                        width: 500,
-                        height: 500
-                    }
-                }
-                return(
-                    <React.Fragment key={key}>
-                        <Markers key={key} lat={lat} lng={lng} data={data} ></Markers>
-                    </React.Fragment>
-                )
-            })
-            }
-        </React.Fragment>
-        
-    )
-      
-})
-}*/

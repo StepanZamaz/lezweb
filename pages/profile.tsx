@@ -1,10 +1,13 @@
-import React from 'react'
+import React, { useState } from 'react'
 import Navbar from '../components/Navbar';
 import Footer from '../components/Footer';
 import styled from 'styled-components';
 import { NextPage } from 'next';
 import ProfileComponent from '../components/ProfileComponent'
 import { device } from '../components/styledComponents/device';
+import { onAuthStateChanged, User } from 'firebase/auth';
+import { auth } from '../utils/firebase';
+import ReactLoading from 'react-loading';
 const ProfileDiv = styled.div`
     display: flex;
     min-height: 90vh;
@@ -43,18 +46,38 @@ const ProfileContainter = styled.div`
         padding-left: 5px;
     }
 `
+const CenterLoading = styled.div`
+    position: absolute;
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    padding: 15%;
+    background-color: #323232;
+`
 const Profile: NextPage = () => {
-    return (
-        <>
-            <Navbar />
-            <ProfileDiv>
-                <ProfileContainter>
-                    <ProfileComponent/>
-                </ProfileContainter>
-            </ProfileDiv>
-            <Footer />
-        </>
-
+    const [user, setUser] = useState<User | null>();
+    onAuthStateChanged(auth, (currentUser) => {
+        setUser(currentUser);
+    })
+    if(user){
+        return (
+            <>
+                <Navbar />
+                <ProfileDiv>
+                    <ProfileContainter>
+                        <ProfileComponent/>
+                    </ProfileContainter>
+                </ProfileDiv>
+                <Footer />
+            </>
+    
+        )
+    }
+    else return(
+        <CenterLoading>
+            <ReactLoading type={'spokes'} color={"#61ed84"}  width={'20vw'}></ReactLoading>
+        </CenterLoading>
     )
 }
 

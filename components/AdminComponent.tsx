@@ -138,6 +138,7 @@ const CenterLoading = styled.div`
     display: flex;
     justify-content: center;
     padding: 15%;
+    background-color: #323232;
 `
 const AlignDiv = styled.div`
     width: 90%;

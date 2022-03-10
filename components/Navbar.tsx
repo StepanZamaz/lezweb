@@ -1,4 +1,4 @@
-import { onAuthStateChanged, signOut } from 'firebase/auth';
+import { onAuthStateChanged, signOut, User } from 'firebase/auth';
 import Link from 'next/link'
 import React, { useState } from 'react'
 import styled from 'styled-components'
@@ -97,7 +97,7 @@ const IcoDropDownDiv = styled.div`
     position: relative;
 `
 const Navbar = () => {
-    const[user, setUser] = useState<object|null>({});
+    const[user, setUser] = useState<User|null>();
     const [open, setOpen] = useState(false);
     onAuthStateChanged(auth,(currentUser) =>{
         setUser(currentUser);
@@ -120,12 +120,10 @@ const Navbar = () => {
                     <StyledLink>Mapa</StyledLink>   
                 </Link>
                 {
-                    //@ts-ignore: Object is possibly 'null'
                     user?.email === undefined
                     ? <Link href="/login">
                         <StyledLink>Přihlášení</StyledLink>   
                     </Link>
-                    //@ts-ignore: Object is possibly 'null'
                     : 
                     <IcoDropDownDiv>
                         <StyledProfileIcon onClick={() => setOpen(!open)}/>

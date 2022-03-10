@@ -1,12 +1,14 @@
 import { DocumentData } from 'firebase/firestore'
 import { useRouter } from 'next/router'
-import React from 'react'
+import React, { useState } from 'react'
 import { CgBackspace } from 'react-icons/cg'
 import { GoReport } from 'react-icons/go'
 import styled from 'styled-components'
 import ReportModal from './modals/ReportModal'
 import CommentComponent from './CommentComponent'
 import { device } from './styledComponents/device'
+import { onAuthStateChanged, sendEmailVerification, User } from 'firebase/auth'
+import { auth } from '../utils/firebase'
 const RouteCard = styled.div`
     position: relative;
     margin-top: 5%;
@@ -45,7 +47,7 @@ const RouteCard = styled.div`
         padding-bottom: 150px;
     }
     @media ${device.mobileM}{
-        padding-bottom: 100px;
+        padding-bottom: 120px;
     }
 `
 const NazevCesty = styled.div`
@@ -227,8 +229,11 @@ const DetailOfRoute = ({ data }: DocumentData) => {
     const router = useRouter();
     const { route } = router.query;
     const boulders = data;
-    console.log("xxx", boulders)
-    console.log("xxxx", route)
+    const [user, setUser] = useState<User | null>();
+    user?.emailVerified
+    onAuthStateChanged(auth, (currentUser) => {
+        setUser(currentUser);
+    })
     return (
         <DetailRouteDiv>
             {
@@ -283,7 +288,14 @@ const DetailOfRoute = ({ data }: DocumentData) => {
                                                                 )
                                                             }
                                                         </ImageDiv>
-                                                        <ReportModal />
+                                                        {
+                                                            user === null ?(
+                                                                <>
+                                                                </>
+                                                            ):(
+                                                                <ReportModal />
+                                                            )
+                                                        }
                                                         <CommentComponent />
                                                     </RouteCard>
                                                     

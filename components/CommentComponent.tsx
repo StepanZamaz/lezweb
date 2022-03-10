@@ -5,8 +5,8 @@ import * as Yup from 'yup'
 import CommentTextField from './formikFields/CommentTextField'
 import { useRouter } from "next/router";
 import { addDoc, doc, DocumentData, setDoc, Timestamp, arrayUnion, onSnapshot, collection } from 'firebase/firestore'
-import db from "../utils/firebase";
-import { getAuth } from 'firebase/auth'
+import db, { auth } from "../utils/firebase";
+import { getAuth, onAuthStateChanged } from 'firebase/auth'
 import dateFormat from 'dateformat'
 import { device } from './styledComponents/device'
 const CommentSection = styled.div`
@@ -141,11 +141,11 @@ const NameDiv = styled.div`
     
 `
 const CommentComponent = () => {
-    const auth = getAuth();
     const router = useRouter();
+    const [user, setUser] = useState<object | null>({});
     const [comments, setComments] = useState<DocumentData>({})
     const [users, setUsers] = useState<DocumentData>({})
-    console.log("users", users)
+    console.log("user", user)
     const { route } = router.query;
     useEffect(() => {
         console.log("ahoj")
@@ -165,6 +165,9 @@ const CommentComponent = () => {
             }
         })
     }, [route]);
+    onAuthStateChanged(auth, (currentUser) => {
+        setUser(currentUser);
+    })
     const validate = Yup.object({
         commentText: Yup.string().max(200, "Maximálně 200 znaků").required('Vyžadováno'),
     })
@@ -204,12 +207,12 @@ const CommentComponent = () => {
                                 Object.keys(comments.comment).map((key) => {
                                     const singleComment = comments.comment[key];
                                     const date = comments.comment[key].addDate.toDate().toString();
-                                    return(
+                                    return (
                                         <>
                                             {
-                                                Object.keys(users).map((key) =>{
+                                                Object.keys(users).map((key) => {
                                                     const user = users[key];
-                                                    if(user.uid === singleComment.addedBy){
+                                                    if (user.uid === singleComment.addedBy) {
                                                         return (
                                                             <CommentDiv>
                                                                 <CommentHeader>
@@ -220,13 +223,13 @@ const CommentComponent = () => {
                                                             </CommentDiv>
                                                         )
                                                     }
-                                                    
+
                                                 })
                                             }
                                         </>
                                     )
-                                    
-                                    
+
+
                                 })
                             }
                         </>
@@ -234,28 +237,37 @@ const CommentComponent = () => {
 
                 }
             </DisplayComment>
-            <DivInputComment>
-                <Formik
-                    initialValues={{
-                        commentText: ''
-                    }}
-                    validationSchema={validate}
-                    onSubmit={values => {
-                        addComment(values);
-                    }}
-                >
-                    {formik => (
-                        <>
-                            <StyledForm>
-                                <CommentTextField label="Napište něco..." name="commentText" type="text" />
-                                <ButtonContainer>
-                                    <AddCommentBtn type="submit">Přidat komentář</AddCommentBtn>
-                                </ButtonContainer>
-                            </StyledForm>
-                        </>
-                    )}
-                </Formik>
-            </DivInputComment>
+            {user === null ? (
+                <>
+
+                </>
+            ) : (
+                <>
+                    <DivInputComment>
+                        <Formik
+                            initialValues={{
+                                commentText: ''
+                            }}
+                            validationSchema={validate}
+                            onSubmit={values => {
+                                addComment(values);
+                            }}
+                        >
+                            {formik => (
+                                <>
+                                    <StyledForm>
+                                        <CommentTextField label="Napište něco..." name="commentText" type="text" />
+                                        <ButtonContainer>
+                                            <AddCommentBtn type="submit">Přidat komentář</AddCommentBtn>
+                                        </ButtonContainer>
+                                    </StyledForm>
+                                </>
+                            )}
+                        </Formik>
+                    </DivInputComment>
+                </>
+            )}
+
         </CommentSection>
     )
 }

@@ -3,6 +3,7 @@ import styled from 'styled-components'
 import { signOut } from 'firebase/auth';
 import { auth } from '../utils/firebase';
 import Link from 'next/link';
+import Router  from 'next/router';
 const Dropdown = styled.div`
     position: absolute;
     right: 0;
@@ -56,9 +57,13 @@ const Profile = styled.button`
     }
 `
 const DropdownMenu = () => {
-    
+    const redirectToHome = () => Router.push({
+        pathname: '/'
+    });
     const logOut = async () =>{
         await signOut(auth);
+        redirectToHome();
+        
     }
     return (
         <>
