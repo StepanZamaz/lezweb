@@ -289,11 +289,11 @@ const DetailOfRoute = ({ data }: DocumentData) => {
                                                             }
                                                         </ImageDiv>
                                                         {
-                                                            user === null ?(
+                                                            user?.emailVerified ?(
+                                                                <ReportModal />
+                                                            ):(
                                                                 <>
                                                                 </>
-                                                            ):(
-                                                                <ReportModal />
                                                             )
                                                         }
                                                         <CommentComponent />

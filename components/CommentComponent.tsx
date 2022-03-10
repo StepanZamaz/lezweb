@@ -6,7 +6,7 @@ import CommentTextField from './formikFields/CommentTextField'
 import { useRouter } from "next/router";
 import { addDoc, doc, DocumentData, setDoc, Timestamp, arrayUnion, onSnapshot, collection } from 'firebase/firestore'
 import db, { auth } from "../utils/firebase";
-import { getAuth, onAuthStateChanged } from 'firebase/auth'
+import { getAuth, onAuthStateChanged, User } from 'firebase/auth'
 import dateFormat from 'dateformat'
 import { device } from './styledComponents/device'
 const CommentSection = styled.div`
@@ -142,7 +142,7 @@ const NameDiv = styled.div`
 `
 const CommentComponent = () => {
     const router = useRouter();
-    const [user, setUser] = useState<object | null>({});
+    const [user, setUser] = useState<User | null>();
     const [comments, setComments] = useState<DocumentData>({})
     const [users, setUsers] = useState<DocumentData>({})
     console.log("user", user)
@@ -237,11 +237,7 @@ const CommentComponent = () => {
 
                 }
             </DisplayComment>
-            {user === null ? (
-                <>
-
-                </>
-            ) : (
+            {user?.emailVerified ? (
                 <>
                     <DivInputComment>
                         <Formik
@@ -265,6 +261,9 @@ const CommentComponent = () => {
                             )}
                         </Formik>
                     </DivInputComment>
+                </>
+            ) : (
+                <>
                 </>
             )}
 
