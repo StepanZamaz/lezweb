@@ -31,40 +31,48 @@ const ReportButton = styled(GoReport)`
     }
 `
 const ReportDiv = styled.div`
-    width: 25vw;
-    height: 60vh;
+    width: 500px;
+    height: 700px;
     background-color: #323232;
     border: 2px solid #61ed84;
     color: #61ed84;
     border-radius: 15px;
     position: relative;
+    @media ${device.laptop}{
+        width: 320px;
+        height: 500px;
+    }
 `
 const CloseButton = styled.button`
     position: absolute; 
     top: 10px; 
     right: 10px;
-    width: 2vw;
-    height: 3vh;
+    width: 35px;
+    height: 35px;
     background-color: #61ed84;
     border: 2px solid #323232;
     border-radius: 10px;
     cursor: pointer;
+    :hover {
+        background-color: rgb(41, 153, 72);
+    }
 `
 const ReportHeader = styled.div`
-    height: 15%;
-    width: 100%;
+    margin-top: 10%;
+    margin-bottom: 10%;
     display: flex;
     align-items: center;
     justify-content: center;
+    text-align: center;
     font-size: 2em;
 `
 const StyledForm = styled(Form)`
-    height: 85%;
+    height: 70%;
 `
 const ButtonContainer = styled.div`
     margin: 1rem 0 1rem 0;
     width: 100%;
-    height: 50%;
+    height: 40%;
     display: flex;
     align-items: center;
     justify-content: space-evenly;
@@ -83,6 +91,11 @@ const LoginButton = styled.button`
     font-weight: bold;
     :hover {
         background-color: rgb(41, 153, 72);
+    }
+    @media ${device.laptop}{
+        height: 25%;
+        letter-spacing: 0.1rem;
+        font-size: 0.7em;
     }
 `
 const ReportModal = () => {

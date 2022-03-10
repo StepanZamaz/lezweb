@@ -16,7 +16,7 @@ const BackDiv = styled.div`
     position: absolute; 
     top: 20px; 
     left: 20px;
-    width: 13vw;
+    width: 200px;
     height: 40px;
     background-color: #000;
     border: 2px solid #61ed84;
@@ -36,22 +36,6 @@ const BackDiv = styled.div`
     }
     @media (max-width: 1130px)  {
         font-size: 0.6em;
-    }
-    @media ${device.laptop} { 
-        width: 14vw;
-        height: 60px;
-    }
-    @media (max-width: 920px)  {
-        width: 18vw;
-    }
-    @media ${device.tablet} { 
-        font-size: 0.5em;
-        width: 20vw;
-    }
-    @media (max-width: 560px)  {
-        flex-direction: column;
-        height: 50px;
-        width: 24vw;
     }
 `
 const BackIcon = styled(CgBackspace)`

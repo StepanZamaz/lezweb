@@ -1,13 +1,13 @@
 import React from 'react'
 import { ErrorMessage, useField } from 'formik'
 import styled from 'styled-components';
+import { device } from '../styledComponents/device';
 const InputMsgContainer = styled.div`
     display: flex;
     flex-direction: column;
     justify-content: space-evenly;
-    width: 80%;
-    margin-left: 10%;
-    height: 50%;
+    width: 100%;
+    height: 60%;
     padding: 1rem;
 `
 const StyledInput = styled.input`
@@ -15,7 +15,7 @@ const StyledInput = styled.input`
     box-shadow: 0 2px 2px 0 #61ed84;
     border-radius: 2rem;
     width: 80%;
-    height: 50%;
+    height: 35%;
     margin-left: 10%;
     padding: 1rem;
     border: none;
@@ -41,6 +41,9 @@ const Label = styled.label`
     font-weight: bold;
     padding: 5%;
     text-align: center;
+    @media ${device.laptop} {
+        font-size: 1em;
+    }
 `
 const AlignDiv = styled.div`
     padding: 5%;
@@ -50,8 +53,8 @@ const AlignDiv = styled.div`
     text-align: center;
 `
 const StyledErrorMsg = styled.p`
-    color: red;
-    font-size: 1.5em;
+    color: white;
+    font-size: 1em;
 `
 const ReportTextField = ({ label, ...props }: any) => {
     const [field, meta] = useField(props);

@@ -119,7 +119,7 @@ const BackDiv = styled.div`
     position: absolute; 
     top: 20px; 
     left: 20px;
-    width: 250px;
+    width: 200px;
     height: 50px;
     background-color: #000;
     border: 2px solid #61ed84;
