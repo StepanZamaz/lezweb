@@ -183,9 +183,8 @@ const AdminComponent = () => {
         return { userSignedIn }
     }
     useEffect(() => {
+        const user = auth.currentUser;
         onSnapshot(collection(db, "users"), snapshot => {
-            const user = auth.currentUser;
-
             const data = snapshot.docs.map((doc) => ({ ...doc.data(), id: doc.id }));
             if (data) {
                 const filteredData: DocumentData = filterData(data, user);
@@ -255,7 +254,7 @@ const AdminComponent = () => {
                                         const report = reportDataWaiting[key];
                                         const date = report.addDate.toDate().toString();
                                         return (
-                                            <ReportDiv>
+                                            <ReportDiv key={key}>
                                                 <ReportRow>Den a čas reportu: {dateFormat(date)}</ReportRow>
                                                 <ReportRow>Id reportu: {report.id}</ReportRow>
                                                 <ReportRow>Id reportované oblasti: {report.locationId}</ReportRow>
@@ -280,7 +279,7 @@ const AdminComponent = () => {
                                         const report = reportDataInProcess[key];
                                         const date = report.addDate.toDate().toString();
                                         return (
-                                            <ReportDiv>
+                                            <ReportDiv key={key}>
                                                 <ReportRow>Den a čas reportu: {dateFormat(date)}</ReportRow>
                                                 <ReportRow>Id reportu: {report.id}</ReportRow>
                                                 <ReportRow>Id reportované oblasti: {report.locationId}</ReportRow>

@@ -5,7 +5,7 @@ import Markers from "./markers";
 type MarkersListProps = {
     oblasti: DocumentData;
 }
-const Mapa: React.FC<MarkersListProps> = ({ oblasti }) => {
+const Mapa : React.FC<MarkersListProps> = ({ oblasti }) => {
     return (
         <Map height='100%' center={{ lat: 50.0968800, lng: 16.6379681 }}>
             <KeyboardControl />
