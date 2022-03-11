@@ -8,11 +8,12 @@ import { device } from '../components/styledComponents/device';
 import { onAuthStateChanged, User } from 'firebase/auth';
 import { auth } from '../utils/firebase';
 import ReactLoading from 'react-loading';
+const picture8 = require('../public/staticFoto/DSC_7229.JPG');
 const ProfileDiv = styled.div`
     display: flex;
     min-height: 90vh;
     height: 90vh;
-    background-image: url(https://firebasestorage.googleapis.com/v0/b/lezweb.appspot.com/o/mladkov%2F4.JPG?alt=media&token=e5828824-aaa3-4178-b3d1-648fc382de4d);
+    background-image: url('${picture8.default.src}');
     background-size: cover;
     padding-top: 100px;
     padding-bottom: 100px;

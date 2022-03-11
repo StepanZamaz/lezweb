@@ -14,6 +14,15 @@ import { BiImageAdd } from "react-icons/bi"
 import { device } from '../components/styledComponents/device'
 import { onAuthStateChanged, User } from 'firebase/auth';
 import { auth } from '../utils/firebase';
+const picture1 = require('../public/staticFoto/1.JPG');
+const picture2 = require('../public/staticFoto/6.JPG');
+const picture3 = require('../public/staticFoto/DSC_6953.JPG');
+const picture4 = require('../public/staticFoto/DSC_6992.JPG');
+const picture5 = require('../public/staticFoto/DSC_7000.JPG');
+const picture6 = require('../public/staticFoto/DSC_7001.JPG');
+const picture7 = require('../public/staticFoto/DSC_7219.JPG');
+const picture8 = require('../public/staticFoto/DSC_7229.JPG');
+const picture9 = require('../public/staticFoto/DSC_7240.JPG');
 const DisplayWhole = styled.div`
     display: flex;
     flex-direction: column;
@@ -336,15 +345,15 @@ return (
             </HeadingText>
             <ContentDivImages>
               <Gallery>
-                <StyledImg src='https://firebasestorage.googleapis.com/v0/b/lezweb.appspot.com/o/boulderFotoForGallery%2F6.JPG?alt=media&token=7d307522-ad17-4ebc-85a1-7380fcb4af47' alt='boulder'></StyledImg>
-                <StyledImg src='https://firebasestorage.googleapis.com/v0/b/lezweb.appspot.com/o/boulderFotoForGallery%2F1.JPG?alt=media&token=0fddd20a-09b3-4ae4-b6e1-5ebc525cba93' alt='boulder'></StyledImg>
-                <StyledImg src='https://firebasestorage.googleapis.com/v0/b/lezweb.appspot.com/o/boulderFotoForGallery%2FDSC_6953.JPG?alt=media&token=2a2a9c7a-1f3f-47be-af1d-8abe0cca2e23' alt='boulder'></StyledImg>
-                <StyledImg src='https://firebasestorage.googleapis.com/v0/b/lezweb.appspot.com/o/boulderFotoForGallery%2FDSC_7219.JPG?alt=media&token=c5ac6455-e72f-4ce1-9771-56ce6c1c315b' alt='boulder'></StyledImg>
-                <StyledImg src='https://firebasestorage.googleapis.com/v0/b/lezweb.appspot.com/o/boulderFotoForGallery%2FDSC_6992.JPG?alt=media&token=7441c82c-5cbe-41f5-bd55-8bef2288a5cf' alt='boulder'></StyledImg>
-                <StyledImg src='https://firebasestorage.googleapis.com/v0/b/lezweb.appspot.com/o/boulderFotoForGallery%2FDSC_7229.JPG?alt=media&token=0a6338d2-b7b0-4d87-8c64-da8b0b55cb3f' alt='boulder'></StyledImg>
-                <StyledImg src='https://firebasestorage.googleapis.com/v0/b/lezweb.appspot.com/o/boulderFotoForGallery%2FDSC_7000.JPG?alt=media&token=4e80de32-35db-45c1-9a4e-3bb9fb182d04' alt='boulder'></StyledImg>
-                <StyledImg src='https://firebasestorage.googleapis.com/v0/b/lezweb.appspot.com/o/boulderFotoForGallery%2FDSC_7240.JPG?alt=media&token=8a5752bb-9efe-47f8-a219-99fabeea487e' alt='boulder'></StyledImg>
-                <StyledImg src='https://firebasestorage.googleapis.com/v0/b/lezweb.appspot.com/o/boulderFotoForGallery%2FDSC_7001.JPG?alt=media&token=a916dc8c-c67c-43a4-a763-dbaa78b0710c' alt='boulder'></StyledImg>
+                <StyledImg src={picture1.default.src} alt='boulder'></StyledImg>
+                <StyledImg src={picture2.default.src} alt='boulder'></StyledImg>
+                <StyledImg src={picture3.default.src} alt='boulder'></StyledImg>
+                <StyledImg src={picture4.default.src} alt='boulder'></StyledImg>
+                <StyledImg src={picture5.default.src}alt='boulder'></StyledImg>
+                <StyledImg src={picture6.default.src} alt='boulder'></StyledImg>
+                <StyledImg src={picture7.default.src} alt='boulder'></StyledImg>
+                <StyledImg src={picture8.default.src} alt='boulder'></StyledImg>
+                <StyledImg src={picture9.default.src} alt='boulder'></StyledImg>
               </Gallery>
             </ContentDivImages>
           </ImageDiv>

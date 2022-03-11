@@ -6,9 +6,9 @@ import { onAuthStateChanged, signInWithEmailAndPassword, signOut} from "firebase
 import { auth } from '../utils/firebase';
 import { LoginForm } from '../components/auth/LoginForm';
 import { device } from '../components/styledComponents/device'
-
+const picture1 = require('../public/staticFoto/1.JPG');
 const Container = styled.div`
-    background-image: url(https://firebasestorage.googleapis.com/v0/b/lezweb.appspot.com/o/mladkov%2F1.JPG?alt=media&token=52bdec4b-cd32-4196-a543-0fc4b4b3c225);
+    background-image: url('${picture1.default.src}');
     background-size: cover;
     display: flex;
     justify-content: center;

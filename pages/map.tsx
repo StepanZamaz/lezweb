@@ -8,9 +8,10 @@ import Navbar from "../components/Navbar";
 import db from "../utils/firebase";
 import styled from "styled-components"
 import { device } from "../components/styledComponents/device";
+const picture2 = require('../public/staticFoto/6.JPG');
 const Mapdiv = styled.div`
     min-height: 100vh;
-    background-image: url(https://firebasestorage.googleapis.com/v0/b/lezweb.appspot.com/o/mladkov%2F2.JPG?alt=media&token=4ca5143f-0a40-46ad-a531-80cf23b057e3);
+    background-image: url('${picture2.default.src}');
     background-size: cover;
     padding-top: 5%;
     padding-bottom: 5%;
