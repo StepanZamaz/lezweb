@@ -12,17 +12,15 @@ import { GiFallingRocks } from "react-icons/gi"
 import { FaMapMarkedAlt, FaUserCheck } from "react-icons/fa"
 import { BiImageAdd } from "react-icons/bi"
 import { device } from '../components/styledComponents/device'
-import { onAuthStateChanged, User } from 'firebase/auth';
-import { auth } from '../utils/firebase';
-const picture1 = require('../public/staticFoto/1.JPG');
-const picture2 = require('../public/staticFoto/6.JPG');
-const picture3 = require('../public/staticFoto/DSC_6953.JPG');
-const picture4 = require('../public/staticFoto/DSC_6992.JPG');
-const picture5 = require('../public/staticFoto/DSC_7000.JPG');
-const picture6 = require('../public/staticFoto/DSC_7001.JPG');
-const picture7 = require('../public/staticFoto/DSC_7219.JPG');
-const picture8 = require('../public/staticFoto/DSC_7229.JPG');
-const picture9 = require('../public/staticFoto/DSC_7240.JPG');
+const picture1 = require('../public/staticFoto/staticFoto_1.jpg');
+const picture2 = require('../public/staticFoto/staticFoto_2.jpg');
+const picture3 = require('../public/staticFoto/staticFoto_3.jpg');
+const picture4 = require('../public/staticFoto/staticFoto_4.jpg');
+const picture5 = require('../public/staticFoto/staticFoto_5.jpg');
+const picture6 = require('../public/staticFoto/staticFoto_6.jpg');
+const picture7 = require('../public/staticFoto/staticFoto_7.jpg');
+const picture8 = require('../public/staticFoto/staticFoto_8.jpg');
+const picture9 = require('../public/staticFoto/staticFoto_9.jpg');
 const DisplayWhole = styled.div`
     display: flex;
     flex-direction: column;
