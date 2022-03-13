@@ -413,9 +413,9 @@ const ProfileComponent = () => {
                                 <>
                                     <Header3>Změnit údaje</Header3>
                                     <FormFormik>
-                                        <TextFieldProfile label="First Name" name="firstName" type="text" />
-                                        <TextFieldProfile label="Last Name" name="lastName" type="text" />
-                                        <TextFieldProfile label="Nickname" name="nickname" type="text" />
+                                        <TextFieldProfile label="Jméno" name="firstName" type="text" />
+                                        <TextFieldProfile label="Příjmení" name="lastName" type="text" />
+                                        <TextFieldProfile label="Přezdívka" name="nickname" type="text" />
                                         <ButtonContainer>
                                             <LoginButton type="submit">Změnit</LoginButton>
                                             <LoginButton type="reset">Resetovat</LoginButton>

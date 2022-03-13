@@ -185,7 +185,7 @@ export const LoginForm = () => {
                     <SignUpText>Přihlášení</SignUpText>
                     <FormFormik>
                         <TextFieldAuth label="Email" name="email" type="email" />
-                        <TextFieldAuth label="Password" name="password" type="password" />
+                        <TextFieldAuth label="Heslo" name="password" type="password" />
                         <ButtonContainer>
                             <LoginButton type="submit">Přihlásit</LoginButton>
                             <LoginButton type="reset">Resetovat</LoginButton>

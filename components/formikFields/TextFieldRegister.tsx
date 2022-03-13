@@ -66,7 +66,7 @@ export const TextFieldRegister = ({label,...props}:any) => {
         <>
             <InputMsgContainer>
                 <AlignDivFirst/>
-                <StyledInput placeholder={field.name}
+                <StyledInput placeholder={label}
                 {...field} {...props}
                 />
                 <AlignDiv/>

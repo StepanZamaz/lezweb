@@ -59,7 +59,7 @@ export const TextFieldAuth = ({label,...props}:any) => {
         <>
             <InputMsgContainer>
                 <AlignDiv/>
-                <StyledInput placeholder={field.name}
+                <StyledInput placeholder={label}
                 {...field} {...props}
                 />
                 <AlignDiv>

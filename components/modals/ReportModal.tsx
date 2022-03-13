@@ -141,7 +141,7 @@ const ReportModal = () => {
                                     <StyledForm>
                                         <ReportTextField label="Napište nám, co je špatně" name="reportText" type="text"/>
                                         <ButtonContainer>
-                                            <LoginButton type="submit">Odeslat</LoginButton>
+                                            <LoginButton type="submit" onClick={close}>Odeslat</LoginButton>
                                             <LoginButton type="reset">Resetovat</LoginButton>
                                         </ButtonContainer>
                                     </StyledForm>

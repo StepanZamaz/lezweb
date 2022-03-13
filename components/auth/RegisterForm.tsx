@@ -175,12 +175,12 @@ export const RegisterForm = () => {
                     <>
                         <SignUpText>Registrace</SignUpText>
                         <FormFormik>
-                            <TextFieldRegister label="First Name" name="firstName" type="text" />
-                            <TextFieldRegister label="Last Name" name="lastName" type="text" />
-                            <TextFieldRegister label="Nickname" name="nickname" type="text" />
+                            <TextFieldRegister label="Jméno" name="firstName" type="text" />
+                            <TextFieldRegister label="Příjmení" name="lastName" type="text" />
+                            <TextFieldRegister label="Přezdívka" name="nickname" type="text" />
                             <TextFieldRegister label="Email" name="email" type="emailt" />
-                            <TextFieldRegister label="Password" name="password" type="password" />
-                            <TextFieldRegister label="Confirm Password" name="confirmPassword" type="password" />
+                            <TextFieldRegister label="Heslo" name="password" type="password" />
+                            <TextFieldRegister label="Potvrzení hesla" name="confirmPassword" type="password" />
                             <ButtonContainer>
                                 <LoginButton type="submit">Registrovat</LoginButton>
                                 <LoginButton type="reset">Resetovat</LoginButton>

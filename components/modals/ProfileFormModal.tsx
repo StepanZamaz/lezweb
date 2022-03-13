@@ -419,6 +419,7 @@ const ProfileFormModal = (values: DocumentData) => {
                                                 onSubmit={values => {
                                                     console.log("xxxjl", values)
                                                     AddBlok(values);
+                                                    close;
                                                 }}
                                             >
                                                 {formik => (
@@ -462,6 +463,7 @@ const ProfileFormModal = (values: DocumentData) => {
                                                         AddRouteWithoutImg(values);
                                                     }
                                                     else uploadFile(values);
+                                                    close;
                                                 }}
                                             >
                                                 {formik => (
@@ -504,6 +506,7 @@ const ProfileFormModal = (values: DocumentData) => {
                                                 validationSchema={validateLoc}
                                                 onSubmit={values => {
                                                     AddLoc(values);
+                                                    close;
                                                 }}
                                             >
                                                 {formik => (

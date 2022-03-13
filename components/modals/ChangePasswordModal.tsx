@@ -139,10 +139,10 @@ const ChangePasswordModal = () => {
                                 <>
                                     <Heading>Změna hesla</Heading>
                                     <StyledForm>
-                                        <TextFieldChangePS label="Password" name="password" type="password" />
-                                        <TextFieldChangePS label="Confirm Password" name="confirmPassword" type="password" />
+                                        <TextFieldChangePS label="Nové heslo" name="password" type="password" />
+                                        <TextFieldChangePS label="Potvrdit nové heslo" name="confirmPassword" type="password" />
                                         <ButtonContainer>
-                                            <LoginButton type="submit">Změnit</LoginButton>
+                                            <LoginButton type="submit" onClick={close}>Změnit</LoginButton>
                                             <LoginButton type="reset">Resetovat</LoginButton>
                                         </ButtonContainer>
                                     </StyledForm>
