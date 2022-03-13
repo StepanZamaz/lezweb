@@ -142,7 +142,7 @@ const StyledImg = styled.img`
 const ClimberryText = styled.h3`
     font-size: 2.5rem;
     @media ${device.laptop}  {
-        font-size: 2rem;
+        font-size: 1.8rem;
         margin-bottom: 30px;
     }
 `
@@ -201,7 +201,7 @@ export const LoginForm = () => {
                         <Link href="/">
                             <StyledImg src={logo.default.src} alt="Logo"></StyledImg>
                         </Link>
-                        <ClimberryText>Climberry</ClimberryText>
+                        <ClimberryText>Climberries</ClimberryText>
                     </ClimberryContainer>
                 </>
             )
