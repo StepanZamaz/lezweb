@@ -54,7 +54,6 @@ const AlignDiv = styled.div`
 `
 export const TextFieldAuth = ({label,...props}:any) => {
     const [field,meta] = useField(props);
-    console.log(field,meta)
     return (
         <>
             <InputMsgContainer>

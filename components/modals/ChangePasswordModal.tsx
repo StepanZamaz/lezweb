@@ -1,5 +1,5 @@
 import { DocumentData } from 'firebase/firestore'
-import React, { MouseEventHandler } from 'react'
+import React, { MouseEventHandler, useState } from 'react'
 import * as Yup from 'yup'
 import { Formik, Form } from "formik"
 import styled from 'styled-components'
@@ -66,6 +66,7 @@ const LoginButtonMain = styled.button`
     }
     @media ${device.tablet}{
         width: 30%;
+        height: 80%;
         letter-spacing: 0.1rem;
         font-size: 0.7em;
     }
@@ -101,7 +102,6 @@ const StyledForm = styled(Form)`
 `
 const ChangePasswordModal = () => {
     const auth = getAuth();
-
     const user = auth.currentUser;
     
     const validate = Yup.object({
@@ -142,7 +142,7 @@ const ChangePasswordModal = () => {
                                         <TextFieldChangePS label="Nové heslo" name="password" type="password" />
                                         <TextFieldChangePS label="Potvrdit nové heslo" name="confirmPassword" type="password" />
                                         <ButtonContainer>
-                                            <LoginButton type="submit" onClick={close}>Změnit</LoginButton>
+                                            <LoginButton type="submit" >Změnit</LoginButton>
                                             <LoginButton type="reset">Resetovat</LoginButton>
                                         </ButtonContainer>
                                     </StyledForm>
@@ -159,6 +159,3 @@ const ChangePasswordModal = () => {
 }
 
 export default ChangePasswordModal
-/*
-
-*/ 

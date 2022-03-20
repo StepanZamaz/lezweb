@@ -117,6 +117,7 @@ const ButtonContainer = styled.div`
     @media ${device.tablet}{
         width: 400px;
         justify-content: space-evenly;
+        height: 10%;
     }
     @media (max-width: 530px){
         width: 100px;
@@ -140,6 +141,7 @@ const LoginButton = styled.button`
     }
     @media ${device.tablet}{
         width: 30%;
+        height: 80%;
         letter-spacing: 0.1rem;
         font-size: 0.7em;
     }
@@ -279,6 +281,9 @@ const Header3 = styled.div`
     font-size: 2.5rem;
     text-transform: uppercase;
     margin-bottom: 2%;
+    @media ${device.tablet}{
+        font-size: 2rem;
+    }
     @media (max-width: 450px){
         font-size: 1.5rem;
     }
@@ -419,7 +424,7 @@ const ProfileComponent = () => {
                                         <ButtonContainer>
                                             <LoginButton type="submit">Změnit</LoginButton>
                                             <LoginButton type="reset">Resetovat</LoginButton>
-                                            <ChangePasswordModal />
+                                            <ChangePasswordModal/>
                                         </ButtonContainer>
                                     </FormFormik>
                                 </>

@@ -61,7 +61,6 @@ const AlignDiv = styled.div`
 `
 export const TextFieldRegister = ({label,...props}:any) => {
     const [field,meta] = useField(props);
-    console.log(field,meta)
     return (
         <>
             <InputMsgContainer>

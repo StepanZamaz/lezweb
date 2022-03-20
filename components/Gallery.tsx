@@ -120,7 +120,6 @@ const Cesta = styled.div`
     padding: 16px 32px;
 `
 const Gallery = ({data}:DocumentData) =>{
-    console.log(data)
     const router = useRouter();
     return(
         <OblastDiv>
@@ -129,7 +128,6 @@ const Gallery = ({data}:DocumentData) =>{
                 Object.keys(data).map((key, index)=>{
                     const nazevBloku = data[key].nazevBloku;
                     const cesty = data[key].cesty;
-                    //console.log(cesty)
                     if(typeof(nazevBloku) === "string"){
                         return(
                             <React.Fragment key={index}>

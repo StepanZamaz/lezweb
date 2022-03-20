@@ -13,7 +13,6 @@ const Dropdown = styled.div`
     border-left: 2px solid #101010;
     border-right: 2px solid #101010;
     border-radius: 2%;
-    //overflow: hidden;
     z-index: +1;
 `
 const DropdownLine = styled.div`

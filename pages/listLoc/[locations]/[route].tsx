@@ -19,8 +19,6 @@ const Route = () => {
             }
         })
     },[locations]);
-    console.log("x", boulders)
-    console.log("xx",route)
     return (
         <div>
             <Navbar/>

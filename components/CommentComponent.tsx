@@ -145,13 +145,10 @@ const CommentComponent = () => {
     const [user, setUser] = useState<User | null>();
     const [comments, setComments] = useState<DocumentData>({})
     const [users, setUsers] = useState<DocumentData>({})
-    console.log("user", user)
     const { route } = router.query;
     useEffect(() => {
-        console.log("ahoj")
         onSnapshot(collection(db, "comments"), snapshot => {
             const data = snapshot.docs.map((doc) => ({ ...doc.data(), id: doc.id }));
-            console.log("data", data)
             const listedData = data?.find(x => x.id === route);
             if (listedData) {
                 setComments(listedData);
@@ -159,7 +156,6 @@ const CommentComponent = () => {
         })
         onSnapshot(collection(db, "users"), snapshot => {
             const data = snapshot.docs.map((doc) => ({ ...doc.data(), id: doc.id }));
-            console.log("data", data)
             if (data) {
                 setUsers(data);
             }

@@ -160,7 +160,6 @@ export const LoginForm = () => {
     const login = async (values:any) =>{
         try{
             const user = await signInWithEmailAndPassword(auth, values.email, values.password);
-            console.log(user);
         }catch(error : any){
             console.log(error.message)
         }

@@ -387,7 +387,6 @@ const ProfileFormModal = (values: DocumentData) => {
                 }
           }
         }, {merge: true});
-        console.log("finished");
     }
     return (
         <div>
@@ -417,9 +416,7 @@ const ProfileFormModal = (values: DocumentData) => {
                                                 }}
                                                 validationSchema={validateBlok}
                                                 onSubmit={values => {
-                                                    console.log("xxxjl", values)
                                                     AddBlok(values);
-                                                    close;
                                                 }}
                                             >
                                                 {formik => (
@@ -457,8 +454,6 @@ const ProfileFormModal = (values: DocumentData) => {
                                                 }}
                                                 validationSchema={validateRoute}
                                                 onSubmit={values => {
-                                                    console.log("xxx", values)
-                                                    console.log("xxx", values.img)
                                                     if (values.img==="" || typeof(values.img) === "undefined") {
                                                         AddRouteWithoutImg(values);
                                                     }
@@ -538,56 +533,3 @@ const ProfileFormModal = (values: DocumentData) => {
 }
 
 export default ProfileFormModal
-/*
-
-const AddRoute = async (values: DocumentData) =>{
-        let idLoc : string = "";
-        Object.keys(boulders).map((key) =>{
-            const name = boulders[key].nazevOblasti;
-            const idOblast = boulders[key].id;
-            const oblast = boulders[key];
-            Object.keys(oblast).map((key)=>{
-                if(typeof(oblast[key]) == 'object'){
-                    if(values.idBlok === oblast[key].idBlok){
-                        idLoc = idOblast;
-                    }
-                }
-            })
-        })
-        const washingtonRef = doc(db, "adminReq", idLoc);
-        const routeId = generateID();
-        if(values.img === ""){
-            await setDoc(washingtonRef, {
-                [values.idBlok]: {
-                    cesty: {
-                        [routeId] : {
-                            autor: values.autor,
-                            hodnoceni: values.hodnoceni,
-                            nazevCesty: values.nazevCesty,
-                            id: routeId,
-                            img: ""
-                        }
-                    }
-              }
-            }, {merge: true});
-        }
-        else {
-            const url = uploadFile(values.img, idLoc);
-            console.log("url", url);
-            console.log(progress);
-            await setDoc(washingtonRef, {
-                [values.idBlok]: {
-                    cesty: {
-                        [routeId] : {
-                            autor: values.autor,
-                            hodnoceni: values.hodnoceni,
-                            nazevCesty: values.nazevCesty,
-                            id: routeId,
-                            img: ""
-                        }
-                    }
-              }
-            }, {merge: true});
-        }
-    }
-*/ 

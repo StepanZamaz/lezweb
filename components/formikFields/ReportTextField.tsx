@@ -58,7 +58,6 @@ const StyledErrorMsg = styled.p`
 `
 const ReportTextField = ({ label, ...props }: any) => {
     const [field, meta] = useField(props);
-    console.log(field, meta)
     return (
         <InputMsgContainer>
             <Label htmlFor={field.name}>{label}</Label>

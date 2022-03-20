@@ -52,7 +52,6 @@ const AlignDiv = styled.div`
 `
 const TextFieldChangePS = ({label,...props}:any) => {
     const [field,meta] = useField(props);
-    console.log(field,meta)
     return (
         <>
             <InputMsgContainer>

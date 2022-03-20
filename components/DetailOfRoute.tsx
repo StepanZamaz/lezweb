@@ -230,7 +230,6 @@ const DetailOfRoute = ({ data }: DocumentData) => {
     const { route } = router.query;
     const boulders = data;
     const [user, setUser] = useState<User | null>();
-    user?.emailVerified
     onAuthStateChanged(auth, (currentUser) => {
         setUser(currentUser);
     })
@@ -241,7 +240,6 @@ const DetailOfRoute = ({ data }: DocumentData) => {
                     const nazevOblasti = boulders.nazevOblasti;
                     const boulder = boulders[key];
                     const nazevBloku = boulder.nazevBloku;
-                    console.log(nazevBloku)
                     if (typeof (boulders[key]) === 'object') {
                         const cesty = boulders[key].cesty;
                         return (

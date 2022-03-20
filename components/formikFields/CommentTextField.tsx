@@ -78,7 +78,6 @@ const AddCommentDiv = styled.div`
 `
 const CommentTextField = ({ label, ...props }: any) => {
     const [field, meta] = useField(props);
-    console.log(field, meta)
     return (
         <AddCommentDiv>
         <InputMsgContainer>

@@ -158,7 +158,6 @@ const ImageSlider = ({ data }: DocumentData) => {
                             {
                                 index === current ?
                                 (<SlideActive >
-                                   {console.log("slideActive")}
                                    {index === current && (
                                        <>
                                            <Link href="/listLoc/[locations]" as={`/listLoc/${slide.id}`} key={slide.nazev}>
@@ -172,7 +171,6 @@ const ImageSlider = ({ data }: DocumentData) => {
                                </SlideActive>
                                ): (
                                    <>
-                                   {console.log("neco")}
                                    <Slide/>
                                </>
                                )
@@ -186,49 +184,4 @@ const ImageSlider = ({ data }: DocumentData) => {
         </Section>
     )
 }
-/*
-{index === current && <SlideActive>
-                                                    {index === current && 
-                                                        <div>
-                                                            <h1>aha</h1>
-                                                            <Image src={slide.image} alt={slide.nazev}></Image>
-                                                        </div>
-                                                        }
-                                                </SlideActive>
-                            }
-                            {
-                                index != current && <Slide>
-                                                        {index === current && 
-                                                            <div>
-                                                                <h1>neco</h1>
-                                                                <Image src={slide.image} alt={slide.nazev}></Image>
-                                                            </div>
-                                                        }
-                                                    </Slide>
-                            }
-*/
 export default ImageSlider
-
-/* 
-index === current ?
-                                     (<SlideActive >
-                                        {console.log("slideActive")}
-                                        {index === current && (
-                                            <>
-                                                
-                                                <Link href="/listLoc/[locations]" as={`/listLoc/${slide.id}`} key={slide.nazev}>
-                                                    <SlideNazev>{slide.nazev}</SlideNazev>
-                                                </Link>
-                                                <Link href="/listLoc/[locations]" as={`/listLoc/${slide.id}`} key={slide.id}>
-                                                    <Image src={slide.image} alt={slide.nazev}></Image>
-                                                </Link>
-                                            </>
-                                        )}
-                                    </SlideActive>
-                                    ): (
-                                        <>
-                                        {console.log("neco")}
-                                        <Slide/>
-                                    </>
-                                    )
-*/

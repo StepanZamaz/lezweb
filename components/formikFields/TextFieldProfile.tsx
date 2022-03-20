@@ -9,8 +9,15 @@ const InputMsgContainer = styled.div`
     width: 100%;
     height: 15%;
     padding: 1rem;
-    @media ${device.mobileM}{
+    @media ${device.tablet}{
         flex-direction: column;
+        height: 20%;
+        justify-content: space-between;
+        align-items: center;
+        padding-top: 0;
+        padding-bottom: 0;
+        padding-left: 1rem;
+        padding-right: 1rem;
     }
 `
 const StyledInput = styled.input`
@@ -36,17 +43,23 @@ const StyledInput = styled.input`
         font-weight: 100;
         font-size: 1rem;
     }
-    @media ${device.mobileM}{
-        width: 100%;
+    @media ${device.tablet}{
+        width: 80%;
+        height: 100px;
+        padding: 0.5rem;
+        margin-bottom: 10px;
     }
 `
 const Label = styled.label`
     font-size: 1.2em;
     font-weight: bold;
+    @media ${device.tablet}{
+        display: flex;
+        justify-content: center;
+    }
 `
 const TextFieldProfile = ({label,...props}:any) => {
     const [field,meta] = useField(props);
-    console.log(field,meta)
     return (
         <InputMsgContainer>
             <Label htmlFor={field.name}>{label}</Label>

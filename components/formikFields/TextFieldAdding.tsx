@@ -90,7 +90,6 @@ const AlignDiv = styled.div`
 
 const TextFieldAdding = ({label,...props}:any) => {
     const [field,meta] = useField(props);
-    console.log(field,meta)
     return (
         <InputMsgContainer>
             <Label htmlFor={field.name}>{label}</Label>
