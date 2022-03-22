@@ -7,6 +7,7 @@ import Router from 'next/router'
 import styled from 'styled-components';
 import Link from 'next/link';
 import { device } from '../styledComponents/device'
+import * as Yup from 'yup'
 
 const logo = require('../../public/logo.png');
 
@@ -149,7 +150,10 @@ const ClimberryText = styled.h3`
 export const LoginForm = () => {
     const[user, setUser] = useState<object|null>({});
 
-    
+    const validate = Yup.object({
+        email: Yup.string().email("Email je neplatný").required('Vyžadováno'),
+        password: Yup.string().min(6,"Nejméně 6 znaků").required('Vyžadováno')
+    })
     onAuthStateChanged(auth,(currentUser) =>{
         setUser(currentUser);
         // @ts-ignore
@@ -174,6 +178,7 @@ export const LoginForm = () => {
                 email:'',
                 password:'',
             }}
+            validationSchema={validate}
             onSubmit={values =>{
                 login(values);
                 

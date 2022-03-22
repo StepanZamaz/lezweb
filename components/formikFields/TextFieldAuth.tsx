@@ -61,15 +61,8 @@ export const TextFieldAuth = ({label,...props}:any) => {
                 <StyledInput placeholder={label}
                 {...field} {...props}
                 />
-                <AlignDiv>
-                    <ErrorMessage  component="div" name={field.name} >
-                        {msg => (
-                            <StyledErrorMsg>{msg}</StyledErrorMsg>
-                        )}
-                    </ErrorMessage>
-                </AlignDiv>
+                <AlignDiv/>
             </InputMsgContainer>
-            
         </>  
     )
 }
