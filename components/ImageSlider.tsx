@@ -6,19 +6,12 @@ import styled from 'styled-components'
 import { device } from './styledComponents/device'
 const Section = styled.section`
     position: relative;
-    height: 88vh;
+    height: auto;
     display: flex;
     justify-content: center;
     align-items: center;
-    @media ${device.laptopL} { 
-        height: 83vh;
-    }
-    @media ${device.tablet} {
-        height: 75vh;
-    }
-    @media ${device.mobileM} {
-        height: 70vh;
-    }
+    padding-top: 100px;
+    padding-bottom: 100px;
 `
 const Image = styled.img`
     cursor: pointer;
@@ -52,23 +45,59 @@ const Image = styled.img`
 `
 const ArrowRight = styled(FaArrowAltCircleRight)`
     position: absolute;
-    top: 50%;
+    top: 430px;
     right: 32px;
     font-size: 3rem;
     color: #323232;
     z-index: 10;
     cursor: pointer;
     user-select: none;
+    @media (max-width: 1920px)  { 
+        top: 420px;
+    }
+    @media ${device.laptopL} { 
+        top: 350px;
+    }
+    @media (max-width: 950px)  { 
+        top: 280px;
+    }
+    @media ${device.tablet} { 
+        top: 215px;
+    }
+    @media (max-width: 470px) { 
+        top: 185px;
+    }
+    @media ${device.mobileM} { 
+        top: 145px;
+    }
 `
 const ArrowLeft = styled(FaArrowAltCircleLeft)`
     position: absolute;
-    top: 50%;
+    top: 45%;
     left: 32px;
     font-size: 3rem;
     color: #323232;
     z-index: 10;
     cursor: pointer;
     user-select: none;
+    @media (max-width: 1920px)  { 
+        top: 420px;
+    }
+    @media ${device.laptopL} { 
+        top: 350px;
+    }
+    @media (max-width: 950px)  { 
+        top: 280px;
+    }
+    @media ${device.tablet} { 
+        top: 215px;
+    }
+    @media (max-width: 470px) { 
+        top: 185px;
+    }
+    @media ${device.mobileM} { 
+        top: 145px;
+    }
 `
 const Slide = styled.div`
     opacity: 0;
@@ -103,7 +132,63 @@ const SlideNazev = styled.h1`
         font-size: 1.2rem;
     }
 `
-
+const SlideLinkList = styled.div`
+    margin-top: 50px;
+    width: 900px;
+    height: auto;
+    display: flex;
+    justify-content: space-evenly;
+    flex-direction: row;
+    flex-wrap: wrap;
+    @media ${device.laptopL} { 
+        width: 700px;
+    }
+    @media (max-width: 950px)  { 
+        width: 550px;
+    }
+    @media ${device.tablet} { 
+        width: 400px;
+    }
+    @media (max-width: 470px) { 
+        width: 300px;
+    }
+    @media ${device.mobileM} { 
+        width: 250px;
+    }
+`
+const OneLink = styled.div`
+    cursor: pointer;
+    height: 35px;
+    min-width: 90px;
+    margin-right: 10px;
+    margin-bottom: 10px;
+    background-color: black;
+    color: #61ed84;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding-left: 5px;
+    padding-right: 5px;
+    border-radius: 15px;
+    font-size: 0.8em;
+`
+const OneLinkActive = styled.div`
+    cursor: pointer;
+    height: 35px;
+    min-width: 90px;
+    margin-right: 10px;
+    margin-bottom: 10px;
+    background-color: #323232;
+    color: #61ed84;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding-left: 5px;
+    padding-right: 5px;
+    border-radius: 15px;
+    font-size: 0.8em;
+    border: 2px solid #61ed84;
+`
 const ImageSlider = ({ data }: DocumentData) => {
     const SliderData = new Array(data.length);
 
@@ -166,6 +251,30 @@ const ImageSlider = ({ data }: DocumentData) => {
                                            <Link href="/listLoc/[locations]" as={`/listLoc/${slide.id}`} key={slide.id}>
                                                 <Image src={slide.image} alt={slide.nazev}></Image>
                                            </Link>
+                                           <SlideLinkList>
+                                            {
+                                                SliderData.map((slideList, indexList) =>{
+                                                    if(slideList.id === slide.id){
+                                                        return(
+                                                            <React.Fragment key={indexList}>
+                                                                <Link href="/listLoc/[locations]" as={`/listLoc/${slideList.id}`}>
+                                                                    <OneLinkActive>{slideList.nazev}</OneLinkActive>
+                                                                </Link>
+                                                            </React.Fragment>
+                                                        )
+                                                    }
+                                                    else{
+                                                        return(
+                                                            <React.Fragment key={indexList}>
+                                                                <Link href="/listLoc/[locations]" as={`/listLoc/${slideList.id}`}>
+                                                                    <OneLink>{slideList.nazev}</OneLink>
+                                                                </Link>
+                                                            </React.Fragment>
+                                                        )
+                                                    }
+                                                })
+                                            }
+                                           </SlideLinkList>
                                        </>
                                    )}
                                </SlideActive>

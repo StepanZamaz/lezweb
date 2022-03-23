@@ -350,7 +350,9 @@ const ProfileComponent = () => {
         //@ts-ignore
         sendEmailVerification(auth.currentUser);
     }
-
+    const FcSucces = () =>{
+        alert("Změna proběhla úspěšně");
+    }
     return (
         <>
             {componentNum ? (
@@ -410,9 +412,12 @@ const ProfileComponent = () => {
                                 nickname: '',
                             }}
                             validationSchema={validate}
-                            onSubmit={values => {
+                            onSubmit={(values, { resetForm }) => {
                                 updateUserDocument(values);
+                                setTimeout(FcSucces, 1000);
+                                setTimeout(()=>(resetForm()),1500);
                             }}
+                            key={0}
                         >
                             {formik => (
                                 <>

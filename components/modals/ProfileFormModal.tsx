@@ -2,7 +2,7 @@ import React, { MouseEventHandler, useState } from 'react'
 import Popup from "reactjs-popup";
 import styled from 'styled-components';
 import * as Yup from 'yup'
-import { Formik, Form, Field, ErrorMessage } from "formik"
+import { Formik, Form, ErrorMessage } from "formik"
 import { DocumentData, collection, addDoc, doc, updateDoc, setDoc } from 'firebase/firestore';
 import { storage } from '../../utils/firebase';
 import TextFieldAdding from '../formikFields/TextFieldAdding';
@@ -368,6 +368,9 @@ const ProfileFormModal = (values: DocumentData) => {
             }
         }, { merge: true });
     }
+    const FcSucces = () =>{
+        alert("Přidání proběhlo úspěšně");
+    }
     const AddRouteWithImg = async (values: DocumentData, idLoc : string, url: string) =>{
         const washingtonRef = doc(db, "boulders", idLoc);
         const routeId = generateID();
@@ -415,9 +418,12 @@ const ProfileFormModal = (values: DocumentData) => {
                                                     lng: number
                                                 }}
                                                 validationSchema={validateBlok}
-                                                onSubmit={values => {
+                                                onSubmit={(values, { resetForm }) => {
                                                     AddBlok(values);
+                                                    setTimeout(FcSucces, 1000);
+                                                    setTimeout(()=>(resetForm()),1500); 
                                                 }}
+                                                key={1}
                                             >
                                                 {formik => (
                                                     <>
@@ -429,7 +435,7 @@ const ProfileFormModal = (values: DocumentData) => {
                                                             <TextFieldAdding label="Zeměpisná délka" name="lng" type="number" />
                                                             <ButtonContainer>
                                                                 <Button type="submit">Přidat</Button>
-                                                                <Button type="reset">Resetovat</Button>
+                                                                <Button type='reset'>Resetovat</Button>
                                                             </ButtonContainer>
                                                         </FormBlok>
                                                     </>
@@ -453,13 +459,15 @@ const ProfileFormModal = (values: DocumentData) => {
                                                     img: ''
                                                 }}
                                                 validationSchema={validateRoute}
-                                                onSubmit={values => {
+                                                onSubmit={(values, { resetForm })  => {
                                                     if (values.img==="" || typeof(values.img) === "undefined") {
                                                         AddRouteWithoutImg(values);
                                                     }
                                                     else uploadFile(values);
-                                                    close;
+                                                    setTimeout(FcSucces, 1000);
+                                                    setTimeout(()=>(resetForm()),1500);  
                                                 }}
+                                                key={2}
                                             >
                                                 {formik => (
                                                     <>
@@ -499,10 +507,12 @@ const ProfileFormModal = (values: DocumentData) => {
                                                     nazevOblasti: ''
                                                 }}
                                                 validationSchema={validateLoc}
-                                                onSubmit={values => {
+                                                onSubmit={(values, { resetForm }) => {
                                                     AddLoc(values);
-                                                    close;
+                                                    setTimeout(FcSucces, 1000);
+                                                    setTimeout(()=>(resetForm()),1500);  
                                                 }}
+                                                key={3}
                                             >
                                                 {formik => (
                                                     <>

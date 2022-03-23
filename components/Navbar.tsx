@@ -5,7 +5,6 @@ import styled from 'styled-components'
 import { auth } from '../utils/firebase';
 import {CgProfile} from "react-icons/cg"
 import DropdownMenu from "./DropdownMenu"
-import TooltipDropdownMenu from "./TooltipDropdownMenu"
 import { device } from './styledComponents/device'
 const logo = require('../public/logo.png');
 
@@ -47,6 +46,7 @@ const StyledLink = styled.a`
     }
 `
 const StyledNadpis = styled.a`
+    cursor: pointer;
     font-size: 5em;
     padding: 0rem 1rem;
     color: #61ed84;
@@ -109,7 +109,9 @@ const Navbar = () => {
                 <Link href="/">
                     <StyledImg src={logo.default.src} alt="Logo"/>
                 </Link>
-                <StyledNadpis>Climberries</StyledNadpis>
+                <Link href="/">
+                    <StyledNadpis>Climberries</StyledNadpis>
+                </Link>
             </div>
             
             <NavContent>

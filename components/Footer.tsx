@@ -1,6 +1,7 @@
 import React from 'react'
 import styled from 'styled-components'
 import { device } from './styledComponents/device'
+import Link from 'next/link';
 const logo = require('../public/logo.png');
 const FooterSection = styled.div`
     background: #000;
@@ -24,9 +25,14 @@ const FooterSection = styled.div`
     }
 `
 const ClimberryDiv = styled.div`
+    cursor: pointer;
     width: 20%;
     color: #61ed84;
     font-size: 1.6rem;
+    :hover {
+        transition-duration: 1s;
+        transform: scale(1.2);
+    }
     @media ${device.tablet} { 
         font-size: 1rem;
     }
@@ -64,17 +70,25 @@ const LogoDiv = styled.div`
         width: 100%;
     }
 `
+const StyledHyperText = styled.a`
+    color: #61ed84;
+    text-decoration: none;
+`
 const Footer = () => {
     return (
         <FooterSection>
             <LogoDiv>
-                <StyledImg src={logo.default.src}/>
+                <Link href="/">
+                    <StyledImg src={logo.default.src}/>
+                </Link>
             </LogoDiv>
-            <ClimberryDiv>
-                Climberries
-            </ClimberryDiv>
+            <Link href="/">
+                <ClimberryDiv>
+                    Climberries
+                </ClimberryDiv>
+            </Link>
             <FooterDiv>
-                Projekt - DELTA - SŠIE, s.r.o. 
+                <StyledHyperText href="https://www.delta-skola.cz/">Projekt - DELTA - SŠIE, s.r.o.</StyledHyperText>  
             </FooterDiv>
         </FooterSection>
     )

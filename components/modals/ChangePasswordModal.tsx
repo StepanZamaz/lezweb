@@ -116,7 +116,9 @@ const ChangePasswordModal = () => {
             console.log(error)
         });
     }
-
+    const FcSucces = () =>{
+        alert("Změna hesla proběhla úspěšně");
+    }
     return (
         <>
             <Popup
@@ -131,9 +133,12 @@ const ChangePasswordModal = () => {
                                 confirmPassword:''
                             }}
                             validationSchema={validate}
-                            onSubmit={values => {
+                            onSubmit={(values, { resetForm }) => {
                                 updateUserPassword(values);
+                                setTimeout(FcSucces, 1000);
+                                setTimeout(()=>(resetForm()),700); 
                             }}
+                            key={4}
                         >
                             {formik => (
                                 <>

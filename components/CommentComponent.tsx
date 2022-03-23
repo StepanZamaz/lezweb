@@ -241,8 +241,9 @@ const CommentComponent = () => {
                                 commentText: ''
                             }}
                             validationSchema={validate}
-                            onSubmit={values => {
+                            onSubmit={(values, { resetForm }) => {
                                 addComment(values);
+                                setTimeout(()=>(resetForm()),500); 
                             }}
                         >
                             {formik => (

@@ -116,6 +116,9 @@ const ReportModal = () => {
     const validate = Yup.object({
         reportText: Yup.string().max(100, "Maximálně 100 znaků").required('Vyžadováno'),
     })
+    const FcSucces = () =>{
+        alert("Report byl odeslán");
+    }
     return (
         <>
             <Popup
@@ -129,8 +132,10 @@ const ReportModal = () => {
                                 reportText: ''
                             }}
                             validationSchema={validate}
-                            onSubmit={values => {
+                            onSubmit={(values, { resetForm }) => {
                                 sendReport(values);
+                                setTimeout(FcSucces, 1000);
+                                setTimeout(()=>(resetForm()),1500);  
                             }}
                         >
                             {formik => (
