@@ -122,7 +122,7 @@ const ChangePasswordModal = () => {
     return (
         <>
             <Popup
-                trigger={<LoginButtonMain className="button">Změnit heslo</LoginButtonMain>}
+                trigger={<LoginButtonMain className="button" type='button'>Změnit heslo</LoginButtonMain>}
                 modal
             >
                 {(close: MouseEventHandler<HTMLButtonElement>) => (

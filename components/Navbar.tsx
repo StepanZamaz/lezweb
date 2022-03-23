@@ -85,8 +85,9 @@ const StyledProfileIcon = styled(CgProfile)`
     }
 `
 const NavContent = styled.div`
+    margin-right: 2%;
     display: flex;
-    width: 45%;
+    width: 25%;
     justify-content: space-around;
     align-items: center;
     @media ${device.laptop} { 
