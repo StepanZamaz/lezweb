@@ -3,7 +3,6 @@ import Head from 'next/head';
 import React, { useState } from 'react'
 import BasicLayout from "../layout/Basic";
 import styled from 'styled-components';
-import { Hero } from '../components/styledComponents/styledComponents'
 import Navbar from '../components/Navbar';
 import Footer from '../components/Footer';
 import Image from 'next/image'
