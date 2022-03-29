@@ -1,7 +1,6 @@
 import React, {  useState } from 'react'
 import BasicLayout from "../layout/Basic";
 import styled from 'styled-components';
-import {Hero, Heading} from '../components/styledComponents/styledComponents'
 import { onAuthStateChanged, signInWithEmailAndPassword, signOut} from "firebase/auth"
 import { auth } from '../utils/firebase';
 import { LoginForm } from '../components/auth/LoginForm';

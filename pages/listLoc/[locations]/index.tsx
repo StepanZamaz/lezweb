@@ -2,7 +2,6 @@ import { collection, onSnapshot,doc,where, DocumentData } from "@firebase/firest
 import { NextPage, NextPageContext } from "next";
 import { useRouter } from "next/dist/client/router";
 import { useEffect, useState } from "react";
-import {Nadpis, DetailImg} from "../../../components/styledComponents/styledComponents"
 import db from "../../../utils/firebase";
 import Image from 'next/image'
 import Gallery from "../../../components/Gallery";

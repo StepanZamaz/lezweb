@@ -3,7 +3,6 @@ import Link from 'next/link';
 import { collection, onSnapshot, DocumentData, doc, } from "@firebase/firestore";
 import { useEffect, useState } from "react";
 import db from "../../utils/firebase";
-import {Nadpis, Header, SeznamOblasti, ColumnImage, RowImage} from "../../components/styledComponents/styledComponents"
 import ImageSlider from "../../components/ImageSlider"
 import Gallery from '../../components/Gallery';
 import Navbar from '../../components/Navbar';

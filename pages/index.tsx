@@ -296,7 +296,7 @@ const Home: NextPage = () => {
 return (
     <>
       <Head>
-        <title>Homepage</title>
+        <title>Climberries</title>
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <Navbar />
