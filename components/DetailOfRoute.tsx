@@ -19,7 +19,7 @@ const RouteCard = styled.div`
     border-radius: 15px;
     display: grid;
     grid-template-columns: 40% 55%;
-    grid-template-rows: 10% auto 40%;
+    grid-template-rows: 15% auto 40%;
     column-gap: 5%;
     grid-template-areas: 
         "header  image"
@@ -52,16 +52,18 @@ const RouteCard = styled.div`
 `
 const NazevCesty = styled.div`
     height: 100%;
-    padding: 5% 0;
-    padding-left: 10%;
+    width: 70%;
     grid-area: header;
     font-size: 3em;
     text-align: center;
     display: flex;
     align-items: center;
     justify-content: center;
+    @media ${device.laptopL}{
+        font-size: 2.2em;
+    }
     @media ${device.laptop}{
-        font-size: 2em;
+        font-size: 1.8em;
     }
     @media ${device.tablet}{
         padding-left: 0%;
@@ -225,6 +227,13 @@ const ImageDiv = styled.div`
     width: 100%;
     height: auto;
 `
+const CenterNazev = styled.div`
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+`
 const DetailOfRoute = ({ data }: DocumentData) => {
     const router = useRouter();
     const { route } = router.query;
@@ -253,7 +262,7 @@ const DetailOfRoute = ({ data }: DocumentData) => {
                                                     <DivNazevLoc>{nazevOblasti}</DivNazevLoc>
                                                     <DivNazevBlok>{nazevBloku}</DivNazevBlok>
                                                     <RouteCard>
-                                                        <NazevCesty>{cesta.nazevCesty}</NazevCesty>
+                                                        <CenterNazev><NazevCesty>{cesta.nazevCesty}</NazevCesty></CenterNazev>
                                                         <InformationDiv>
                                                             <AutorDiv>
                                                                 <DescriptionDiv>autor: </DescriptionDiv>

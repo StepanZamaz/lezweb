@@ -20,7 +20,7 @@ const ReportButton = styled(GoReport)`
         transform: scale(1.2) scaleX(-1) rotate(-360deg);
     }
     @media ${device.laptop}{
-        font-size: 2.5em;
+        font-size: 2em;
     }
     @media ${device.tablet}{
         top: 3%;

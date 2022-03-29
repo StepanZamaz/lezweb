@@ -349,6 +349,7 @@ const ProfileComponent = () => {
     const sendVerificationEmail = () => {
         //@ts-ignore
         sendEmailVerification(auth.currentUser);
+        setTimeout(()=>(alert("Ověření bylo zasláno")),1500);
     }
     const FcSucces = () =>{
         alert("Změna proběhla úspěšně");
