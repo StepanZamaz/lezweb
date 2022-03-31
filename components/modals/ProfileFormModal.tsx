@@ -271,8 +271,8 @@ const ProfileFormModal = (values: DocumentData) => {
         hodnoceni: Yup.string().max(3, "Maximálně 3 znaky").required("Vyžadováno"),
         nazevCesty: Yup.string().max(20, "Maximálně 20 znaků").required("Vyžadováno"),
         material: Yup.string().max(10, "Maximálně 10 znaků").required("Vyžadováno"),
-        delka: Yup.string().max(3, "Maximálně 3 znaky").required("Vyžadováno"),
-        popisCesty: Yup.string().max(100, "Maximálně 100 znaků"),
+        delka: Yup.string().max(5, "Maximálně 5 znaků").required("Vyžadováno"),
+        popisCesty: Yup.string().max(250, "Maximálně 250 znaků"),
         img: Yup.mixed().test(
             "FILE_FORMAT",
             "Nepodporovaný formát.",
