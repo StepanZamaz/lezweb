@@ -257,8 +257,8 @@ const ProfileFormModal = (values: DocumentData) => {
     const validateBlok = Yup.object({
         idDoc: Yup.string().required("Vyžadováno"),
         nazevBloku: Yup.string().max(20, "Maximálně 20 znaků").required("Vyžadováno"),
-        lat: Yup.number().min(-90, "Minimum do -90").max(90, "Maximálně do 90").required("Vyžadováno"),
-        lng: Yup.number().min(-180, "Minimum do -180").max(180, "Maximálně do 180").required("Vyžadováno")
+        lat: Yup.number().typeError('Zadejte číslo').min(-90, "Minimum do -90").max(90, "Maximálně do 90").required("Vyžadováno"),
+        lng: Yup.number().typeError('Zadejte číslo').min(-180, "Minimum do -180").max(180, "Maximálně do 180").required("Vyžadováno")
     })
     const SUPPORTED_FORMATS = [
         "image/jpg",
